@@ -6,7 +6,7 @@
 #    By: mnegro <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 11:21:10 by mnegro            #+#    #+#              #
-#    Updated: 2023/10/03 11:21:47 by mnegro           ###   ########.fr        #
+#    Updated: 2023/10/04 11:02:24 by mnegro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
+MLXFLAGS = -lmlx -lXext -lX11 -lm
 #### TARGETS ####
 FL_SRCS =	
 DIRSRCS = src/
@@ -35,6 +36,8 @@ OBJS = ${addprefix ${DIROBJS},${FL_OBJS}}
 
 INCLUDE = ./minishell.h
 
+MLX = minilibx-linux
+
 DIRARC = arc/
 ARC = ${addprefix ${DIRARC},${NAME_ARC}}
 
@@ -45,7 +48,7 @@ ${DIROBJS}%.o: ${DIRSRCS}%.c
 
 ${NAME}: libft ${OBJS}
 	cp libft/arc/libft.a ${ARC}
-	${CC} ${CFLAGS} ${OBJS} -I {INCLUDE} -o ${NAME} ${ARC} ${RLFLAGS}
+	${CC} ${CFLAGS} ${OBJS} -I {MLX} -I {INCLUDE} -L {MLX} {MLXFLAGS} -o ${NAME} ${ARC}
 	@echo "Rule '${GREEN}all${DEF_COLOR}' for mandatory ${NAME} executed successfully!"
 
 all:	${NAME}
