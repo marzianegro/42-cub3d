@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:47:54 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/07 16:12:25 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/07 19:21:51 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,18 @@ int	ft_keys(int key, t_game *game)
 {
 	if (key == ESC_KEY)
 		ft_end(game, 1);
-	else if (key == W_KEY || key == UP_ARROW)
-		ft_up(game, &game->map);
-	else if (key == A_KEY || key == LEFT_ARROW)
+	else if (key == W_KEY)
+		ft_forward(game, &game->map);
+	else if (key == A_KEY)
 		ft_left(game, &game->map);
-	else if (key == S_KEY || key == DOWN_ARROW)
-		ft_down(game, &game->map);
-	else if (key == D_KEY || key == RIGHT_ARROW)
+	else if (key == S_KEY)
+		ft_back(game, &game->map);
+	else if (key == D_KEY)
 		ft_right(game, &game->map);
+	else if (key == RIGHT_ARROW)
+		ft_rot_right(game);
+	else if (key == LEFT_ARROW)
+		ff_rot_left(game);
 	else
 		return (1);
 	return (0);
