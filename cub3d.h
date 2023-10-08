@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/08 15:15:52 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:20:52 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,11 @@ void	ft_floodfill(char **mapcopy, int x, int y);
 void	ft_afterff(t_map *map, char **mapcopy);
 void	ft_checkchecks(t_map *map);
 /* ft_DDA.c */
+void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
 /* ft_drawMap.c */
+/* ft_drawWalls.c */
+void	ft_perpwalldist(t_ray *ray);
+void	ft_wall_calcs(t_player *plyr, t_ray *ray, t_texture *tex);
 /* ft_handleEnds.c */
 void	ft_error(char *str);
 /* ft_initMap.c */
@@ -167,10 +171,17 @@ void	ft_left(t_game *game, t_map *map);
 void	ft_backward(t_game *game, t_map *map);
 void	ft_right(t_game *game, t_map *map);
 /* ft_preDDA.c */
+void	ft_init_plyr(t_player *plyr);
+void	ft_init_ray(t_ray *ray);
+void	ft_deltadist(t_player *plyr, t_ray *ray);
+void	ft_step_sidedist(t_player *plyr, t_ray *ray);
+void	ft_init_dda(t_game *game);
 /* ft_rotPlane.c */
 void	ft_rot_left(t_game *game);
 void	ft_rot_right(t_game *game);
 /* ft_termSprites.c */
 void	ft_unload_all(t_game *game);
-
+/* ft_time.c */
+void	ft_init_time(t_time *time);
+void	ft_calc_time();
 #endif

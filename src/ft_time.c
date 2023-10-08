@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fps.c                                           :+:      :+:    :+:   */
+/*   ft_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:53:56 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/08 15:15:23 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:20:53 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_init_fps(t_time *time)
+void	ft_init_time(t_time *time)
 {
 	time->fps = 0;
 	time->old_fps = 0;
 }
 
-void	ft_calc_fps()
+void	ft_calc_time()
 {
 	time->old_fps = time->fps;
 	time->fps = gettimeofday();
