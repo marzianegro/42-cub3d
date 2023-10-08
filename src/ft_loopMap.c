@@ -6,28 +6,24 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:47 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/07 18:20:53 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:15:46 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-// to be adjusted
 int	ft_redrawinloop(t_game *game)
 {
 	int	x;
-	int	y;
 
-	y = 0;
-	while (game->map.map[y] != NULL)
+	x = 0;
+	while (x < WIN_WIDTH)
 	{
-		x = 0;
-		while (x < game->map.width)
-		{
-			// redrawing functions
-			x++;
-		}
-		y++;
+		ft_init_dda(game);
+		ft_dda(game->map, game->plyr, game->ray);
+		ft_wall_calcs(game->plyr, game->ray, game->tex);
+		ft_draw_map();
+		x++;
 	}
 	return (0);
 }

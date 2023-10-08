@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:47:54 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/07 19:21:51 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:15:40 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_draw_map(t_map *map, t_game *game)
 	ft_draw_sprites(map, game);
 }
 
-// to be adjusted
 int	ft_keys(int key, t_game *game)
 {
 	if (key == ESC_KEY)
@@ -40,7 +39,6 @@ int	ft_keys(int key, t_game *game)
 	return (0);
 }
 
-// to be adjusted
 void	ft_hooks(t_game *game)
 {
 	mlx_hook(game->win_ptr, 17, 0, ft_end, game);
@@ -51,7 +49,7 @@ void	ft_mlxinit(t_map *map, t_game *game)
 {
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->mlx_ptr, map->width * 64,
-			map->height * 64, "Get out of the maze!");
+			map->height * 64, "Welcome to the maze!");
 	ft_draw_map(map, game);
 	ft_hooks(game);
 	mlx_loop_hook(game->mlx_ptr, ft_redrawinloop, game);

@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:24:57 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/07 19:32:27 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:15:04 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_end(t_game *game, int n)
 {
 	if (n == 3)
-		ft_printf("\nYou've made it out of the maze! Congrats!"
-			"\033[1;92myou win\033[0;39m! :)\n");
+		ft_printf("\nYou've made it out of the maze! "
+			"\033[1;92Congrats\033[0;39m! :)\n");
 	ft_unload_all(game);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);

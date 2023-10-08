@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/07 19:32:21 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:15:52 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ typedef	struct s_texture
 	t_data		*xpm;
 	int			height;
 	int			width;
-	int			line_height;
-	int			line_start;
-	int			line_end;
+	int			wall_height;
+	int			wall_start;
+	int			wall_end;
 	double		wall_x;
 	int			pos;
 	double		coor_x;

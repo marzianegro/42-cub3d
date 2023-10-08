@@ -6,11 +6,17 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/07 17:20:59 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/08 15:15:28 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+// CHECKS TO DO
+// - Check file extension
+// - Check if there are invalid chars (only 0, 1, N, S, E, and W are valid)
+// - Check borders (North, East, South, West): the map has to be surrounded by walls
+// - Check if the path is walk-through-able with flood fill?
 
 void	ft_check_ext(char **av)
 {
@@ -24,16 +30,9 @@ void	ft_check_ext(char **av)
 // to be adjusted
 void	ft_floodfill(char **mapcopy, int x, int y)
 {
-	if (mapcopy[y][x] == '0' || mapcopy[y][x] == 'E'
-		|| mapcopy[y][x] == 'P' || mapcopy[y][x] == 'C')
+	if (mapcopy[y][x] == '0')
 	{
-		if (mapcopy[y][x] == 'E')
-		{
-			mapcopy[y][x] = 'O';
-			return ;
-		}
-		else
-			mapcopy[y][x] = '*';
+		mapcopy[y][x] = '*';
 		ft_floodfill(mapcopy, x, y - 1);
 		ft_floodfill(mapcopy, x + 1, y);
 		ft_floodfill(mapcopy, x, y + 1);
@@ -53,17 +52,7 @@ void	ft_afterff(t_map *map, char **mapcopy)
 		x = 1;
 		while (x < map->width - 1)
 		{
-			if (mapcopy[y][x] == 'E' || mapcopy[y][x] == 'C')
-			{
-				ft_freematrix(mapcopy);
-				ft_exit(map, 3);
-			}
-			else if (mapcopy[y][x] != '*' && mapcopy[y][x] != '1'
-				&& mapcopy[y][x] != '0' && mapcopy[y][x] != 'O')
-			{
-				ft_freematrix(mapcopy);
-				ft_exit(map, 2);
-			}
+			// ...
 			x++;
 		}
 	}
