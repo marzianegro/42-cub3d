@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:47:54 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/11 11:35:46 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 18:05:52 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_mlxinit(t_map *map, t_game *game)
 {
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->mlx_ptr, map->width * 64,
-			map->height * 64, "Welcome to the maze!");
+			map->height * 64, "Welcome to cub3d!");
 	ft_draw_map(map, game);
 	ft_hooks(game);
 	mlx_loop_hook(game->mlx_ptr, ft_redrawinloop, game);

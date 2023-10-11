@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/11 17:03:05 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 18:56:33 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_init_plyr(t_map *map, t_player *plyr)
 	plyr->dir_y = 0; // not sure
 	plyr->plane_x = 0;
 	plyr->plane_y = 0.66;
-	plyr->camera_x = 2 * x / (double)WIN_WIDTH - 1;
+	plyr->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
 }
 
 void	ft_init_ray(t_ray *ray)

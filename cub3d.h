@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/11 16:42:41 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 18:56:07 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define X 0
 # define Y 1
 # define Z 2
-# define WIN_WIDTH
-# define WIN_HEIGHT
+# define SCREEN_WIDTH
+# define SCREEN_HEIGHT
 
 
 # define UP_ARROW		65362
@@ -43,7 +43,7 @@ typedef	struct s_data
 {
 	void	*img;
 	char	*addr;
-	int		bpl; // bits-per-pixel
+	int		bpp; // bits-per-pixel
 	int		line_len;
 	int		endian;
 }			t_data;
@@ -55,10 +55,10 @@ typedef struct s_map
 	int		height;
 	int		player;
 	int		ceiling;
+	int		floor;
 	char	*north;
 	char	*east
 	char	*west;
-	int		floor;
 	char	*south;
 }			t_map;
 
@@ -76,6 +76,8 @@ typedef	struct s_player
 	// what direction to step in?
 	int		step_x; // +1
 	int		step_y; // -1
+	double	move_speed;
+	double	rot_speed;
 }			t_player;
 
 typedef	struct s_ray
@@ -104,7 +106,9 @@ typedef	struct s_ray
 
 typedef	struct s_texture
 {
-	t_data		*xpm;
+	t_data		*spt;
+	// which texure out of spt we're using
+	int			num;
 	int			height;
 	int			width;
 	int			wall_height;
@@ -112,21 +116,11 @@ typedef	struct s_texture
 	int			wall_end;
 	double		wall_x;
 	int			pos;
-	double		coor_x;
-	double		coor_y;
+	double		x_coor;
+	double		y_coor;
 	// how much to increase the texture coordinate per screen pixel
 	double		step;
-	int			num;
 }			t_texture;
-
-typedef	struct s_time
-{
-	double	fps; // current frame
-	double	old_fps; // previous frame
-	double	frame_time;
-	double	move_speed;
-	double	rot_speed;
-}			t_time;
 
 typedef struct s_game
 {
@@ -173,7 +167,7 @@ int		ft_keys(int key, t_game *game);
 void	ft_hooks(t_game *game);
 void	ft_mlxinit(t_map *map, t_game *game);
 /* initSprites.c */
-void	*ft_create(t_game *game, char *xpm);
+void	*ft_create(t_game *game, char *spt);
 void	ft_upload_all(t_game *game);
 /* loopMap.c */
 int		ft_redrawinloop(t_game *game);
