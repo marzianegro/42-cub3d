@@ -6,7 +6,7 @@
 #    By: mnegro <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 11:21:10 by mnegro            #+#    #+#              #
-#    Updated: 2023/10/08 15:22:07 by mnegro           ###   ########.fr        #
+#    Updated: 2023/10/11 10:57:43 by mnegro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,9 @@ RM = rm -f
 
 MLXFLAGS = -lmlx -lXext -lX11 -lm
 #### TARGETS ####
-FL_SRCS = ft_checkMap.c ft_DDA.c ft_drawMap.c ft_drawWalls.c \
-			ft_handleEnds.c ft_initMap.c ft_initMLX.c ft_initSprites.c \
-			ft_loopMap.c ft_movePlayer.c ft_preDDA.c ft_rotPlane.c \
-			ft_termSprites.c ft_time.c main.c
+FL_SRCS = calcTex.c calcTimec checkMap.c DDA.c drawMap.c drawTex.c \
+			handleEnds.c initDDA.c initMap.c initMLX.c initSprites.c \
+			loopMap.c main.c movePlayer.c rotPlane.c termSprites.c
 DIRSRCS = src/
 SRCS = ${addprefix ${DIRSRCS},${FL_SRCS}}
 

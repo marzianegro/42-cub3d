@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkMap.c                                      :+:      :+:    :+:   */
+/*   checkMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/08 15:15:28 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 11:02:30 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_check_ext(char **av)
 
 	len = ft_strlen(av[1]);
 	if (!ft_strnstr(&av[1][len - 5], ".cub\0", 5))
-		ft_error("invalid file map extension!");
+		ft_error("invalid file map extension");
 }
 
 // to be adjusted

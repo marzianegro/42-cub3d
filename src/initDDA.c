@@ -6,18 +6,18 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/08 15:15:48 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 10:54:39 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_init_plyr(t_player *plyr)
+void	ft_init_plyr(t_map *map, t_player *plyr)
 {
-	plyr->pos_x = ;
-	plyr->pos_y = ;
-	plyr->dir_x = -1;
-	plyr->dir_y = 0;
+	plyr->pos_x = ; // coordinate x saved in map
+	plyr->pos_y = ; // coordinate y saved in map
+	plyr->dir_x = -1; // not sure
+	plyr->dir_y = 0; // not sure
 	plyr->plane_x = 0;
 	plyr->plane_y = 0.66;
 	plyr->camera_x = 2 * x / (double)WIN_WIDTH - 1;

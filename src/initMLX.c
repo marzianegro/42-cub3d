@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_initMLX.c                                       :+:      :+:    :+:   */
+/*   initMLX.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:47:54 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/08 15:15:40 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 11:06:18 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_draw_map(t_map *map, t_game *game)
 int	ft_keys(int key, t_game *game)
 {
 	if (key == ESC_KEY)
-		ft_end(game, 1);
+		ft_end(game);
 	else if (key == W_KEY)
 		ft_forward(game, &game->map);
 	else if (key == A_KEY)

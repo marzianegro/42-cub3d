@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/08 15:20:52 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 11:01:28 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,48 +140,52 @@ typedef struct s_game
 }			t_game;
 
 /* PROTOTYPES */
-/* ft_checkMap.c */
+/* calcTex.c */
+void	ft_perpwalldist(t_ray *ray);
+void	ft_wall_calcs(t_player *plyr, t_ray *ray, t_texture *tex);
+/* calcTime.c */
+void	ft_init_time(t_time *time);
+void	ft_calc_time();
+/* checkMap.c */
 void	ft_check_ext(char **av);
 void	ft_floodfill(char **mapcopy, int x, int y);
 void	ft_afterff(t_map *map, char **mapcopy);
 void	ft_checkchecks(t_map *map);
-/* ft_DDA.c */
+/* DDA.c */
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
-/* ft_drawMap.c */
-/* ft_drawWalls.c */
-void	ft_perpwalldist(t_ray *ray);
-void	ft_wall_calcs(t_player *plyr, t_ray *ray, t_texture *tex);
-/* ft_handleEnds.c */
+/* drawMap.c */
+/* drawTex.c */
+/* handleEnds.c */
+int		ft_end(t_game *game);
 void	ft_error(char *str);
-/* ft_initMap.c */
-void	ft_init_map(t_game *game, char *av);
-/* ft_initMLX.c */
-void	ft_draw_map(t_map *map, t_game *game);
-int		ft_keys(int key, t_game *game);
-void	ft_hooks(t_game *game);
-void	ft_mlxinit(t_map *map, t_game *game);
-/* ft_initSprites.c */
-void	*ft_create(t_game *game, char *xpm);
-void	ft_upload_all(t_game *game);
-/* ft_loopMap.c */
-int		ft_redrawinloop(t_game *game);
-/* ft_movePlayer.c */
-void	ft_forward(t_game *game, t_map *map);
-void	ft_left(t_game *game, t_map *map);
-void	ft_backward(t_game *game, t_map *map);
-void	ft_right(t_game *game, t_map *map);
-/* ft_preDDA.c */
+/* initDDA.c */
 void	ft_init_plyr(t_player *plyr);
 void	ft_init_ray(t_ray *ray);
 void	ft_deltadist(t_player *plyr, t_ray *ray);
 void	ft_step_sidedist(t_player *plyr, t_ray *ray);
 void	ft_init_dda(t_game *game);
-/* ft_rotPlane.c */
+/* initMap.c */
+void	ft_init_map(t_game *game, char *av);
+/* initMLX.c */
+void	ft_draw_map(t_map *map, t_game *game);
+int		ft_keys(int key, t_game *game);
+void	ft_hooks(t_game *game);
+void	ft_mlxinit(t_map *map, t_game *game);
+/* initSprites.c */
+void	*ft_create(t_game *game, char *xpm);
+void	ft_upload_all(t_game *game);
+/* loopMap.c */
+int		ft_redrawinloop(t_game *game);
+/* main.c */
+/* movePlayer.c */
+void	ft_forward(t_game *game, t_map *map);
+void	ft_left(t_game *game, t_map *map);
+void	ft_backward(t_game *game, t_map *map);
+void	ft_right(t_game *game, t_map *map);
+/* rotPlane.c */
 void	ft_rot_left(t_game *game);
 void	ft_rot_right(t_game *game);
-/* ft_termSprites.c */
+/* termSprites.c */
 void	ft_unload_all(t_game *game);
-/* ft_time.c */
-void	ft_init_time(t_time *time);
-void	ft_calc_time();
+
 #endif
