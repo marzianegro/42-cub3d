@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:00:18 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/11 10:59:18 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 11:37:37 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	ft_dda(t_map *map, t_player *plyr, t_ray *ray)
 		if (ray->sidedist_x < ray->sidedist_y)
 		{
 			ray->sidedist_x += ray->deltadist_x;
-			ray->map_x = plyr->step_x;
+			ray->pos_x += plyr->step_x;
 			ray->side_wall = 0;
 		}
 		else
 		{
-			ray->sidedist_x += ray->deltadist_x;
-			ray->map_y += plyr->step_y;
+			ray->sidedist_y += ray->deltadist_ys;
+			ray->pos_y += plyr->step_y;
 			ray->side_wall = 0;
 		}
-		if (map->map[ray->map_x][ray->map_y == '1')
-			ray->side_wall = 1;
+		if (map->map[ray->pos_x][ray->pos_y] == '1')
+			ray->hit_wall = 1;
 	}
 }

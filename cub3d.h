@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/11 11:01:28 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/11 16:42:41 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ typedef	struct s_ray
 	// x coordinate of the camera plane that the current x coordinate of the screen represents
 	double	camera_x;
 	// direction in which the ray's going
-	double	raydir_x;
-	double	raydir_y;
+	double	dir_x;
+	double	dir_y;
 	// current square of the map the ray is in
-	double	map_x;
-	double	map_y;
+	double	pos_x;
+	double	pos_y;
 	// lenght of the ray from the current position to the first x and y side
 	double	sidedist_x;
 	double	sidedist_y;
@@ -116,6 +116,7 @@ typedef	struct s_texture
 	double		coor_y;
 	// how much to increase the texture coordinate per screen pixel
 	double		step;
+	int			num;
 }			t_texture;
 
 typedef	struct s_time
