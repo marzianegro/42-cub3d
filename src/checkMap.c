@@ -6,17 +6,14 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/11 18:21:58 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:17:48 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 // CHECKS TO DO
-// - Check file extension
-// - Check if there are invalid chars (only 0, 1, N, S, E, and W are valid)
-// - Check borders (North, East, South, West): the map has to be surrounded by walls
-// - Check if the path is walk-through-able with flood fill?
+// - Check if the path is walk-through-able with flood fill
 
 void	ft_check_ext(char **av)
 {
@@ -25,6 +22,21 @@ void	ft_check_ext(char **av)
 	len = ft_strlen(av[1]);
 	if (!ft_strnstr(&av[1][len - 5], ".cub\0", 5))
 		ft_error("invalid file map extension");
+}
+
+char	**ft_mtxdup(t_map *map)
+{
+	char	**dup;
+	int		y;
+
+	y = 0;
+	dup = ft_calloc(map->height + 1, sizeof(char *));
+	while (map->map[y] != NULL)
+	{
+		dup[y] = ft_strdup(map->map[y]);
+		y++;
+	}
+	return (dup);
 }
 
 // to be adjusted
@@ -59,11 +71,15 @@ void	ft_afterff(t_map *map, char **mapcopy)
 	ft_freematrix(mapcopy);
 }
 
-// to be adjusted
-void	ft_checkchecks(t_map *map)
+void	ft_check_map(t_map *map)
 {
 	char	**mapcopy;
 
-	ft_floodfill(mapcopy, map->player[X], map->player[Y]);
-	ft_afterff(map, mapcopy);
+	ft_check_rows(game);
+	ft_check_columns(game);
+	if (game->map.player != 1)
+		ft_error("there can only be one player", game);
+	mapcopy = ft_mtxdup(game);
+	ft_floodfill(mapcopy, game->map.player[X], game->map.player[Y]);
+	ft_afterff(game->map, mapcopy);
 }

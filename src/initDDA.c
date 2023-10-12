@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 14:39:06 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:04:55 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_init_plyr(t_map *map, t_player *plyr)
 {
-	plyr->pos_x = ; // coordinate x saved in the map from the checks
-	plyr->pos_y = ; // coordinate y saved in the map from the checks
+	plyr->pos_x = map->player[X];
+	plyr->pos_y = map->player[Y];
 	plyr->dir_x = -1; // not sure
 	plyr->dir_y = 0; // not sure
 	plyr->plane_x = 0;

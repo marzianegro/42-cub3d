@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 14:42:29 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:17:49 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,21 @@
 
 /* MACROS */
 # define SIZE 1000000
-# define X 0
-# define Y 1
-# define Z 2
 # define SCREEN_WIDTH
 # define SCREEN_HEIGHT
 
 # define LEFT_ARROW		65361
 # define RIGHT_ARROW	65363
-
 # define W_KEY		119
 # define A_KEY		97
 # define S_KEY		115
 # define D_KEY		100
 # define ESC_KEY	65307
+
+# define PLAYER	'P'
+# define X	1
+# define Y	0
+# define WALL	1
 
 /* STRUCTURES */
 
@@ -48,9 +49,11 @@ typedef	struct s_data
 typedef struct s_map
 {
 	char	**map;
+	int		row;
+	int		column;
 	int		width;
 	int		height;
-	int		player;
+	int		player[2];
 	int		ceiling;
 	int		floor;
 	char	*north;
@@ -138,9 +141,10 @@ void	ft_wall_deets(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex);
 void	ft_calc_wall(t_game *game);
 /* checkMap.c */
 void	ft_check_ext(char **av);
+char	**ft_mtxdup(t_map *map);
 void	ft_floodfill(char **mapcopy, int x, int y);
 void	ft_afterff(t_map *map, char **mapcopy);
-void	ft_checkchecks(t_map *map);
+void	ft_check_map(t_map *map);
 /* DDA.c */
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
 /* drawMap.c */
