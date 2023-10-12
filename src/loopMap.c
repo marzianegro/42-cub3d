@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:47 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/11 18:25:49 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/12 14:40:06 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_redrawinloop(t_game *game)
 		ft_init_dda(game);
 		ft_dda(game->map, game->plyr, game->ray);
 		ft_calc_wall(game);
-		ft_draw_wall(game);
+		ft_draw_wall(game, x);
 		x++;
 	}
 	return (0);

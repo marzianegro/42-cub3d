@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/11 18:56:33 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/12 14:39:06 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_init_plyr(t_map *map, t_player *plyr)
 {
-	plyr->pos_x = ; // coordinate x saved in map
-	plyr->pos_y = ; // coordinate y saved in map
+	plyr->pos_x = ; // coordinate x saved in the map from the checks
+	plyr->pos_y = ; // coordinate y saved in the map from the checks
 	plyr->dir_x = -1; // not sure
 	plyr->dir_y = 0; // not sure
 	plyr->plane_x = 0;
@@ -23,7 +23,7 @@ void	ft_init_plyr(t_map *map, t_player *plyr)
 	plyr->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
 }
 
-void	ft_init_ray(t_ray *ray)
+void	ft_init_ray(t_player *plyr, t_ray *ray)
 {
 	ray->dir_x = plyr->dir_x + plyr->plane_x * ray->camera_x;
 	ray->dir_y = plyr->dir_y + plyr->plane_y * ray->camera_x;
@@ -33,7 +33,7 @@ void	ft_init_ray(t_ray *ray)
 
 // 1e30 is an arbitrarily chosen high enough number and can be set to infinity,
 // if your programming language supports assigning that value
-void	ft_deltadist(t_player *plyr, t_ray *ray)
+void	ft_deltadist(t_ray *ray)
 {
 	if (ray->dir_x == 0)
 		ray->deltadist_x = 1e30;
@@ -73,8 +73,8 @@ void	ft_step_sidedist(t_player *plyr, t_ray *ray)
 void	ft_init_dda(t_game *game)
 {
 	ft_init_plyr(game->plyr);
-	ft_init_ray(game->ray);
-	ft_deltadist(game->plyr, game->ray);
+	ft_init_ray(game->ray, game->plyr);
+	ft_deltadist(game->ray);
 	ray->hit_wall = 0;
 	ft_step_sidedist(game->plyr, game->ray);
 }
