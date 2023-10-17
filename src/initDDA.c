@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-void	ft_init_plyr(t_map *map, t_player *plyr)
+void	ft_init_plyr(t_map *map, t_player *plyr, t_ray *ray, int x)
 {
 	plyr->pos_x = map->player[X];
 	plyr->pos_y = map->player[Y];
@@ -20,7 +20,7 @@ void	ft_init_plyr(t_map *map, t_player *plyr)
 	plyr->dir_y = 0; // not sure
 	plyr->plane_x = 0;
 	plyr->plane_y = 0.66;
-	plyr->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
+	ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
 }
 
 void	ft_init_ray(t_player *plyr, t_ray *ray)
@@ -70,11 +70,11 @@ void	ft_step_sidedist(t_player *plyr, t_ray *ray)
 	}
 }
 
-void	ft_init_dda(t_game *game)
+void	ft_init_dda(t_game *game, int x)
 {
-	ft_init_plyr(game->plyr);
-	ft_init_ray(game->ray, game->plyr);
-	ft_deltadist(game->ray);
-	ray->hit_wall = 0;
-	ft_step_sidedist(game->plyr, game->ray);
+	ft_init_plyr(&game->map, &game->plyr, &game->ray, x);
+	ft_init_ray(&game->plyr, &game->ray);
+	ft_deltadist(&game->ray);
+	game->ray.hit_wall = 0;
+	ft_step_sidedist(&game->plyr, &game->ray);
 }

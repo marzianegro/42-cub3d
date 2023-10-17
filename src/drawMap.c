@@ -12,23 +12,41 @@
 
 #include "../cub3d.h"
 
-void	ft_pixel_put(t_data *data, int x, int y, int color)
+void    ft_pixel_put(t_data *data, int x, int y, int color)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
-	*(unsigned int*)dst = color;
+    char    *pxl;
+    
+    pxl = data->addr + (y * data->line_len + x * (data->bpp / 8));
+    *(unsigned int*)pxl = color;
 }
 
-void	ft_draw_cf()
+// how do I distinguish between floor and ceiling?
+/*void    ft_draw_cf(t_game *game)
 {
+    int y;
+    int x;
+    int color;
 	
-}
+	y = 0;
+    while (y < SCREEN_HEIGHT)
+    {
+        x = 0;
+        while (x < SCREEN_WIDTH)
+        {
+            if (ceiling)
+                ft_pixel_put(&game->data, x, y, game->tex.ceiling_rgb);
+            else if (floor)
+                ft_pixel_put(&game->data, x, y, game->tex.floor_rgb);
+            x++;
+        }
+        y++;
+    }
+}*/
 
 void	ft_draw_wall(t_game *game, int x)
 {
 	int			y;
-	uint32_t	color;
+	int	color;
 
 	y = game->tex.wall_start;
 	game->tex.step = 1.0 * game->tex.height / game->tex.wall_height;
@@ -37,10 +55,10 @@ void	ft_draw_wall(t_game *game, int x)
 	{
 		game->tex.y_coor = (int)game->tex.pos & (game->tex.height - 1);
 		game->tex.pos += game->tex.step;
-		color = tex[game->tex.num][game->tex.height * game->tex.y_coor + game->tex.x_coor];
+		//color = game->tex[game->tex.num][game->tex.height * game->tex.y_coor + game->tex.x_coor];
 		if (game->ray.side_wall == 1)
 			color = (color >> 1) & 8355711;
-		ft_pixel_put(game->data, x, y, color);
+		ft_pixel_put(&game->data, x, y, color);
 		y++;
 	}
 }

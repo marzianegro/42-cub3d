@@ -26,9 +26,10 @@ RM = rm -f
 
 MLXFLAGS = -lmlx -lXext -lX11 -lm
 #### TARGETS ####
-FL_SRCS = calcTex.c calcTimec checkMap.c DDA.c drawMap.c drawTex.c \
-			handleEnds.c initDDA.c initMap.c initMLX.c initSprites.c \
-			loopMap.c main.c movePlayer.c rotPlane.c termSprites.c
+FL_SRCS =  DDA.c calcMap.c initMLX.c drawMap.c initDDA.c \
+			loopMap.c movePlayer.c rotPlane.c \
+			checkMap.c checkMapBis.c handleEnds.c initMap.c \
+			main.c
 DIRSRCS = src/
 SRCS = ${addprefix ${DIRSRCS},${FL_SRCS}}
 
@@ -36,7 +37,7 @@ FL_OBJS = ${FL_SRCS:.c=.o}
 DIROBJS = obj/
 OBJS = ${addprefix ${DIROBJS},${FL_OBJS}}
 
-INCLUDE = ./minishell.h
+INCLUDE = ./cub3d.h
 
 MLX = minilibx-linux
 
@@ -50,7 +51,7 @@ ${DIROBJS}%.o: ${DIRSRCS}%.c
 
 ${NAME}: libft ${OBJS}
 	cp libft/arc/libft.a ${ARC}
-	${CC} ${CFLAGS} ${OBJS} -I {MLX} -I {INCLUDE} -L {MLX} {MLXFLAGS} -o ${NAME} ${ARC}
+	${CC} ${CFLAGS} ${OBJS} -I {MLX} -I {INCLUDE} -L ${MLX} ${MLXFLAGS} -o ${NAME} ${ARC}
 	@echo "Rule '${GREEN}all${DEF_COLOR}' for mandatory ${NAME} executed successfully!"
 
 all:	${NAME}

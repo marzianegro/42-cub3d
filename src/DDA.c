@@ -25,11 +25,11 @@ void	ft_dda(t_map *map, t_player *plyr, t_ray *ray)
 		}
 		else
 		{
-			ray->sidedist_y += ray->deltadist_ys;
+			ray->sidedist_y += ray->deltadist_y;
 			ray->pos_y += plyr->step_y;
 			ray->side_wall = 0;
 		}
-		if (map->map[ray->pos_x][ray->pos_y] == '1')
+		if (map->map[(int)ray->pos_x][(int)ray->pos_y] == '1')
 			ray->hit_wall = 1;
-	}
+		}
 }

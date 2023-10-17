@@ -19,12 +19,12 @@ int	ft_redrawinloop(t_game *game)
 	int	x;
 
 	x = 0;
-	ft_calc_cf();
-	ft_draw_cf();
+	//ft_calc_cf();
+	//ft_draw_cf();
 	while (x < SCREEN_WIDTH)
 	{
-		ft_init_dda(game);
-		ft_dda(game->map, game->plyr, game->ray);
+		ft_init_dda(game, x);
+		ft_dda(&game->map, &game->plyr, &game->ray);
 		ft_calc_wall(game);
 		ft_draw_wall(game, x);
 		x++;

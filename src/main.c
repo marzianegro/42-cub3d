@@ -14,13 +14,15 @@
 
 int	main(int ac, char **av)
 {
-	t_game	game;
+	t_game		game;
+	t_texture	tex;
 
+	(void)tex;
     if (ac != 2)
 		ft_error("invalid number of arguments");
-	ft_check_ext(ac, av);
-	ft_init_variab(&game);
-	ft_init_map(&game, av[1]);
+	ft_check_ext(av);
+	//ft_init_variab(&game);
+	ft_init_map(&game, &game.map, av[1]);
 	ft_check_map(&game.map);
 	ft_mlxinit(&game, &game.map);
 }

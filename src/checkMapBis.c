@@ -12,57 +12,63 @@
 
 #include "../cub3d.h"
 
-void	ft_check_rows(t_game *game)
+void	ft_check_rows(t_map *map)
 {
 	int	x;
 
 	x = 0;
-	while (x < game->map.col)
+	while (x < map->col)
 	{
-		if (game->map.map[0][x] != WALL)
-			ft_error("wall missing (row)", game);
-		else if (game->map.map[game->map.row - 1][x] != WALL)
-			ft_error("wall missing (rowww)", game);
+		if (map->map[0][x] != WALL)
+			ft_error("wall missing (row)");
+		else if (map->map[map->row - 1][x] != WALL)
+			ft_error("wall missing (rowww)");
 		x++;
 	}
 }
 
-void	ft_check_columns(t_game *game)
+void	ft_check_columns(t_map *map)
 {
 	int	y;
 
 	y = 0;
-	while (y < game->map.row)
+	while (y < map->row)
 	{
-		if ((int)ft_strlen(game->map.map[y]) != game->map.col)
-			ft_error("map incomplete", game);
-		if (game->map.map[y][0] != WALL)
-			ft_error("wall missingin (col)", game);
-		else if (game->map.map[y][game->map.col - 1] != WALL)
-			ft_error("wall missing in (colll)", game);
+		if ((int)ft_strlen(map->map[y]) != map->col)
+			ft_error("map incomplete");
+		if (map->map[y][0] != WALL)
+			ft_error("wall missingin (col)");
+		else if (map->map[y][map->col - 1] != WALL)
+			ft_error("wall missing in (colll)");
 		y++;
 	}
 }
 
-void	ft_check_components(t_game *game)
+//se trovo F salvo in floor_rgb r, g, b
+//se trovo C salvo in ceiling_rgb r, g, b
+//se trovo FF o CC sovrascrivi quello precedente
+void	ft_check_components(t_map *map)
 {
 	int	x;
 	int	y;
+	int count;
 
+	count = 0;
 	y = 0;
-	while (y < game->map.row)
+	while (y < map->row)
 	{
 		x = 0;
-		while (x < game->map.col)
+		while (x < map->col)
 		{
-			if (!ft_strchr("01NSEW", game->map.map[y][x]))
-				ft_error("unknown char", game);
-			else if (ft_strchr("NSEW", game->map.map[y][x]))
+			if (!ft_strchr("01NSEW", map->map[y][x]))
+				ft_error("unknown char");
+			else if (ft_strchr("NSEW", map->map[y][x]))
 			{
-				PLAYER = game->map.map[y][x];
-				game->map.player++;
-				game->map.player[X] = x;
-				game->map.player[Y] = y;
+				count++;
+				if (count != 1)
+					ft_error("there can only be one player");
+				map->player[X] = x;
+				map->player[Y] = y;
 			}
 			x++;
 		}

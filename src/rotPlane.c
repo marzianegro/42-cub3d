@@ -17,16 +17,16 @@ void	ft_rot_left(t_game *game)
 	double	olddir_x;
 	double	oldplane_x;
 
-	olddir_x = game->plyr->dir_x;
-	oldplane_x = game->plyr->plane_x;
-	game->plyr->dir_x = game->plyr->dir_x * cos(time->rot_speed)
-		- game->plyr->dir_y * sin(time->rot_speed);
-	game->plyr->dir_y = olddir_x * sin(time->rot_speed)
-		+ game->plyr->dir_y * cos(time->rot_speed);
-	game->plyr->plane_x = game->plyr->plane_x * cos(time->rot_speed)
-		- game->plyr->plane_y * sin(time->rot_speed);
-	game->plyr->plane_y = oldplane_x * sin(time->rot_speed)
-		+ game->plyr->plane_y * cos(time->rot_speed);
+	olddir_x = game->plyr.dir_x;
+	oldplane_x = game->plyr.plane_x;
+	game->plyr.dir_x = game->plyr.dir_x * cos(game->plyr.rot_speed)
+		- game->plyr.dir_y * sin(game->plyr.rot_speed);
+	game->plyr.dir_y = olddir_x * sin(game->plyr.rot_speed)
+		+ game->plyr.dir_y * cos(game->plyr.rot_speed);
+	game->plyr.plane_x = game->plyr.plane_x * cos(game->plyr.rot_speed)
+		- game->plyr.plane_y * sin(game->plyr.rot_speed);
+	game->plyr.plane_y = oldplane_x * sin(game->plyr.rot_speed)
+		+ game->plyr.plane_y * cos(game->plyr.rot_speed);
 }
 
 void	ft_rot_right(t_game *game)
@@ -34,14 +34,14 @@ void	ft_rot_right(t_game *game)
 	double	olddir_x;
 	double	oldplane_x;
 
-	olddir_x = game->plyr->dir_x;
-	oldplane_x = game->plyr->plane_x;
-	game->plyr->dir_x = game->plyr->dir_x * cos(-time->rot_speed)
-		- game->plyr->dir_y * sin(-time->rot_speed);
-	game->plyr->dir_y = olddir_x * sin(-time->rot_speed)
-		+ game->plyr->dir_y * cos(-time->rot_speed);
-	game->plyr->plane_x = game->plyr->plane_x * cos(-time->rot_speed)
-		- game->plyr->plane_y * sin(-time->rot_speed);
-	game->plyr->plane_y = oldplane_x * sin(-time->rot_speed)
-		+ game->plyr->plane_y * cos(-time->rot_speed);
+	olddir_x = game->plyr.dir_x;
+	oldplane_x = game->plyr.plane_x;
+	game->plyr.dir_x = game->plyr.dir_x * cos(-game->plyr.rot_speed)
+		- game->plyr.dir_y * sin(-game->plyr.rot_speed);
+	game->plyr.dir_y = olddir_x * sin(-game->plyr.rot_speed)
+		+ game->plyr.dir_y * cos(-game->plyr.rot_speed);
+	game->plyr.plane_x = game->plyr.plane_x * cos(-game->plyr.rot_speed)
+		- game->plyr.plane_y * sin(-game->plyr.rot_speed);
+	game->plyr.plane_y = oldplane_x * sin(-game->plyr.rot_speed)
+		+ game->plyr.plane_y * cos(-game->plyr.rot_speed);
 }

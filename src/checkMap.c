@@ -20,7 +20,7 @@ void	ft_check_ext(char **av)
 	int	len;
 
 	len = ft_strlen(av[1]);
-	if (!ft_strnstr(&av[1][len - 5], ".cub\0", 5))
+	if (!ft_strnstr(&av[1][len - 4], ".cub", 4))
 		ft_error("invalid file map extension");
 }
 
@@ -68,18 +68,18 @@ void	ft_afterff(t_map *map, char **mapcopy)
 			x++;
 		}
 	}
-	ft_freematrix(mapcopy);
+	ft_free_matrix(mapcopy);
 }
 
 void	ft_check_map(t_map *map)
 {
 	char	**mapcopy;
 
-	ft_check_rows(game);
-	ft_check_columns(game);
-	if (game->map.player != 1)
-		ft_error("there can only be one player", game);
-	mapcopy = ft_mtxdup(game);
-	ft_floodfill(mapcopy, game->map.player[X], game->map.player[Y]);
-	ft_afterff(game->map, mapcopy);
+	ft_check_rows(map);
+	ft_check_columns(map);
+	//if (game->map.player != 1)
+	//	ft_error("there can only be one player");
+	mapcopy = ft_mtxdup(map);
+	ft_floodfill(mapcopy, map->player[X], map->player[Y]);
+	ft_afterff(map, mapcopy);
 }

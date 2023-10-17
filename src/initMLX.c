@@ -12,11 +12,11 @@
 
 #include "../cub3d.h"
 
-void	ft_draw_map(t_map *map, t_game *game)
+/*void	ft_draw_map(t_map *map, t_game *game)
 {
 	ft_upload_all(game);
 	ft_draw_sprites(map, game);
-}
+}*/
 
 int	ft_keys(int key, t_game *game)
 {
@@ -27,13 +27,13 @@ int	ft_keys(int key, t_game *game)
 	else if (key == A_KEY)
 		ft_left(game, &game->map);
 	else if (key == S_KEY)
-		ft_back(game, &game->map);
+		ft_backward(game, &game->map);
 	else if (key == D_KEY)
 		ft_right(game, &game->map);
 	else if (key == RIGHT_ARROW)
 		ft_rot_right(game);
 	else if (key == LEFT_ARROW)
-		ff_rot_left(game);
+		ft_rot_left(game);
 	else
 		return (1);
 	return (0);
@@ -45,12 +45,12 @@ void	ft_hooks(t_game *game)
 	mlx_hook(game->win_ptr, 02, 1L << 0, ft_keys, game);
 }
 
-void	ft_mlxinit(t_map *map, t_game *game)
+void	ft_mlxinit(t_game *game, t_map *map)
 {
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->mlx_ptr, map->width * 64,
 			map->height * 64, "Welcome to cub3d!");
-	ft_draw_map(map, game);
+	//ft_draw_map(map, game);
 	ft_hooks(game);
 	mlx_loop_hook(game->mlx_ptr, ft_redrawinloop, game);
 	mlx_loop(game->mlx_ptr);

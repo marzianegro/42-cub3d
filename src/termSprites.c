@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-void	ft_unload_all(t_game *game)
-{
+//void	ft_unload_all(t_game *game)
+//{
 	// different unloading functions
-}
+//}

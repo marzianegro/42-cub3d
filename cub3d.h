@@ -16,11 +16,13 @@
 /* HEADER FILES */
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
+# include <math.h>
+# include <stdbool.h>
 
 /* MACROS */
 # define SIZE 1000000
-# define SCREEN_WIDTH
-# define SCREEN_HEIGHT
+# define SCREEN_WIDTH 900
+# define SCREEN_HEIGHT 900
 
 # define LEFT_ARROW		65361
 # define RIGHT_ARROW	65363
@@ -50,14 +52,14 @@ typedef struct s_map
 {
 	char	**map;
 	int		row;
-	int		column;
+	int		col;
 	int		width;
 	int		height;
 	int		player[2];
 	int		ceiling;
 	int		floor;
 	char	*north;
-	char	*east
+	char	*east;
 	char	*west;
 	char	*south;
 }			t_map;
@@ -108,18 +110,19 @@ typedef	struct s_texture
 {
 	t_data		*spt;
 	// which texure out of spt we're using
-	int			num;
-	int			height;
-	int			width;
-	int			wall_height;
-	int			wall_start;
-	int			wall_end;
-	double		wall_x;
-	int			pos;
-	double		x_coor;
-	double		y_coor;
+	int		num;
+	int		height;
+	int		width;
+	int		wall_height;
+	int		wall_start;
+	int		wall_end;
+	double	wall_x;
+	int		pos;
+	double	x_coor;
+	double	y_coor;
 	// how much to increase the texture coordinate per screen pixel
-	double		step;
+	double	step;
+	int		**cf_rgb;
 }			t_texture;
 
 typedef struct s_game
@@ -135,7 +138,7 @@ typedef struct s_game
 
 /* PROTOTYPES */
 /* calcMap.c */
-void	ft_cf_deets();
+bool	ft_cf_deets(char *line, t_texture *tex);
 void	ft_perpwalldist(t_ray *ray);
 void	ft_wall_deets(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex);
 void	ft_calc_wall(t_game *game);
@@ -145,28 +148,34 @@ char	**ft_mtxdup(t_map *map);
 void	ft_floodfill(char **mapcopy, int x, int y);
 void	ft_afterff(t_map *map, char **mapcopy);
 void	ft_check_map(t_map *map);
+/* checkMap_bis.c */
+void	ft_check_components(t_map *map);
+void	ft_check_columns(t_map *map);
+void	ft_check_rows(t_map *map);
 /* DDA.c */
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
 /* drawMap.c */
-void	ft_pixel_put(t_data *data, int x, int y, int color);
-void	ft_draw_cf();
+void    ft_pixel_put(t_data *data, int x, int y, int color);
+void    ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */
 int		ft_end(t_game *game);
 void	ft_error(char *str);
+void	ft_free_map(t_game *game);
+void	ft_free_matrix(char **mtx);
 /* initDDA.c */
-void	ft_init_plyr(t_map *map, t_player *plyr);
+void	ft_init_plyr(t_map *map, t_player *plyr, t_ray *ray, int x);
 void	ft_init_ray(t_player *plyr, t_ray *ray);
 void	ft_deltadist(t_ray *ray);
 void	ft_step_sidedist(t_player *plyr, t_ray *ray);
-void	ft_init_dda(t_game *game);
+void	ft_init_dda(t_game *game, int x);
 /* initMap.c */
-void	ft_init_map(t_game *game, char *av);
+void	ft_init_map(t_game *game, t_map *map, char *av);
 /* initMLX.c */
 void	ft_draw_map(t_map *map, t_game *game);
 int		ft_keys(int key, t_game *game);
 void	ft_hooks(t_game *game);
-void	ft_mlxinit(t_map *map, t_game *game);
+void	ft_mlxinit(t_game *game, t_map *map);
 /* initSprites.c */
 void	ft_upload_sprites(t_game *game);
 /* loopMap.c */

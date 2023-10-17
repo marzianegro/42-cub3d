@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-void	ft_init_map(t_game *game, char *av)
+void	ft_init_map(t_game *game, t_map *map, char *av)
 {
     int     i;
 	int		fd;
@@ -21,7 +21,7 @@ void	ft_init_map(t_game *game, char *av)
 
     i = 0;
 	count = 0;
-    fd = open(av[1], O_RDONLY);
+    fd = open(av, O_RDONLY);
     if (fd < 0)
 		ft_error("impossible to open fd");
 	line = get_next_line(fd);
@@ -30,13 +30,13 @@ void	ft_init_map(t_game *game, char *av)
 	while (line)
 	{
 		count++;
-		free(line);
+		ft_cf_deets(line, &game->tex);
 		line = get_next_line(fd);
 	}
-    game->map = ft_calloc(count + 1, sizeof(char *));
-    if (!game->map)
+    map = ft_calloc(count + 1, sizeof(char *));
+    if (!map)
 		ft_error("map allocation failed");
-    while (game->map[i] && i < count)
-        game->map[++i] = get_next_line(fd);
+    while (map->map[i] && i < count)
+        map->map[++i] = get_next_line(fd);
     close (fd);  
 }

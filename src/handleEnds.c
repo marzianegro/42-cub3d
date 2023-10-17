@@ -50,7 +50,7 @@ void	ft_free_matrix(char **mtx)
 
 int	ft_end(t_game *game)
 {
-	ft_unload_all(game);
+	// ft_unload_all(game);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	ft_free_matrix(game->map.map);
