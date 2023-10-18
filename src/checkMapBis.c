@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   checkMapBis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 15:17:50 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/18 18:07:34 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_check_rows(t_map *map)
+void	ft_check_columns(t_map *map)
 {
 	int	x;
 
@@ -27,19 +27,26 @@ void	ft_check_rows(t_map *map)
 	}
 }
 
-void	ft_check_columns(t_map *map)
+void	ft_check_rows(t_map *map)
 {
 	int	y;
+	int	x;
 
 	y = 0;
+	x = 0;
 	while (y < map->row)
 	{
+		while (map->map[0][x])
+		{
+			map->col++;
+			x++;
+		}
 		if ((int)ft_strlen(map->map[y]) != map->col)
 			ft_error("map incomplete");
 		if (map->map[y][0] != WALL)
-			ft_error("wall missingin (col)");
+			ft_error("wall missing (col)");
 		else if (map->map[y][map->col - 1] != WALL)
-			ft_error("wall missing in (colll)");
+			ft_error("wall missing (colll)");
 		y++;
 	}
 }

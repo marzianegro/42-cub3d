@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mnegro <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: btani <btani@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 11:21:10 by mnegro            #+#    #+#              #
-#    Updated: 2023/10/11 10:57:43 by mnegro           ###   ########.fr        #
+#    Updated: 2023/10/18 17:27:51 by btani            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ RM = rm -f
 
 MLXFLAGS = -lmlx -lXext -lX11 -lm
 #### TARGETS ####
-FL_SRCS =  DDA.c calcMap.c initMLX.c drawMap.c initDDA.c \
+FL_SRCS =  DDA.c calcMap.c calcMapUtils.c initMLX.c drawMap.c initDDA.c \
 			loopMap.c movePlayer.c rotPlane.c \
 			checkMap.c checkMapBis.c handleEnds.c initMap.c \
 			main.c

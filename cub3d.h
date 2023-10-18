@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 15:17:49 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/18 18:07:31 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdbool.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <string.h>
 
 /* MACROS */
 # define SIZE 1000000
@@ -122,7 +125,7 @@ typedef	struct s_texture
 	double	y_coor;
 	// how much to increase the texture coordinate per screen pixel
 	double	step;
-	int		**cf_rgb;
+	int		cf_rgb[2][3];
 }			t_texture;
 
 typedef struct s_game
@@ -142,12 +145,16 @@ bool	ft_cf_deets(char *line, t_texture *tex);
 void	ft_perpwalldist(t_ray *ray);
 void	ft_wall_deets(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex);
 void	ft_calc_wall(t_game *game);
+/* calcMapUtils.c */
+char	*ft_freetrim(char *s1, const char del);
+int		ft_isloopdigit(char *s);
 /* checkMap.c */
 void	ft_check_ext(char **av);
 char	**ft_mtxdup(t_map *map);
 void	ft_floodfill(char **mapcopy, int x, int y);
 void	ft_afterff(t_map *map, char **mapcopy);
-void	ft_check_map(t_map *map);
+void	ft_check_map(char **av, t_map *map);
+void	ft_count_map(char **av, t_map *map);
 /* checkMap_bis.c */
 void	ft_check_components(t_map *map);
 void	ft_check_columns(t_map *map);

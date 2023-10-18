@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 15:17:48 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/18 18:07:33 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,11 @@ void	ft_afterff(t_map *map, char **mapcopy)
 	ft_free_matrix(mapcopy);
 }
 
-void	ft_check_map(t_map *map)
+void	ft_check_map(char **av, t_map *map)
 {
 	char	**mapcopy;
 
+	ft_count_map(av, map);
 	ft_check_rows(map);
 	ft_check_columns(map);
 	//if (game->map.player != 1)
@@ -82,4 +83,28 @@ void	ft_check_map(t_map *map)
 	mapcopy = ft_mtxdup(map);
 	ft_floodfill(mapcopy, map->player[X], map->player[Y]);
 	ft_afterff(map, mapcopy);
+}
+
+void	ft_count_map(char **av, t_map *map)
+{
+	char	*line;
+	int		fd;
+
+	fd = open(av, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		ft_check_textures();
+		if (!ft_strchr(line, "01NSEW"))
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
+		else
+		{
+			map->row++;
+			free(line);
+			line = get_next_line(fd);
+		}
+	}
 }

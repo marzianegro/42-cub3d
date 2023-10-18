@@ -16,53 +16,14 @@
 	of the ray from the wall, so that we can calculate how high the wall
 	has to be drawn */
 
-static char	*ft_freetrim(char *s1, const char del)
-{
-	size_t	i;
-	size_t	j;
-	char	*trimmed_str;
-
-	trimmed_str = NULL;
-	if (s1)
-	{
-		i = 0;
-		j = ft_strlen(s1);
-		while (s1[i] && ft_strchr(&del, s1[i]))
-			i++;
-		while (s1[j - 1] && ft_strchr(&del, s1[j - 1]) && j > i)
-			j--;
-		trimmed_str = (char *)malloc((j - i + 1) * sizeof(char));
-		if (trimmed_str)
-			ft_strlcpy(trimmed_str, &s1[i], j - i + 1);
-	}
-	free(s1);
-	return (trimmed_str);
-}
-
-static int	ft_isloopdigit(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] && (s[i] >= 48 && s[i] <= 57))
-		i++;
-	if(s[i] == 0)
-		return (0);
-	return(1);
-}
-
 bool	ft_cf_deets(char *line, t_texture *tex)
 {
 	int		i;
 	int		j;
-	char	***rgb;
+	char	**rgb[2];
 
 	i = -1;
 	j = 0;
-	rgb = ft_calloc(3, sizeof(char *));
-	tex->cf_rgb = ft_calloc(3, sizeof(char *));
-	if (!rgb || !tex->cf_rgb)
-		return false;
 	if (ft_strchr(line, 'F'))
 		i = 0;
 	else if (ft_strchr(line, 'C'))
@@ -70,19 +31,16 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 	else
 		return false;
 	rgb[i] = ft_split(&line[1], ',');
-	// qui si rompe free(): invalid pointer
 	while (rgb[i][j])
 	{
-		ft_freetrim(rgb[i][j], ' ');
+		rgb[i][j] = ft_freetrim(rgb[i][j], ' ');
 		if (ft_isloopdigit(rgb[i][j]))
-			return false;
+			if (rgb[i][2][ft_strlen(rgb[i][2]) - 1] != '\n')
+				return false;
 		tex->cf_rgb[i][j] = ft_atoi(rgb[i][j]);
 		if (j++ > 3)
 			return false;
 	}
-	// aggiunto al posto che in ft_init_map()
-	if (line)
-		free(line);
 	return true;
 }
 

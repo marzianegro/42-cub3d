@@ -99,6 +99,5 @@ char	**ft_split(const char *s, char c)
 		}
 	}
 	str_arr[str_i] = NULL;
-	free((char *)s);
 	return (str_arr);
 }
