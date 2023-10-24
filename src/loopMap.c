@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:47 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 14:40:06 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/24 17:05:56 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	ft_redrawinloop(t_game *game)
 	int	x;
 
 	x = 0;
-	//ft_calc_cf();
-	//ft_draw_cf();
+	ft_draw_cf(game);
 	while (x < SCREEN_WIDTH)
 	{
 		ft_init_dda(game, x);

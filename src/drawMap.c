@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 14:41:34 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/24 17:07:53 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ void    ft_pixel_put(t_data *data, int x, int y, int color)
     *(unsigned int*)pxl = color;
 }
 
-// how do I distinguish between floor and ceiling?
-/*void    ft_draw_cf(t_game *game)
+void    ft_draw_cf(t_game *game)
 {
     int y;
     int x;
@@ -33,15 +32,15 @@ void    ft_pixel_put(t_data *data, int x, int y, int color)
         x = 0;
         while (x < SCREEN_WIDTH)
         {
-            if (ceiling)
+            if (y < (SCREEN_HEIGHT / 2))
                 ft_pixel_put(&game->data, x, y, game->tex.ceiling_rgb);
-            else if (floor)
+            else
                 ft_pixel_put(&game->data, x, y, game->tex.floor_rgb);
             x++;
         }
         y++;
     }
-}*/
+}
 
 void	ft_draw_wall(t_game *game, int x)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/18 18:07:31 by btani            ###   ########.fr       */
+/*   Updated: 2023/10/24 17:09:16 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,9 @@ int		ft_end(t_game *game);
 void	ft_error(char *str);
 void	ft_free_map(t_game *game);
 void	ft_free_matrix(char **mtx);
+/* handleSprites.c */
+void	ft_upload(t_game *game);
+void	ft_unload(t_game *game);
 /* initDDA.c */
 void	ft_init_plyr(t_map *map, t_player *plyr, t_ray *ray, int x);
 void	ft_init_ray(t_player *plyr, t_ray *ray);
@@ -183,8 +186,6 @@ void	ft_draw_map(t_map *map, t_game *game);
 int		ft_keys(int key, t_game *game);
 void	ft_hooks(t_game *game);
 void	ft_mlxinit(t_game *game, t_map *map);
-/* initSprites.c */
-void	ft_upload_sprites(t_game *game);
 /* loopMap.c */
 int		ft_redrawinloop(t_game *game);
 /* main.c */
@@ -196,7 +197,5 @@ void	ft_right(t_game *game, t_map *map);
 /* rotPlane.c */
 void	ft_rot_left(t_game *game);
 void	ft_rot_right(t_game *game);
-/* termSprites.c */
-void	ft_unload_all(t_game *game);
 
 #endif
