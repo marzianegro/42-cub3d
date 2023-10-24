@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/24 17:09:16 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/24 17:34:13 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,6 @@ typedef	struct s_ray
 typedef	struct s_texture
 {
 	t_data		*spt;
-	// which texure out of spt we're using
-	int		num;
 	int		height;
 	int		width;
 	int		wall_height;
