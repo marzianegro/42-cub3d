@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMapBis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/18 18:07:34 by btani            ###   ########.fr       */
+/*   Updated: 2023/10/24 17:54:32 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ void	ft_check_rows(t_map *map)
 	}
 }
 
-//se trovo F salvo in floor_rgb r, g, b
-//se trovo C salvo in ceiling_rgb r, g, b
-//se trovo FF o CC sovrascrivi quello precedente
 void	ft_check_components(t_map *map)
 {
 	int	x;

@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/24 17:34:11 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/24 18:00:08 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_draw_wall(t_game *game, int x)
 	{
 		game->tex.y_coor = (int)game->tex.pos & (game->tex.height - 1);
 		game->tex.pos += game->tex.step;
-		color = game->tex[game->tex.spt[0].img][game->tex.height * game->tex.y_coor + game->tex.x_coor];
+		// color = game->tex.spt[0].img al pixel [game->tex.height * game->tex.y_coor + game->tex.x_coor];
 		if (game->ray.side_wall == 1)
 			color = (color >> 1) & 8355711;
 		ft_pixel_put(&game->data, x, y, color);

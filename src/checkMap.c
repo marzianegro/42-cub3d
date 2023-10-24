@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/18 18:07:33 by btani            ###   ########.fr       */
+/*   Updated: 2023/10/24 17:54:27 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void	ft_check_map(char **av, t_map *map)
 	ft_count_map(av, map);
 	ft_check_rows(map);
 	ft_check_columns(map);
-	//if (game->map.player != 1)
-	//	ft_error("there can only be one player");
 	mapcopy = ft_mtxdup(map);
 	ft_floodfill(mapcopy, map->player[X], map->player[Y]);
 	ft_afterff(map, mapcopy);

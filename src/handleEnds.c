@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 14:54:51 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/24 18:03:06 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_free_matrix(char **mtx)
 
 int	ft_end(t_game *game)
 {
-	// ft_unload_all(game);
+	//ft_unload(game);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	ft_free_matrix(game->map.map);
