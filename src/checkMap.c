@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/24 17:54:27 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 14:47:30 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,28 @@
 // CHECKS TO DO
 // - Check if the path is walk-through-able with flood fill
 
-void	ft_check_ext(char **av)
+void	ft_count_map(char **av, t_map *map)
 {
-	int	len;
+	char	*line;
+	int		fd;
 
-	len = ft_strlen(av[1]);
-	if (!ft_strnstr(&av[1][len - 4], ".cub", 4))
-		ft_error("invalid file map extension");
+	fd = open(*av, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		//ft_check_textures();
+		if (!ft_strchr(line, "01NSEW"))
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
+		else
+		{
+			map->row++;
+			free(line);
+			line = get_next_line(fd);
+		}
+	}
 }
 
 char	**ft_mtxdup(t_map *map)
@@ -81,28 +96,4 @@ void	ft_check_map(char **av, t_map *map)
 	mapcopy = ft_mtxdup(map);
 	ft_floodfill(mapcopy, map->player[X], map->player[Y]);
 	ft_afterff(map, mapcopy);
-}
-
-void	ft_count_map(char **av, t_map *map)
-{
-	char	*line;
-	int		fd;
-
-	fd = open(av, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		ft_check_textures();
-		if (!ft_strchr(line, "01NSEW"))
-		{
-			free(line);
-			line = get_next_line(fd);
-		}
-		else
-		{
-			map->row++;
-			free(line);
-			line = get_next_line(fd);
-		}
-	}
 }

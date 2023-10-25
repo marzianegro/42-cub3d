@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:00:18 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/24 18:02:20 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 14:47:38 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	ft_dda(t_map *map, t_player *plyr, t_ray *ray)
 		}
 		if (map->map[(int)ray->pos_x][(int)ray->pos_y] == '1')
 			ray->hit_wall = 1;
-		}
+	}
 }

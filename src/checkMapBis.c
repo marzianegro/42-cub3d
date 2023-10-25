@@ -6,11 +6,20 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/24 17:54:32 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 14:47:31 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	ft_check_ext(char **av)
+{
+	int	len;
+
+	len = ft_strlen(av[1]);
+	if (!ft_strnstr(&av[1][len - 4], ".cub", 4))
+		ft_error("invalid file map extension");
+}
 
 void	ft_check_columns(t_map *map)
 {
@@ -55,7 +64,7 @@ void	ft_check_components(t_map *map)
 {
 	int	x;
 	int	y;
-	int count;
+	int	count;
 
 	count = 0;
 	y = 0;

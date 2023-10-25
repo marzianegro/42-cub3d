@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 15:04:55 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 14:49:57 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	ft_deltadist(t_ray *ray)
 	else
 		ray->deltadist_y = fabs(1 / ray->dir_y);
 }
-
 
 void	ft_step_sidedist(t_player *plyr, t_ray *ray)
 {

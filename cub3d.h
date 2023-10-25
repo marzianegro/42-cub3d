@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/24 17:34:13 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 14:43:15 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef	struct s_ray
 typedef	struct s_texture
 {
 	t_data		*spt;
+	int		num;
 	int		height;
 	int		width;
 	int		wall_height;
@@ -161,6 +162,7 @@ void	ft_check_rows(t_map *map);
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
 /* drawMap.c */
 void    ft_pixel_put(t_data *data, int x, int y, int color);
+void	ft_get_color(t_game *game);
 void    ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */

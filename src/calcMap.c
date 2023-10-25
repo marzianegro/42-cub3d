@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/12 14:40:59 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 14:45:28 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,19 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 	else if (ft_strchr(line, 'C'))
 		i = 1;
 	else
-		return false;
+		return (false);
 	rgb[i] = ft_split(&line[1], ',');
 	while (rgb[i][j])
 	{
 		rgb[i][j] = ft_freetrim(rgb[i][j], ' ');
 		if (ft_isloopdigit(rgb[i][j]))
 			if (rgb[i][2][ft_strlen(rgb[i][2]) - 1] != '\n')
-				return false;
+				return (false);
 		tex->cf_rgb[i][j] = ft_atoi(rgb[i][j]);
 		if (j++ > 3)
-			return false;
+			return (false);
 	}
-	return true;
+	return (true);
 }
 
 /* We don't use the Euclidean distance from the point representing the player,
@@ -77,8 +77,8 @@ void	ft_wall_deets(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex)
 		tex->wall_x = plyr->pos_x + ray->perpwalldist * ray->dir_x;
 	tex->wall_x -= floor((tex->wall_x));
 	tex->x_coor = (int)(tex->wall_x * (double)(tex->width));
-	if (ray->side_wall == 0 && (ray->dir_x > 0 ||
-		ray->side_wall == 1) && ray->dir_y < 0)
+	if (ray->side_wall == 0 && (ray->dir_x > 0
+			|| ray->side_wall == 1) && ray->dir_y < 0)
 		tex->x_coor = tex->width - tex->x_coor - 1;
 }
 
