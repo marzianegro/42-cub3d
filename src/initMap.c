@@ -6,24 +6,24 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:36:55 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 15:21:47 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 19:21:22 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_fill_map(t_map *map, char *av, char *count)
+void	ft_fill_map(t_map *map, char *av, int *count)
 {
 	int		i;
 	int		fd;
 	char	*line;
 
 	i = 0;
-	map->map = ft_calloc(count + 1, sizeof(char *));
+	map->map = ft_calloc(*count + 1, sizeof(char *));
 	if (!map->map)
 		ft_error("map allocation failed");
 	fd = open(av, O_RDONLY);
-	while (map->map && i < count)
+	while (map->map && i < *count)
 	{
 		line = get_next_line(fd);
 		if (ft_isloopdigit(line))
@@ -52,6 +52,6 @@ void	ft_init_map(t_game *game, t_map *map, char *av)
 		free(line);
 		line = get_next_line(fd);
 	}
-	ft_fill_map(map, av, count);
+	ft_fill_map(map, av, &count);
 	close (fd);
 }

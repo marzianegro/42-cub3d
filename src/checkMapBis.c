@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 14:47:31 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 17:58:43 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,30 @@ void	ft_check_ext(char **av)
 		ft_error("invalid file map extension");
 }
 
+void	ft_count_map(char **av, t_map *map)
+{
+	char	*line;
+	int		fd;
+
+	fd = open(*av, O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		ft_init_textures();
+		if (!ft_findset(line, "01NSEW"))
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
+		else
+		{
+			map->row++;
+			free(line);
+			line = get_next_line(fd);
+		}
+	}
+}
+
 void	ft_check_columns(t_map *map)
 {
 	int	x;
@@ -29,9 +53,9 @@ void	ft_check_columns(t_map *map)
 	while (x < map->col)
 	{
 		if (map->map[0][x] != WALL)
-			ft_error("wall missing (row)");
+			ft_error("wall missing (col)");
 		else if (map->map[map->row - 1][x] != WALL)
-			ft_error("wall missing (rowww)");
+			ft_error("wall missing (colll)");
 		x++;
 	}
 }
@@ -53,9 +77,9 @@ void	ft_check_rows(t_map *map)
 		if ((int)ft_strlen(map->map[y]) != map->col)
 			ft_error("map incomplete");
 		if (map->map[y][0] != WALL)
-			ft_error("wall missing (col)");
+			ft_error("wall missing (row)");
 		else if (map->map[y][map->col - 1] != WALL)
-			ft_error("wall missing (colll)");
+			ft_error("wall missing (rowwww)");
 		y++;
 	}
 }

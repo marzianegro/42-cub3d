@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 14:43:15 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 15:40:42 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ void	ft_floodfill(char **mapcopy, int x, int y);
 void	ft_afterff(t_map *map, char **mapcopy);
 void	ft_check_map(char **av, t_map *map);
 void	ft_count_map(char **av, t_map *map);
+const char	*ft_findset(const char *str, const char *set);
 /* checkMap_bis.c */
 void	ft_check_components(t_map *map);
 void	ft_check_columns(t_map *map);

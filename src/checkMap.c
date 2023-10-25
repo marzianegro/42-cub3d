@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 14:47:30 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/25 17:58:58 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,6 @@
 
 // CHECKS TO DO
 // - Check if the path is walk-through-able with flood fill
-
-void	ft_count_map(char **av, t_map *map)
-{
-	char	*line;
-	int		fd;
-
-	fd = open(*av, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		//ft_check_textures();
-		if (!ft_strchr(line, "01NSEW"))
-		{
-			free(line);
-			line = get_next_line(fd);
-		}
-		else
-		{
-			map->row++;
-			free(line);
-			line = get_next_line(fd);
-		}
-	}
-}
 
 char	**ft_mtxdup(t_map *map)
 {
