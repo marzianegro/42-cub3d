@@ -6,13 +6,13 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 17:59:34 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 16:42:35 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_init_plyr(t_map *map, t_player *plyr, t_ray *ray, int x)
+void	ft_init_plyr(t_map *map, t_player *plyr)
 {
 	plyr->pos_x = map->player[X];
 	plyr->pos_y = map->player[Y];
@@ -20,11 +20,11 @@ void	ft_init_plyr(t_map *map, t_player *plyr, t_ray *ray, int x)
 	plyr->dir_y = 0; // not sure
 	plyr->plane_x = 0;
 	plyr->plane_y = 0.66;
-	ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
 }
 
-void	ft_init_ray(t_player *plyr, t_ray *ray)
+void	ft_init_ray(t_player *plyr, t_ray *ray, int x)
 {
+	ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
 	ray->dir_x = plyr->dir_x + plyr->plane_x * ray->camera_x;
 	ray->dir_y = plyr->dir_y + plyr->plane_y * ray->camera_x;
 	ray->pos_x = (int)plyr->pos_x;
@@ -71,8 +71,8 @@ void	ft_step_sidedist(t_player *plyr, t_ray *ray)
 
 void	ft_init_dda(t_game *game, int x)
 {
-	ft_init_plyr(&game->map, &game->plyr, &game->ray, x);
-	ft_init_ray(&game->plyr, &game->ray);
+	ft_init_plyr(&game->map, &game->plyr);
+	ft_init_ray(&game->plyr, &game->ray, x);
 	ft_deltadist(&game->ray);
 	game->ray.hit_wall = 0;
 	ft_step_sidedist(&game->plyr, &game->ray);

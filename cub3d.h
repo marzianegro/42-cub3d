@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 15:40:42 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 17:32:48 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,17 +148,21 @@ void	ft_calc_wall(t_game *game);
 char	*ft_freetrim(char *s1, const char del);
 int		ft_isloopdigit(char *s);
 /* checkMap.c */
-void	ft_check_ext(char **av);
 char	**ft_mtxdup(t_map *map);
 void	ft_floodfill(char **mapcopy, int x, int y);
 void	ft_afterff(t_map *map, char **mapcopy);
 void	ft_check_map(char **av, t_map *map);
+/* checkMapBis.c */
+void	ft_check_ext(char **av);
 void	ft_count_map(char **av, t_map *map);
-const char	*ft_findset(const char *str, const char *set);
-/* checkMap_bis.c */
-void	ft_check_components(t_map *map);
 void	ft_check_columns(t_map *map);
 void	ft_check_rows(t_map *map);
+void	ft_check_components(t_map *map);
+/* checkMapTris.c */
+int		ft_check_coor(char *str);
+void	ft_save_path(t_map *map, int *y, char **path);
+void	ft_init_textures(t_map *map);
+void	ft_check_textures(t_map *map);
 /* DDA.c */
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
 /* drawMap.c */
@@ -175,12 +179,14 @@ void	ft_free_matrix(char **mtx);
 void	ft_upload(t_game *game);
 void	ft_unload(t_game *game);
 /* initDDA.c */
-void	ft_init_plyr(t_map *map, t_player *plyr, t_ray *ray, int x);
-void	ft_init_ray(t_player *plyr, t_ray *ray);
+void	ft_init_plyr(t_map *map, t_player *plyr);
+void	ft_init_ray(t_player *plyr, t_ray *ray, int x);
 void	ft_deltadist(t_ray *ray);
 void	ft_step_sidedist(t_player *plyr, t_ray *ray);
 void	ft_init_dda(t_game *game, int x);
 /* initMap.c */
+void	ft_init_variab(t_game *game);
+void	ft_fill_map(t_map *map, char *av, int *count);
 void	ft_init_map(t_game *game, t_map *map, char *av);
 /* initMLX.c */
 void	ft_draw_map(t_map *map, t_game *game);

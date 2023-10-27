@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: btani <btani@student.42.fr>                +#+  +:+       +#+         #
+#    By: mnegro <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 11:21:10 by mnegro            #+#    #+#              #
-#    Updated: 2023/10/18 17:27:51 by btani            ###   ########.fr        #
+#    Updated: 2023/10/27 16:25:05 by mnegro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,9 +26,9 @@ RM = rm -f
 
 MLXFLAGS = -lmlx -lXext -lX11 -lm
 #### TARGETS ####
-FL_SRCS =  DDA.c calcMap.c calcMapUtils.c initMLX.c drawMap.c initDDA.c \
-			loopMap.c movePlayer.c rotPlane.c \
-			checkMap.c checkMapBis.c handleEnds.c initMap.c \
+FL_SRCS = calcMap.c calcMapUtils.c checkMap.c checkMapBis.c \
+			checkMapTris.c DDA.c drawMap.c handleEnds.c handleSprites.c \
+			initDDA.c initMap.c initMLX.c loopMap.c movePlayer.c rotPlane.c \
 			main.c
 DIRSRCS = src/
 SRCS = ${addprefix ${DIRSRCS},${FL_SRCS}}

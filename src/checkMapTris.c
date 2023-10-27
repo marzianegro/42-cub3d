@@ -6,28 +6,45 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 19:21:21 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 17:32:47 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_save_path(t_map *map, int *y, char *path)
+int	ft_check_coor(char *str)
+{
+	if (!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3)
+		|| !ft_strncmp(str, "EA ", 3) || !ft_strncmp(str, "WE ", 3))
+		return (0);
+	return (1);
+}
+
+void	ft_save_path(t_map *map, int *y, char **path)
 {
 	int	x;
+	int	i;
 
 	x = 0;
-	while (map->map[*y])
+	i = 0;
+
+	while (map->map[*y][x] && ft_strncmp(&(map->map[*y][x]), "./", 2))
 	{
-		while (map->map[*y][x])
-		{
-			while (map->map[*y][x] == ' ')
-				x++;
-			if (!ft_strncmp(map->map[*y], "NO ", 3) || !ft_strncmp(map->map[*y], "SO ", 3)
-				|| !ft_strncmp(map->map[*y], "EA ", 3) || !ft_strncmp(map->map[*y], "WE ", 3))
-				x += 2;
-			*path = ft_calloc(ft_strlen(map->map[*y][x]) + 1, sizeof(char));
-		}
+		while (map->map[*y][x] == ' ')
+			x++;
+		if (!ft_check_coor(&(map->map[*y][x])))
+			x += 2;
+	}
+	if (ft_strncmp(&(map->map[*y][x]), "./", 2))
+		ft_error("invalid NO/SO/EA/WE texture(s)");
+	*path = ft_calloc(ft_strlen(&(map->map[*y][x])) + 1, sizeof(char));
+	if (!*path)
+		ft_error("failed (c)allocation");
+	while (map->map[*y][x] && map->map[*y][x] != '\n')
+	{
+		(*path)[i] = map->map[*y][x];
+		i++;
+		x++;
 	}
 }
 

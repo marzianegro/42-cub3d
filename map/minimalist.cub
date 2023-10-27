@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./spt/north_tree.xpm
+SO ./spt/south_tree.xpm
+WE ./spt/west_tree.xpm
+EA ./spt/east_tree.xpm
 
 F 108,200,162
 C 225,30,0

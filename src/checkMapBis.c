@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 17:58:43 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 17:02:44 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_count_map(char **av, t_map *map)
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_init_textures();
-		if (!ft_findset(line, "01NSEW"))
+		ft_init_textures(map);
+		if (!ft_strncmp(line, "01NSEW", 6))
 		{
 			free(line);
 			line = get_next_line(fd);
