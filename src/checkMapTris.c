@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 17:32:47 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 19:22:43 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,52 +20,46 @@ int	ft_check_coor(char *str)
 	return (1);
 }
 
-void	ft_save_path(t_map *map, int *y, char **path)
+void	ft_save_path(char *line, char **path)
 {
-	int	x;
 	int	i;
+	int	j;
 
-	x = 0;
 	i = 0;
-
-	while (map->map[*y][x] && ft_strncmp(&(map->map[*y][x]), "./", 2))
+	j = 0;
+	while (line[i] && ft_strncmp(&(line[i]), "./", 2))
 	{
-		while (map->map[*y][x] == ' ')
-			x++;
-		if (!ft_check_coor(&(map->map[*y][x])))
-			x += 2;
+		while (line[i] == ' ')
+			i++;
+		if (!ft_check_coor(&(line[i])))
+			i += 2;
 	}
-	if (ft_strncmp(&(map->map[*y][x]), "./", 2))
+	if (ft_strncmp(&(line[i]), "./", 2))
 		ft_error("invalid NO/SO/EA/WE texture(s)");
-	*path = ft_calloc(ft_strlen(&(map->map[*y][x])) + 1, sizeof(char));
+	*path = ft_calloc(ft_strlen(&(line[i])) + 1, sizeof(char));
 	if (!*path)
 		ft_error("failed (c)allocation");
-	while (map->map[*y][x] && map->map[*y][x] != '\n')
+	while (line[i] && line[i] != '\n')
 	{
-		(*path)[i] = map->map[*y][x];
+		(*path)[j] = line[i];
 		i++;
-		x++;
+		j++;
 	}
 }
 
-void	ft_init_textures(t_map *map)
+bool	ft_init_textures(t_map *map, char *line)
 {
-	int	y;
-
-	y = 0;
-	while (map->map[y])
-	{
-		if (!ft_strncmp(map->map[y], "NO ", 3))
-			ft_save_path(map, &y, &map->north);
-		else if (!ft_strncmp(map->map[y], "SO ", 3))
-			ft_save_path(map, &y, &map->south);
-		else if (!ft_strncmp(map->map[y], "EA ", 3))
-			ft_save_path(map, &y, &map->east);
-		else if (!ft_strncmp(map->map[y], "WE ", 3))
-			ft_save_path(map, &y, &map->west);
-		y++;
-	}
-	ft_check_textures(map);
+	if (!ft_strncmp(line, "NO ", 3))
+		ft_save_path(line, &map->north);
+	else if (!ft_strncmp(line, "SO ", 3))
+		ft_save_path(line, &map->south);
+	else if (!ft_strncmp(line, "EA ", 3))
+		ft_save_path(line, &map->east);
+	else if (!ft_strncmp(line, "WE ", 3))
+		ft_save_path(line, &map->west);
+	else
+		return (false);
+	return (true);
 }
 
 void	ft_check_textures(t_map *map)

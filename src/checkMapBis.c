@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 17:02:44 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 19:12:19 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,25 @@ void	ft_check_ext(char **av)
 		ft_error("invalid file map extension");
 }
 
-void	ft_count_map(char **av, t_map *map)
-{
-	char	*line;
-	int		fd;
-
-	fd = open(*av, O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		ft_init_textures(map);
-		if (!ft_strncmp(line, "01NSEW", 6))
-		{
-			free(line);
-			line = get_next_line(fd);
-		}
-		else
-		{
-			map->row++;
-			free(line);
-			line = get_next_line(fd);
-		}
-	}
-}
+// void	ft_count_map(t_map *map)
+// {
+// 	while ()
+// 	{
+		
+// 		if (map->map[y][x] != '0') || !ft_strchr(map->map[y][x], '1') || !ft_strchr(map->map[y][x], 'N')
+// 			|| !ft_strchr(map->map[y][x], 'S') || !ft_strchr(map->map[y][x], 'E') || !ft_strchr(map->map[y][x], 'W'))
+// 		{
+// 			free(line);
+// 			line = get_next_line(fd);
+// 		}
+// 		else
+// 		{
+// 			map->row++;
+// 			free(line);
+// 			line = get_next_line(fd);
+// 		}
+// 	}
+// }
 
 void	ft_check_columns(t_map *map)
 {

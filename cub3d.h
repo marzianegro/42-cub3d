@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 17:32:48 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 19:31:08 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,15 +160,15 @@ void	ft_check_rows(t_map *map);
 void	ft_check_components(t_map *map);
 /* checkMapTris.c */
 int		ft_check_coor(char *str);
-void	ft_save_path(t_map *map, int *y, char **path);
-void	ft_init_textures(t_map *map);
+void	ft_save_path(char *line, char **path);
+bool	ft_init_textures(t_map *map, char *line);
 void	ft_check_textures(t_map *map);
 /* DDA.c */
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
 /* drawMap.c */
-void    ft_pixel_put(t_data *data, int x, int y, int color);
+void	ft_pixel_put(t_data *data, int x, int y, int color);
 void	ft_get_color(t_game *game);
-void    ft_draw_cf(t_game *game);
+void	ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */
 int		ft_end(t_game *game);
@@ -186,8 +186,8 @@ void	ft_step_sidedist(t_player *plyr, t_ray *ray);
 void	ft_init_dda(t_game *game, int x);
 /* initMap.c */
 void	ft_init_variab(t_game *game);
-void	ft_fill_map(t_map *map, char *av, int *count);
-void	ft_init_map(t_game *game, t_map *map, char *av);
+void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
+void	ft_init_map(t_game *game, t_map *map, char *fd_map);
 /* initMLX.c */
 void	ft_draw_map(t_map *map, t_game *game);
 int		ft_keys(int key, t_game *game);

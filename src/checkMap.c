@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 16:23:54 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 19:35:44 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ void	ft_check_map(char **av, t_map *map)
 {
 	char	**mapcopy;
 
-	ft_count_map(av, map);
+	(void)av;
+	// ft_count_map(av, map);
+	ft_check_textures(map);
 	ft_check_rows(map);
 	ft_check_columns(map);
 	mapcopy = ft_mtxdup(map);
