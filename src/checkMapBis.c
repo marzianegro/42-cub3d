@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 19:12:19 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/27 20:04:56 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,20 @@ void	ft_check_ext(char **av)
 // 	}
 // }
 
-void	ft_check_columns(t_map *map)
-{
-	int	x;
+// void	ft_check_columns(t_map *map)
+// {
+// 	int	x;
 
-	x = 0;
-	while (x < map->col)
-	{
-		if (map->map[0][x] != WALL)
-			ft_error("wall missing (col)");
-		else if (map->map[map->row - 1][x] != WALL)
-			ft_error("wall missing (colll)");
-		x++;
-	}
-}
+// 	x = 0;
+// 	while (x < map->col)
+// 	{
+// 		if (map->map[0][x] != WALL)
+// 			ft_error("wall missing (col)");
+// 		else if (map->map[map->row - 1][x] != WALL)
+// 			ft_error("wall missing (colll)");
+// 		x++;
+// 	}
+// }
 
 void	ft_check_rows(t_map *map)
 {
@@ -62,20 +62,19 @@ void	ft_check_rows(t_map *map)
 	int	x;
 
 	y = 0;
-	x = 0;
 	while (y < map->row)
 	{
-		while (map->map[0][x])
+		x = 0;
+		while (map->map[y][x])
 		{
-			map->col++;
+			// controlli su prima e ultima riga
+			while (map->map[y][x] == ' ' || map->map[y][x] == '\t')
+				x++;
+			if (map->map[y][x] != WALL)
+				ft_error("row is missing a wall");
 			x++;
 		}
-		if ((int)ft_strlen(map->map[y]) != map->col)
-			ft_error("map incomplete");
-		if (map->map[y][0] != WALL)
-			ft_error("wall missing (row)");
-		else if (map->map[y][map->col - 1] != WALL)
-			ft_error("wall missing (rowwww)");
+		// funzione che cerca 1 all'inizio e alla fine delle righe centrali
 		y++;
 	}
 }
