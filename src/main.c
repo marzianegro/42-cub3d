@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:24:57 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 19:35:45 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/28 17:00:25 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(int ac, char **av)
 		ft_error("invalid number of arguments");
 	ft_check_ext(av);
 	ft_init_variab(&game);
+	ft_mlx_init(&game);
 	ft_init_map(&game, &game.map, av[1]);
 	ft_check_map(av, &game.map);
-	ft_mlxinit(&game, &game.map);
+	ft_mlx_start(&game);
 }

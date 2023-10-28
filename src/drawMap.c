@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/25 15:44:16 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/28 16:57:01 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	ft_pixel_put(t_data *data, int x, int y, int color)
 void	ft_get_color(t_game *game)
 {
 	game->map.ceiling = (game->tex.cf_rgb[1][0] << 16)
-		+ (game->tex.cf_rgb[1][1] << 8) + game->tex.cf_rgb[1][1];
+		| (game->tex.cf_rgb[1][1] << 8) | game->tex.cf_rgb[1][2];
 	game->map.floor = (game->tex.cf_rgb[0][0] << 16)
-		+ (game->tex.cf_rgb[0][1] << 8) + game->tex.cf_rgb[0][1];
+		| (game->tex.cf_rgb[0][1] << 8) | game->tex.cf_rgb[0][2];
 }
 
 void	ft_draw_cf(t_game *game)

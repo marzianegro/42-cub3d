@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:47:54 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/24 17:31:20 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/28 16:59:29 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,23 @@ void	ft_hooks(t_game *game)
 	mlx_hook(game->win_ptr, 02, 1L << 0, ft_keys, game);
 }
 
-void	ft_mlxinit(t_game *game, t_map *map)
+void	ft_mlx_init(t_game *game)
 {
 	game->mlx_ptr = mlx_init();
-	game->win_ptr = mlx_new_window(game->mlx_ptr, map->width * 64,
-			map->height * 64, "Welcome to cub3d!");
-	//ft_draw_map(map, game);
+	game->data.img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
+	game->data.addr = mlx_get_data_addr(game->data.img,
+			&game->data.bpp, &game->data.line_len,
+			&game->data.endian);
+
+}
+
+void	ft_mlx_start(t_game *game)
+{
+	game->win_ptr = mlx_new_window(game->mlx_ptr, 500,
+			500, "Welcome to cub3d!");
+	// ft_draw_map(map, game);
 	ft_hooks(game);
 	mlx_loop_hook(game->mlx_ptr, ft_redrawinloop, game);
 	mlx_loop(game->mlx_ptr);
+
 }

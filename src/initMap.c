@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:36:55 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 19:40:55 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/28 17:00:24 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void	ft_init_variab(t_game *game)
 {
 	game->map.map = NULL;
 	game->map.row = 0;
-	game->map.col = 0;
-	game->map.height = 0;
-	game->map.width = 0;
 	game->map.player[0] = 0;
 	game->map.player[1] = 0;
 	game->map.ceiling = 0;

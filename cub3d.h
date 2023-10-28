@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 19:46:45 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/28 17:00:00 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 # define PLAYER	'P'
 # define X	1
 # define Y	0
-# define WALL	1
 
 /* STRUCTURES */
 
@@ -55,12 +54,9 @@ typedef struct s_map
 {
 	char	**map;
 	int		row;
-	int		col;
-	int		width;
-	int		height;
 	int		player[2];
-	int		ceiling;
-	int		floor;
+	unsigned long		ceiling;
+	unsigned long		floor;
 	char	*north;
 	char	*east;
 	char	*west;
@@ -154,9 +150,7 @@ void	ft_afterff(t_map *map, char **mapcopy);
 void	ft_check_map(char **av, t_map *map);
 /* checkMapBis.c */
 void	ft_check_ext(char **av);
-void	ft_count_map(char **av, t_map *map);
-void	ft_check_columns(t_map *map);
-void	ft_check_rows(t_map *map);
+void	ft_check_walls(t_map *map);
 void	ft_check_components(t_map *map);
 /* checkMapTris.c */
 int		ft_check_coor(char *str);
@@ -188,11 +182,13 @@ void	ft_init_dda(t_game *game, int x);
 void	ft_init_variab(t_game *game);
 void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
+// int	**ft_init_map(t_game *game, t_map *map, char *fd_map);
 /* initMLX.c */
 void	ft_draw_map(t_map *map, t_game *game);
 int		ft_keys(int key, t_game *game);
 void	ft_hooks(t_game *game);
-void	ft_mlxinit(t_game *game, t_map *map);
+void	ft_mlx_init(t_game *game);
+void	ft_mlx_start(t_game *game);
 /* loopMap.c */
 int		ft_redrawinloop(t_game *game);
 /* main.c */
