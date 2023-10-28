@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/28 17:00:00 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/10/28 17:06:00 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,9 +182,8 @@ void	ft_init_dda(t_game *game, int x);
 void	ft_init_variab(t_game *game);
 void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
-// int	**ft_init_map(t_game *game, t_map *map, char *fd_map);
 /* initMLX.c */
-void	ft_draw_map(t_map *map, t_game *game);
+// void	ft_draw_map(t_map *map, t_game *game);
 int		ft_keys(int key, t_game *game);
 void	ft_hooks(t_game *game);
 void	ft_mlx_init(t_game *game);
