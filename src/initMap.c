@@ -3,54 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   initMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:36:55 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/28 17:00:24 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/01 20:12:17 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	ft_init_variab(t_game *game)
-{
-	game->map.map = NULL;
-	game->map.row = 0;
-	game->map.player[0] = 0;
-	game->map.player[1] = 0;
-	game->map.ceiling = 0;
-	game->map.floor = 0;
-	game->map.north = NULL;
-	game->map.east = NULL;
-	game->map.west = NULL;
-	game->map.south = NULL;
-
-	game->plyr.step_x = 0;
-	game->plyr.step_y = 0;
-	game->plyr.move_speed = 0;
-	game->plyr.rot_speed = 0;
-
-	game->ray.sidedist_x = 0;
-	game->ray.sidedist_y = 0;
-	game->ray.deltadist_x = 0;
-	game->ray.deltadist_y = 0;
-	game->ray.perpwalldist = 0;
-	game->ray.hit_wall = 0;
-	game->ray.side_wall = 0;
-
-	game->tex.spt = NULL;
-	game->tex.num = 0;
-	game->tex.height = 0;
-	game->tex.width = 0;
-	game->tex.wall_height = 0;
-	game->tex.wall_start = 0;
-	game->tex.wall_end = 0;
-	game->tex.wall_x = 0;
-	game->tex.pos = 0;
-	game->tex.x_coor = 0;
-	game->tex.y_coor = 0;
-	game->tex.step = 0;
-}
 
 static void	ft_print_mtx(char **mtx)
 {

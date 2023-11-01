@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:24:57 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/28 17:00:25 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/01 20:14:29 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 int	main(int ac, char **av)
 {
 	t_game		game;
-	t_texture	tex;
 
-	(void)tex;
 	if (ac != 2)
 		ft_error("invalid number of arguments");
 	ft_check_ext(av);
-	ft_init_variab(&game);
+	ft_init_vars();
 	ft_mlx_init(&game);
 	ft_init_map(&game, &game.map, av[1]);
-	ft_check_map(av, &game.map);
+	ft_check_map(&game.map);
 	ft_mlx_start(&game);
 }

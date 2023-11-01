@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMapBis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/28 16:56:46 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/01 19:58:02 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,31 +60,50 @@ void	ft_check_walls(t_map *map)
 	}
 }
 
-// void	ft_check_components(t_map *map)
-// {
-// 	int	x;
-// 	int	y;
-// 	int	count;
+void	ft_check_elems(t_map *map)
+{
+	int	x;
+	int	y;
 
-// 	count = 0;
-// 	y = 0;
-// 	while (y < map->row)
-// 	{
-// 		x = 0;
-// 		while (x < map->col)
-// 		{
-// 			if (!ft_strchr("01NSEW", map->map[y][x]))
-// 				ft_error("unknown char");
-// 			else if (ft_strchr("NSEW", map->map[y][x]))
-// 			{
-// 				count++;
-// 				if (count != 1)
-// 					ft_error("there can only be one player");
-// 				map->player[X] = x;
-// 				map->player[Y] = y;
-// 			}
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
+	y = 0;
+	while (map->map[y])
+	{
+		x = 0;
+		while (map->map[y][x])
+		{
+			while (map->map[y][x] == ' ' || map->map[y][x] == '\t'
+				|| map->map[y][x] == '\n')
+				x++;
+			if (!ft_strchr("01NSWE", map->map[y][x]))
+				ft_error("unknown char");
+			x++;
+		}
+		y++;
+	}
+	ft_check_elems_bis(map);
+}
+
+void	ft_check_elems_bis(t_map *map)
+{
+	int	x;
+	int	y;
+	int	count;
+
+	y = 0;
+	count = 0;
+	while (map->map[y])
+	{
+		x = 0;
+		while (map->map[y][x])
+		{
+			if (ft_strchr("NSWE", map->map[y][x]))
+				count++;
+			if (count != 1)
+				ft_error("there can only be one player");
+			map->player[X] = x;
+			map->player[Y] = y;
+			x++;
+		}
+		y++;
+	}
+}

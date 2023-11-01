@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handleEnds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/27 19:11:03 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/01 19:57:17 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,6 @@ void	ft_error(char *str)
 {
 	printf("\033[1;91mError\033[0;39m: %s!\n", str);
 	exit(EXIT_FAILURE);
-}
-
-void	ft_free_map(t_game *game)
-{
-	int	str;
-
-	str = 0;
-	while (game && str < game->map.row)
-	{
-		if (game->map.map[str])
-			free(game->map.map[str++]);
-	}
-	if (game && game->map.map)
-		free(game->map.map);
 }
 
 void	ft_free_matrix(char **mtx)

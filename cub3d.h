@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/28 17:06:00 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/01 20:14:50 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ typedef	struct s_data
 
 typedef struct s_map
 {
-	char	**map;
-	int		row;
-	int		player[2];
+	char			**map;
+	int				row;
+	int				player[2];
 	unsigned long		ceiling;
 	unsigned long		floor;
-	char	*north;
-	char	*east;
-	char	*west;
-	char	*south;
+	char			*north;
+	char			*east;
+	char			*west;
+	char			*south;
 }			t_map;
 
 typedef	struct s_player
@@ -147,11 +147,12 @@ int		ft_isloopdigit(char *s);
 char	**ft_mtxdup(t_map *map);
 void	ft_floodfill(char **mapcopy, int x, int y);
 void	ft_afterff(t_map *map, char **mapcopy);
-void	ft_check_map(char **av, t_map *map);
+void	ft_check_map(t_map *map);
 /* checkMapBis.c */
 void	ft_check_ext(char **av);
 void	ft_check_walls(t_map *map);
-void	ft_check_components(t_map *map);
+void	ft_check_elems(t_map *map);
+void	ft_check_elems_bis(t_map *map);
 /* checkMapTris.c */
 int		ft_check_coor(char *str);
 void	ft_save_path(char *line, char **path);
@@ -178,8 +179,13 @@ void	ft_init_ray(t_player *plyr, t_ray *ray, int x);
 void	ft_deltadist(t_ray *ray);
 void	ft_step_sidedist(t_player *plyr, t_ray *ray);
 void	ft_init_dda(t_game *game, int x);
+/* initVars.c */
+void	ft_init_vars();
+void	ft_init_map();
+void	ft_init_plyr();
+void	ft_init_ray();
+void	ft_init_tex();
 /* initMap.c */
-void	ft_init_variab(t_game *game);
 void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
 /* initMLX.c */
