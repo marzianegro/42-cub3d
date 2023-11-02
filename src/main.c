@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:24:57 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/02 12:31:37 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/02 19:54:46 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_game		game;
 
 	if (ac != 2)
-		ft_error("invalid number of arguments");
+		ft_error("invalid number of arguments", 1);
 	ft_check_ext(av);
 	ft_init_vars(&game);
 	ft_mlx_init(&game);

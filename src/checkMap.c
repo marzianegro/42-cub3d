@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/02 12:31:36 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/02 19:54:15 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	**ft_mtxdup(t_map *map)
 
 	y = 0;
 	dup = ft_calloc(map->row + 1, sizeof(char *));
+	if (!dup)
+		ft_error("allocation failed", 2);
 	while (map->map[y] != NULL)
 	{
 		dup[y] = ft_strdup(map->map[y]);
@@ -50,6 +52,5 @@ void	ft_floodfill(char **mapcopy, int x, int y)
 		ft_floodfill(mapcopy, x - 1, y);
 	}
 	else if (mapcopy[y][x] != '1')
-		ft_error("path non walk-through-able");
-
+		ft_error("path non walk-through-able", 2);
 }

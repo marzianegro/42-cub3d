@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/02 12:07:43 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/02 19:54:13 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	ft_save_path(char *line, char **path)
 			i += 2;
 	}
 	if (ft_strncmp(&(line[i]), "./", 2))
-		ft_error("invalid NO/SO/EA/WE texture(s)");
+		ft_error("invalid NO/SO/EA/WE texture(s)", 2);
 	*path = ft_calloc(ft_strlen(&(line[i])) + 1, sizeof(char));
 	if (!*path)
-		ft_error("path allocation failed");
+		ft_error("allocation failed", 2);
 	while (line[i] && line[i] != '\n')
 	{
 		(*path)[j] = line[i];
@@ -68,14 +68,14 @@ void	ft_check_textures(t_map *map)
 
 	fd = open(map->north, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid NO texture");
+		ft_error("invalid NO texture", 2);
 	fd = open(map->south, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid SO texture");
+		ft_error("invalid SO texture", 2);
 	fd = open(map->east, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid EA texture");
+		ft_error("invalid EA texture", 2);
 	fd = open(map->west, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid WE texture");
+		ft_error("invalid WE texture", 2);
 }
