@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/01 19:57:17 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/02 12:14:37 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ void	ft_error(char *str)
 	exit(EXIT_FAILURE);
 }
 
+char	*ft_free(char **buf)
+{
+	if (*buf)
+	{
+		free(*buf);
+		*buf = NULL;
+	}
+	return (NULL);
+}
+
 void	ft_free_matrix(char **mtx)
 {
 	int	y;
@@ -27,19 +37,19 @@ void	ft_free_matrix(char **mtx)
 	{
 		while (mtx[y])
 		{
-			free(mtx[y]);
+			ft_free(mtx[y]);
 			y++;
 		}
-		free(mtx);
+		ft_free(mtx);
 	}
 }
 
 int	ft_end(t_game *game)
 {
-	//ft_unload(game);
+	ft_unload(game);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	ft_free_matrix(game->map.map);
-	free(game->mlx_ptr);
+	ft_free(game->mlx_ptr);
 	exit(0);
 }

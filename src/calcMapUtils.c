@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:24:20 by btani             #+#    #+#             */
-/*   Updated: 2023/11/01 19:56:25 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/02 12:15:01 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_freetrim(char *s1, const char del)
 		if (trimmed_str)
 			ft_strlcpy(trimmed_str, &s1[i], j - i + 1);
 	}
-	free(s1);
+	ft_free(s1);
 	return (trimmed_str);
 }
 

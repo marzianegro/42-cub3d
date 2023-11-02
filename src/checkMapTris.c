@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/01 19:49:04 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/02 12:07:43 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_save_path(char *line, char **path)
 		ft_error("invalid NO/SO/EA/WE texture(s)");
 	*path = ft_calloc(ft_strlen(&(line[i])) + 1, sizeof(char));
 	if (!*path)
-		ft_error("failed (c)allocation");
+		ft_error("path allocation failed");
 	while (line[i] && line[i] != '\n')
 	{
 		(*path)[j] = line[i];

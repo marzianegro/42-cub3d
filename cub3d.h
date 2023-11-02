@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/01 20:14:50 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/02 12:31:35 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 
 /* STRUCTURES */
 
-typedef	struct s_data
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -55,15 +55,15 @@ typedef struct s_map
 	char			**map;
 	int				row;
 	int				player[2];
-	unsigned long		ceiling;
-	unsigned long		floor;
+	unsigned long	ceiling;
+	unsigned long	floor;
 	char			*north;
 	char			*east;
 	char			*west;
 	char			*south;
 }			t_map;
 
-typedef	struct s_player
+typedef struct s_player
 {
 	// position of the player
 	double	pos_x;
@@ -81,7 +81,7 @@ typedef	struct s_player
 	double	rot_speed;
 }			t_player;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	// x coordinate of the camera plane that the current x coordinate of the screen represents
 	double	camera_x;
@@ -105,22 +105,22 @@ typedef	struct s_ray
 	int		side_wall;
 }			t_ray;
 
-typedef	struct s_texture
+typedef struct s_texture
 {
 	t_data		*spt;
-	int		num;
-	int		height;
-	int		width;
-	int		wall_height;
-	int		wall_start;
-	int		wall_end;
-	double	wall_x;
-	int		pos;
-	double	x_coor;
-	double	y_coor;
+	int			num;
+	int			height;
+	int			width;
+	int			wall_height;
+	int			wall_start;
+	int			wall_end;
+	double		wall_x;
+	int			pos;
+	double		x_coor;
+	double		y_coor;
 	// how much to increase the texture coordinate per screen pixel
-	double	step;
-	int		cf_rgb[2][3];
+	double		step;
+	int			cf_rgb[2][3];
 }			t_texture;
 
 typedef struct s_game
@@ -146,11 +146,9 @@ int		ft_isloopdigit(char *s);
 /* checkMap.c */
 char	**ft_mtxdup(t_map *map);
 void	ft_floodfill(char **mapcopy, int x, int y);
-void	ft_afterff(t_map *map, char **mapcopy);
 void	ft_check_map(t_map *map);
 /* checkMapBis.c */
 void	ft_check_ext(char **av);
-void	ft_check_walls(t_map *map);
 void	ft_check_elems(t_map *map);
 void	ft_check_elems_bis(t_map *map);
 /* checkMapTris.c */
@@ -166,10 +164,10 @@ void	ft_get_color(t_game *game);
 void	ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */
-int		ft_end(t_game *game);
 void	ft_error(char *str);
-void	ft_free_map(t_game *game);
+char	*ft_free(char **buf);
 void	ft_free_matrix(char **mtx);
+int		ft_end(t_game *game);
 /* handleSprites.c */
 void	ft_upload(t_game *game);
 void	ft_unload(t_game *game);
@@ -180,14 +178,16 @@ void	ft_deltadist(t_ray *ray);
 void	ft_step_sidedist(t_player *plyr, t_ray *ray);
 void	ft_init_dda(t_game *game, int x);
 /* initVars.c */
-void	ft_init_vars();
-void	ft_init_map();
-void	ft_init_plyr();
-void	ft_init_ray();
-void	ft_init_tex();
+void	ft_init_vars(void);
+void	ft_init_map(void);
+void	ft_init_plyr(void);
+void	ft_init_ray(void);
+void	ft_init_tex(void);
 /* initMap.c */
-void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
+void	ft_init_map_bis(t_game *game, char **line, int *count_all,
+			int *count_map);
+void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
 /* initMLX.c */
 // void	ft_draw_map(t_map *map, t_game *game);
 int		ft_keys(int key, t_game *game);

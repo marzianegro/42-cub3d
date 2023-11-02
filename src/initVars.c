@@ -6,13 +6,13 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:58:29 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/01 20:14:49 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/02 11:54:39 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_init_vars()
+void	ft_init_vars(void)
 {
 	ft_init_map();
 	ft_init_plyr();
@@ -20,7 +20,7 @@ void	ft_init_vars()
 	ft_init_tex();
 }
 
-void	ft_init_map()
+void	ft_init_map(void)
 {
 	t_map	map;
 
@@ -36,7 +36,7 @@ void	ft_init_map()
 	map.south = NULL;
 }
 
-void	ft_init_plyr()
+void	ft_init_plyr(void)
 {
 	t_player	plyr;
 
@@ -51,10 +51,10 @@ void	ft_init_plyr()
 	plyr.rot_speed = 0;
 }
 
-void	ft_init_ray()
+void	ft_init_ray(void)
 {
 	t_ray	ray;
-	
+
 	ray.camera_x = 0;
 	ray.dir_x = 0;
 	ray.dir_y = 0;
@@ -69,10 +69,10 @@ void	ft_init_ray()
 	ray.side_wall = 0;
 }
 
-void	ft_init_tex()
+void	ft_init_tex(void)
 {
 	t_texture	tex;
-	
+
 	tex.spt = NULL;
 	tex.num = 0;
 	tex.height = 0;
