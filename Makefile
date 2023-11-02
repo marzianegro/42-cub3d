@@ -28,8 +28,8 @@ MLXFLAGS = -lmlx -lXext -lX11 -lm
 #### TARGETS ####
 FL_SRCS = calcMap.c calcMapUtils.c checkMap.c checkMapBis.c \
 			checkMapTris.c DDA.c drawMap.c handleEnds.c handleSprites.c \
-			initDDA.c initMap.c initMLX.c loopMap.c movePlayer.c rotPlane.c \
-			main.c
+			initDDA.c initMap.c initMLX.c initVars.c loopMap.c \
+			movePlayer.c rotPlane.c main.c
 DIRSRCS = src/
 SRCS = ${addprefix ${DIRSRCS},${FL_SRCS}}
 

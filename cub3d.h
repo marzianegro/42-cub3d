@@ -165,7 +165,6 @@ void	ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */
 void	ft_error(char *str);
-char	*ft_free(char **buf);
 void	ft_free_matrix(char **mtx);
 int		ft_end(t_game *game);
 /* handleSprites.c */
@@ -178,14 +177,15 @@ void	ft_deltadist(t_ray *ray);
 void	ft_step_sidedist(t_player *plyr, t_ray *ray);
 void	ft_init_dda(t_game *game, int x);
 /* initVars.c */
-void	ft_init_vars(void);
-void	ft_init_map(void);
-void	ft_init_plyr(void);
-void	ft_init_ray(void);
-void	ft_init_tex(void);
+void	ft_init_vars(t_game *game);
+void	ft_init_map_vars(t_game *game);
+void	ft_init_plyr_vars(t_game *game);
+void	ft_init_ray_vars(t_game *game);
+void	ft_init_tex_vars(t_game *game);
 /* initMap.c */
+void	ft_print_mtx(char **mtx);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
-void	ft_init_map_bis(t_game *game, char **line, int *count_all,
+void	ft_init_map_bis(t_game *game, int fd, char **line, int *count_all,
 			int *count_map);
 void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
 /* initMLX.c */

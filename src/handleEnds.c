@@ -18,16 +18,6 @@ void	ft_error(char *str)
 	exit(EXIT_FAILURE);
 }
 
-char	*ft_free(char **buf)
-{
-	if (*buf)
-	{
-		free(*buf);
-		*buf = NULL;
-	}
-	return (NULL);
-}
-
 void	ft_free_matrix(char **mtx)
 {
 	int	y;
@@ -37,7 +27,7 @@ void	ft_free_matrix(char **mtx)
 	{
 		while (mtx[y])
 		{
-			ft_free(mtx[y]);
+			ft_free(&mtx[y]);
 			y++;
 		}
 		ft_free(mtx);

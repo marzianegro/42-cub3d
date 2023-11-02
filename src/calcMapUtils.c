@@ -31,7 +31,7 @@ char	*ft_freetrim(char *s1, const char del)
 		if (trimmed_str)
 			ft_strlcpy(trimmed_str, &s1[i], j - i + 1);
 	}
-	ft_free(s1);
+	ft_free(&s1);
 	return (trimmed_str);
 }
 

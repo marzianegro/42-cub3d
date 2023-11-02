@@ -12,83 +12,75 @@
 
 #include "../cub3d.h"
 
-void	ft_init_vars(void)
+void	ft_init_vars(t_game *game)
 {
-	ft_init_map();
-	ft_init_plyr();
-	ft_init_ray();
-	ft_init_tex();
+	ft_init_map_vars(game);
+	ft_init_plyr_vars(game);
+	ft_init_ray_vars(game);
+	ft_init_tex_vars(game);
 }
 
-void	ft_init_map(void)
+void	ft_init_map_vars(t_game *game)
 {
-	t_map	map;
-
-	map.map = NULL;
-	map.row = 0;
-	map.player[0] = 0;
-	map.player[1] = 0;
-	map.ceiling = 0;
-	map.floor = 0;
-	map.north = NULL;
-	map.east = NULL;
-	map.west = NULL;
-	map.south = NULL;
+	game->map.map = NULL;
+	game->map.row = 0;
+	game->map.player[0] = 0;
+	game->map.player[1] = 0;
+	game->map.ceiling = 0;
+	game->map.floor = 0;
+	game->map.north = NULL;
+	game->map.east = NULL;
+	game->map.west = NULL;
+	game->map.south = NULL;
 }
 
-void	ft_init_plyr(void)
+void	ft_init_plyr_vars(t_game *game)
 {
-	t_player	plyr;
-
-	plyr.pos_x = 0;
-	plyr.pos_y = 0;
-	plyr.dir_x = 0;
-	plyr.plane_x = 0;
-	plyr.plane_y = 0;	
-	plyr.step_x = 0;
-	plyr.step_y = 0;
-	plyr.move_speed = 0;
-	plyr.rot_speed = 0;
+	game->plyr.pos_x = 0;
+	game->plyr.pos_y = 0;
+	game->plyr.dir_x = 0;
+	game->plyr.plane_x = 0;
+	game->plyr.plane_y = 0;	
+	game->plyr.step_x = 0;
+	game->plyr.step_y = 0;
+	game->plyr.move_speed = 0;
+	game->plyr.rot_speed = 0;
 }
 
-void	ft_init_ray(void)
+void	ft_init_ray_vars(t_game *game)
 {
-	t_ray	ray;
-
-	ray.camera_x = 0;
-	ray.dir_x = 0;
-	ray.dir_y = 0;
-	ray.pos_x = 0;
-	ray.pos_y = 0;
-	ray.sidedist_x = 0;
-	ray.sidedist_y = 0;
-	ray.deltadist_x = 0;
-	ray.deltadist_y = 0;
-	ray.perpwalldist = 0;
-	ray.hit_wall = 0;
-	ray.side_wall = 0;
+	game->ray.camera_x = 0;
+	game->ray.dir_x = 0;
+	game->ray.dir_y = 0;
+	game->ray.pos_x = 0;
+	game->ray.pos_y = 0;
+	game->ray.sidedist_x = 0;
+	game->ray.sidedist_y = 0;
+	game->ray.deltadist_x = 0;
+	game->ray.deltadist_y = 0;
+	game->ray.perpwalldist = 0;
+	game->ray.hit_wall = 0;
+	game->ray.side_wall = 0;
 }
 
-void	ft_init_tex(void)
+void	ft_init_tex_vars(t_game *game)
 {
-	t_texture	tex;
-
-	tex.spt = NULL;
-	tex.num = 0;
-	tex.height = 0;
-	tex.width = 0;
-	tex.wall_height = 0;
-	tex.wall_start = 0;
-	tex.wall_end = 0;
-	tex.wall_x = 0;
-	tex.pos = 0;
-	tex.x_coor = 0;
-	tex.y_coor = 0;
-	tex.step = 0;
-	tex.cf_rgb[0][0] = 0;
-	tex.cf_rgb[0][1] = 0;
-	tex.cf_rgb[0][2] = 0;
-	tex.cf_rgb[1][0] = 0;
-	tex.cf_rgb[1][1] = 0;
-	tex.cf_rgb[1][2] = 0;
+	game->tex.spt = NULL;
+	game->tex.num = 0;
+	game->tex.height = 0;
+	game->tex.width = 0;
+	game->tex.wall_height = 0;
+	game->tex.wall_start = 0;
+	game->tex.wall_end = 0;
+	game->tex.wall_x = 0;
+	game->tex.pos = 0;
+	game->tex.x_coor = 0;
+	game->tex.y_coor = 0;
+	game->tex.step = 0;
+	game->tex.cf_rgb[0][0] = 0;
+	game->tex.cf_rgb[0][1] = 0;
+	game->tex.cf_rgb[0][2] = 0;
+	game->tex.cf_rgb[1][0] = 0;
+	game->tex.cf_rgb[1][1] = 0;
+	game->tex.cf_rgb[1][2] = 0;
 }

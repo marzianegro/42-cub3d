@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		ft_error("invalid number of arguments");
 	ft_check_ext(av);
-	ft_init_vars();
+	ft_init_vars(&game);
 	ft_mlx_init(&game);
 	ft_init_map(&game, &game.map, av[1]);
 	ft_check_map(&game.map);

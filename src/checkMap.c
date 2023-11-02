@@ -28,7 +28,7 @@ char	**ft_mtxdup(t_map *map)
 	int		y;
 
 	y = 0;
-	dup = ft_calloc(map->height + 1, sizeof(char *));
+	dup = ft_calloc(map->row + 1, sizeof(char *));
 	while (map->map[y] != NULL)
 	{
 		dup[y] = ft_strdup(map->map[y]);
