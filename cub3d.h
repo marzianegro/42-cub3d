@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/06 11:54:59 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 16:30:12 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 
 /* MACROS */
 # define SIZE 1000000
-# define SCREEN_WIDTH 900
-# define SCREEN_HEIGHT 900
+# define SCREEN_WIDTH 500
+# define SCREEN_HEIGHT 500
 
 # define LEFT_ARROW		65361
 # define RIGHT_ARROW	65363
@@ -157,11 +157,11 @@ void	ft_save_path(char *line, char **path);
 bool	ft_init_textures(t_map *map, char *line);
 void	ft_check_textures(t_game *game, t_map *map);
 /* DDA.c */
-void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
+void	ft_dda(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex);
 /* drawMap.c */
-int		ft_pixel_wall(t_data *data, int x, int y);
-void	ft_pixel_cf(t_data *data, int x, int y, int color);
-void	ft_get_color(t_game *game);
+void	ft_pixel_put(t_data *data, int x, int y, int color);
+void	ft_calc_cf_color(t_game *game);
+int		ft_calc_tex_color(t_texture *tex);
 void	ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */

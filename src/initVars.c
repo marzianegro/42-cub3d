@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:58:29 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/06 10:50:22 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:38:14 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_init_ray_vars(t_game *game)
 
 void	ft_init_tex_vars(t_game *game)
 {
-	game->tex.spt = NULL;
+	game->tex.spt = ft_calloc(5, sizeof(t_data));
 	game->tex.num = 0;
 	game->tex.height = 0;
 	game->tex.width = 0;
