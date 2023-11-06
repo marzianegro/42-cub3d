@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMapBis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/02 19:50:59 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/06 11:04:45 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	ft_check_ext(char **av)
 
 	len = ft_strlen(av[1]);
 	if (!ft_strnstr(&av[1][len - 4], ".cub", 4))
-		ft_error("invalid file map extension", 1);
+		ft_error("invalid file map extension");
 }
 
-void	ft_check_elems(t_map *map)
+void	ft_check_elems(t_game *game, t_map *map)
 {
 	int	x;
 	int	y;
@@ -36,15 +36,15 @@ void	ft_check_elems(t_map *map)
 				|| map->map[y][x] == '\n')
 				x++;
 			if (!ft_strchr("01NSWE", map->map[y][x]))
-				ft_error("unknown char", 2);
+				ft_exit(game, "unknown char");
 			x++;
 		}
 		y++;
 	}
-	ft_check_elems_bis(map);
+	ft_check_elems_bis(game, map);
 }
 
-void	ft_check_elems_bis(t_map *map)
+void	ft_check_elems_bis(t_game *game, t_map *map)
 {
 	int	x;
 	int	y;
@@ -58,13 +58,17 @@ void	ft_check_elems_bis(t_map *map)
 		while (map->map[y][x])
 		{
 			if (ft_strchr("NSWE", map->map[y][x]))
+			{
 				count++;
-			if (count != 1)
-				ft_error("there can only be one player", 2);
-			map->player[X] = x;
-			map->player[Y] = y;
+				map->player[X] = x;
+				map->player[Y] = y;
+			}
 			x++;
 		}
 		y++;
 	}
+	if (count < 1)
+		ft_exit(game, "player missing");
+	else if (count > 1)
+		ft_exit(game, "there can only be one player");
 }

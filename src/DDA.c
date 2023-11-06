@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:00:18 by mnegro            #+#    #+#             */
-/*   Updated: 2023/10/28 16:55:42 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 11:28:03 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_dda(t_map *map, t_player *plyr, t_ray *ray)
 			ray->pos_y += plyr->step_y;
 			ray->side_wall = 0;
 		}
-		if (map->map[(int)ray->pos_x][(int)ray->pos_y] == '1')
+		if (map->map[(int)ray->pos_y][(int)ray->pos_x] == '1')
 			ray->hit_wall = 1;
 	}
 }

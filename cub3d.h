@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/02 19:36:36 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/06 11:54:59 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,26 +145,28 @@ char	*ft_freetrim(char *s1, const char del);
 int		ft_isloopdigit(char *s);
 /* checkMap.c */
 char	**ft_mtxdup(t_map *map);
-void	ft_floodfill(char **mapcopy, int x, int y);
-void	ft_check_map(t_map *map);
+void	ft_floodfill(t_game *game, char **mapcopy, int x, int y);
+void	ft_check_map(t_game *game, t_map *map);
 /* checkMapBis.c */
 void	ft_check_ext(char **av);
-void	ft_check_elems(t_map *map);
-void	ft_check_elems_bis(t_map *map);
+void	ft_check_elems(t_game *game, t_map *map);
+void	ft_check_elems_bis(t_game *game, t_map *map);
 /* checkMapTris.c */
 int		ft_check_coor(char *str);
 void	ft_save_path(char *line, char **path);
 bool	ft_init_textures(t_map *map, char *line);
-void	ft_check_textures(t_map *map);
+void	ft_check_textures(t_game *game, t_map *map);
 /* DDA.c */
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray);
 /* drawMap.c */
-void	ft_pixel_put(t_data *data, int x, int y, int color);
+int		ft_pixel_wall(t_data *data, int x, int y);
+void	ft_pixel_cf(t_data *data, int x, int y, int color);
 void	ft_get_color(t_game *game);
 void	ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */
 void	ft_error(char *str);
+void	ft_exit(t_game *game, char *str);
 void	ft_free_matrix(char **mtx);
 int		ft_end(t_game *game);
 /* handleSprites.c */

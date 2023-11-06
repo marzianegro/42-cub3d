@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:36:55 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/02 19:54:11 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/06 10:56:24 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_init_map(t_game *game, t_map *map, char *fd_map)
 	count_map = 0;
 	fd = open(fd_map, O_RDONLY);
 	if (fd < 0)
-		ft_error("impossible to open fd", 1);
+		ft_error("impossible to open fd");
 	ft_read_map(game, fd, &count_all, &count_map);
 	map->row = count_map;
 	ft_fill_map(map, fd_map, count_all, count_map);
@@ -48,7 +48,7 @@ void	ft_read_map(t_game *game, int fd, int *count_all, int *count_map)
 
 	line = get_next_line(fd);
 	if (!line)
-		ft_error("nothing to be read", 1);
+		ft_error("nothing to be read");
 	while (line)
 	{
 		flag = 0;
@@ -77,7 +77,7 @@ void	ft_fill_map(t_map *map, char *fd_map, int count_all, int count_map)
 	i = 0;
 	fd = open(fd_map, O_RDONLY);
 	if (fd < 0)
-		ft_error("impossible to open fd", 1);
+		ft_error("impossible to open fd");
 	line = get_next_line(fd);
 	while (line && i != count_all - count_map)
 	{
@@ -88,7 +88,7 @@ void	ft_fill_map(t_map *map, char *fd_map, int count_all, int count_map)
 	i = 0;
 	map->map = ft_calloc(count_map + 1, sizeof(char *));
 	if (!map->map)
-		ft_error("allocation failed", 1);
+		ft_error("allocation failed");
 	while (line)
 	{
 		map->map[i++] = ft_strdup(line);

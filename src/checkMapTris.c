@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMapTris.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/02 19:54:13 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/06 10:56:23 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	ft_save_path(char *line, char **path)
 			i += 2;
 	}
 	if (ft_strncmp(&(line[i]), "./", 2))
-		ft_error("invalid NO/SO/EA/WE texture(s)", 2);
+		ft_error("invalid NO/SO/EA/WE texture(s)");
 	*path = ft_calloc(ft_strlen(&(line[i])) + 1, sizeof(char));
 	if (!*path)
-		ft_error("allocation failed", 2);
+		ft_error("allocation failed");
 	while (line[i] && line[i] != '\n')
 	{
 		(*path)[j] = line[i];
@@ -62,20 +62,20 @@ bool	ft_init_textures(t_map *map, char *line)
 	return (true);
 }
 
-void	ft_check_textures(t_map *map)
+void	ft_check_textures(t_game *game, t_map *map)
 {
 	int	fd;
 
 	fd = open(map->north, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid NO texture", 2);
+		ft_exit(game, "invalid NO texture");
 	fd = open(map->south, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid SO texture", 2);
+		ft_exit(game, "invalid SO texture");
 	fd = open(map->east, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid EA texture", 2);
+		ft_exit(game, "invalid EA texture");
 	fd = open(map->west, O_RDONLY);
 	if (fd < 0)
-		ft_error("invalid WE texture", 2);
+		ft_exit(game, "invalid WE texture");
 }
