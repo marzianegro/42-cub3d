@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   handleSprites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:29 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/06 15:38:13 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 19:39:04 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_upload(t_game *game)
+void	ft_upload_sprites(t_game *game)
 {
 	game->tex.spt[0].img = mlx_xpm_file_to_image(game->mlx_ptr,
 			"spt/north_tree.xpm", &game->tex.width, &game->tex.height);
@@ -36,7 +36,7 @@ void	ft_upload(t_game *game)
 			&game->tex.spt[3].endian);
 }
 
-void	ft_unload(t_game *game)
+void	ft_unload_sprites(t_game *game)
 {
 	mlx_destroy_image(game->mlx_ptr, game->tex.spt[0].img);
 	mlx_destroy_image(game->mlx_ptr, game->tex.spt[1].img);

@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   initDDA.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/06 12:45:13 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 19:55:19 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/* I'm not really sure what to put for plyr->dir_x and plyr->dir_y */
 void	ft_init_plyr(t_map *map, t_player *plyr)
 {
 	plyr->pos_x = map->player[X];
 	plyr->pos_y = map->player[Y];
-	plyr->dir_x = -1; // not sure
-	plyr->dir_y = 0; // not sure
+	plyr->dir_x = -1;
+	plyr->dir_y = 0;
 	plyr->plane_x = 0;
 	plyr->plane_y = 0.66;
 }
@@ -31,8 +32,8 @@ void	ft_init_ray(t_player *plyr, t_ray *ray, int x)
 	ray->pos_y = (int)plyr->pos_y;
 }
 
-// 1e30 is an arbitrarily chosen high enough number and can be set to infinity,
-// if your programming language supports assigning that value
+/*	1e30 is an arbitrarily chosen high enough number and can be set to infinity,
+	if your programming language supports assigning that value */
 void	ft_deltadist(t_ray *ray)
 {
 	if (ray->dir_x == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handleEnds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/06 16:01:09 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 19:51:49 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_free_matrix(char **mtx)
 
 int	ft_end(t_game *game)
 {
-	ft_unload(game);
+	ft_unload_sprites(game);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	ft_free_matrix(game->map.map);

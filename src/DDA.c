@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   DDA.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:00:18 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/06 15:27:06 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 19:52:52 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-// Digital Differential Analysis
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex)
 {
 	while (ray->hit_wall == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/06 16:30:12 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 19:38:50 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,8 +170,8 @@ void	ft_exit(t_game *game, char *str);
 void	ft_free_matrix(char **mtx);
 int		ft_end(t_game *game);
 /* handleSprites.c */
-void	ft_upload(t_game *game);
-void	ft_unload(t_game *game);
+void	ft_upload_sprites(t_game *game);
+void	ft_unload_sprites(t_game *game);
 /* initDDA.c */
 void	ft_init_plyr(t_map *map, t_player *plyr);
 void	ft_init_ray(t_player *plyr, t_ray *ray, int x);
@@ -190,7 +190,6 @@ void	ft_init_map(t_game *game, t_map *map, char *fd_map);
 void	ft_read_map(t_game *game, int fd, int *count_all, int *count_map);
 void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
 /* initMLX.c */
-// void	ft_draw_map(t_map *map, t_game *game);
 int		ft_keys(int key, t_game *game);
 void	ft_hooks(t_game *game);
 void	ft_mlx_init(t_game *game);

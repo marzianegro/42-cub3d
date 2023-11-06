@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/06 15:21:11 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/06 19:41:29 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	ft_floodfill(t_game *game, char **mapcopy, int x, int y)
 		mapcopy[y][x] == 'W')
 	{
 		mapcopy[y][x] = '*';
-		// ft_print_mtx(mapcopy);
 		ft_floodfill(game, mapcopy, x, y - 1);
 		ft_floodfill(game, mapcopy, x + 1, y);
 		ft_floodfill(game, mapcopy, x, y + 1);
