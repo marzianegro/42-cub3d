@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:58:29 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/06 19:39:25 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/07 12:27:22 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	ft_init_map_vars(t_game *game)
 {
 	game->map.map = NULL;
 	game->map.row = 0;
-	game->map.player[0] = 0;
-	game->map.player[1] = 0;
+	game->map.player[Y] = 0;
+	game->map.player[X] = 0;
 	game->map.ceiling = 0;
 	game->map.floor = 0;
 	game->map.north = NULL;

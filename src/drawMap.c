@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/06 19:55:20 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/07 12:25:07 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_calc_tex_color(t_texture *tex)
 	int	color;
 
 	color = *(int *)(tex->spt[tex->num].addr + (tex->height
-				* tex->y_coor * tex->x_coor));
+				* tex->y_coor + tex->x_coor));
 	return (color);
 }
 
