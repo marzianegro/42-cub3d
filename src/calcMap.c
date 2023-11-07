@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 12:22:55 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/07 15:26:25 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_perpwalldist(t_ray *ray)
 
 void	ft_wall_deets(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex)
 {
+	(void)map;
 	tex->wall_height = (int)(SCREEN_HEIGHT / ray->perpwalldist);
 	tex->wall_start = -tex->wall_height / 2 + SCREEN_HEIGHT / 2;
 	if (tex->wall_start < 0)

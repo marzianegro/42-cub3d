@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loopMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:47 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 12:27:18 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/07 15:46:07 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	ft_redrawinloop(t_game *game)
 	int	x;
 
 	x = 0;
+	// mlx_destroy_image(game->mlx_ptr, game->data.img);
+	// game->data.img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
+	// game->data.addr = mlx_get_data_addr(game->data.img,
+	// 		&game->data.bpp, &game->data.line_len,
+	// 		&game->data.endian);
 	ft_draw_cf(game);
 	while (x < SCREEN_WIDTH)
 	{
@@ -31,4 +36,5 @@ int	ft_redrawinloop(t_game *game)
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->data.img, 0, 0);
 	// now the buffer (img) still has to be drawn and, after that, cleared
+	return (0);
 }
