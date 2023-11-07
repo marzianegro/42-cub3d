@@ -6,7 +6,7 @@
 /*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 15:39:39 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/07 16:28:00 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,7 @@ void	ft_hooks(t_game *game);
 void	ft_mlx_init(t_game *game);
 void	ft_mlx_start(t_game *game);
 /* loopMap.c */
+void	ft_clear_img(t_game *game);
 int		ft_redrawinloop(t_game *game);
 /* main.c */
 /* movePlayer.c */

@@ -6,7 +6,7 @@
 /*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 16:03:00 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/07 16:29:43 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_calc_tex_color(t_texture *tex)
 	int	color;
 
 	color = *(int *)(tex->spt[tex->num].addr + (tex->height
-			* (int)tex->y_coor + (int)tex->x_coor));
+				* (int)tex->y_coor + (int)tex->x_coor));
 	return (color);
 }
 
