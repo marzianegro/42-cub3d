@@ -6,12 +6,18 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:20:24 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 12:20:50 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 10:37:39 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/*	When the player rotates, the camera has to rotate as well, so both the
+	direction vector and the plane vector have to be rotated. Then, the
+	rays will all automatically rotate as well.
+	When rotating around, the values of plyr->dir and plyr->plane change,
+	but they always remain perpendicular to each other and of the same
+	length. */
 void	ft_rot_left(t_game *game)
 {
 	double	olddir_x;

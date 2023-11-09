@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 15:26:25 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/09 11:16:08 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,14 @@ void	ft_perpwalldist(t_ray *ray)
 		ray->perpwalldist = ray->sidedist_y - ray->deltadist_y;
 }
 
-void	ft_wall_deets(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex)
+/*	The center of the wall should be at the centre of the screen,
+	so if tex->wall_start and tex->wall_end lie outside the screen,
+	they're capped to 0 or SCREEN_HEIGHT - 1.
+	tex->wall_x represents the exact value where the wall was hit,
+	not just the integer coordinates of the wall; this is needed to
+	know which x coordinate of the texture to use. */
+void	ft_wall_deets(t_player *plyr, t_ray *ray, t_texture *tex)
 {
-	(void)map;
 	tex->wall_height = (int)(SCREEN_HEIGHT / ray->perpwalldist);
 	tex->wall_start = -tex->wall_height / 2 + SCREEN_HEIGHT / 2;
 	if (tex->wall_start < 0)
@@ -81,6 +86,7 @@ void	ft_wall_deets(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex)
 
 void	ft_calc_wall(t_game *game)
 {
+	// ray->perpwalldist is used to calculate the length of the ray
 	ft_perpwalldist(&game->ray);
-	ft_wall_deets(&game->map, &game->plyr, &game->ray, &game->tex);
+	ft_wall_deets(&game->plyr, &game->ray, &game->tex);
 }

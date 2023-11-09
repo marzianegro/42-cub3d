@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:47:54 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 09:42:55 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 11:04:29 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ void	ft_mlx_init(t_game *game)
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->mlx_ptr, SCREEN_WIDTH,
 			SCREEN_HEIGHT, "Welcome to cub3d!");
-	game->data.img = mlx_new_image(game->mlx_ptr, SCREEN_WIDTH, SCREEN_HEIGHT);
-	game->data.addr = mlx_get_data_addr(game->data.img,
-			&game->data.bpp, &game->data.line_len,
-			&game->data.endian);
+	game->data.img = NULL;
 }
 
 int	ft_keys(int key, t_game *game)

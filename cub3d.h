@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 09:43:02 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 11:11:50 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ typedef struct s_game
 /* calcMap.c */
 bool	ft_cf_deets(char *line, t_texture *tex);
 void	ft_perpwalldist(t_ray *ray);
-void	ft_wall_deets(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex);
+void	ft_wall_deets(t_player *plyr, t_ray *ray, t_texture *tex);
 void	ft_calc_wall(t_game *game);
 /* calcMapUtils.c */
 char	*ft_freetrim(char *s1, const char del);

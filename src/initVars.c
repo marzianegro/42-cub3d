@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:58:29 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/09 09:43:44 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 11:25:10 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	ft_init_plyr_vars(t_game *game)
 	game->plyr.plane_y = 0;
 	game->plyr.step_x = 0;
 	game->plyr.step_y = 0;
-	game->plyr.move_speed = 0;
-	game->plyr.rot_speed = 0;
+	game->plyr.move_speed = 0.05;
+	game->plyr.rot_speed = 0.15;
 }
 
 void	ft_init_ray_vars(t_game *game)
