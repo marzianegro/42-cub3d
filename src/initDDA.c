@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 11:08:57 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 20:46:18 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_deltadist(t_ray *ray)
 		ray->deltadist_x = 1e30;
 	else
 		ray->deltadist_x = fabs(1 / ray->dir_x);
-	if (ray->dir_y == 0)
+	if (ray->dir_x == 0)
 		ray->deltadist_y = 1e30;
 	else
 		ray->deltadist_y = fabs(1 / ray->dir_y);
@@ -98,7 +98,6 @@ void	ft_step_sidedist(t_player *plyr, t_ray *ray)
 	camera plane. */
 void	ft_init_dda(t_game *game, int x)
 {
-	ft_init_plyr(&game->map, &game->plyr);
 	ft_init_ray(&game->plyr, &game->ray, x);
 	ft_deltadist(&game->ray);
 	game->ray.hit_wall = 0;

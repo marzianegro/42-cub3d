@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:00:18 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 20:27:18 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 20:48:51 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_dda(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex)
 			else
 				tex->num = 3;
 		}
-		if (map->map[(int)ray->pos_y][(int)ray->pos_x] == '1')
+		if (map->map[(int)ray->pos_x][(int)ray->pos_y] == '1')
 			ray->hit_wall = 1;
 	}
 }

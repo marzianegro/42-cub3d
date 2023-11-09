@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 11:16:08 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 20:51:38 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	ft_wall_deets(t_player *plyr, t_ray *ray, t_texture *tex)
 		tex->wall_x = plyr->pos_x + ray->perpwalldist * ray->dir_x;
 	tex->wall_x -= floor((tex->wall_x));
 	tex->x_coor = (int)(tex->wall_x * (double)(tex->width));
-	if (ray->side_wall == 0 && (ray->dir_x > 0
-			|| ray->side_wall == 1) && ray->dir_y < 0)
+	if ((ray->side_wall == 0 && ray->dir_x > 0)
+		|| (ray->side_wall == 1 && ray->dir_y < 0))
 		tex->x_coor = tex->width - tex->x_coor - 1;
 }
 
