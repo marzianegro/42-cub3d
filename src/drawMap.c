@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 16:29:43 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/09 09:39:38 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ int	ft_calc_tex_color(t_texture *tex)
 {
 	int	color;
 
-	color = *(int *)(tex->spt[tex->num].addr + (tex->height
-				* (int)tex->y_coor + (int)tex->x_coor));
+	color = 0x0;
+	if (tex->x_coor >= 0 && tex->x_coor < tex->width
+		&& tex->y_coor >= 0 && tex->y_coor < tex->height)
+		color = *(int *)(tex->spt[tex->num].addr + (4 * tex->width
+					* (int)tex->y_coor) + (4 * (int)tex->x_coor));
 	return (color);
 }
 

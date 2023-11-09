@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:58:29 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/07 12:27:22 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 09:43:44 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,9 @@ void	ft_init_plyr_vars(t_game *game)
 	game->plyr.pos_x = 0;
 	game->plyr.pos_y = 0;
 	game->plyr.dir_x = 0;
+	game->plyr.dir_y = 0;
 	game->plyr.plane_x = 0;
-	game->plyr.plane_y = 0;	
+	game->plyr.plane_y = 0;
 	game->plyr.step_x = 0;
 	game->plyr.step_y = 0;
 	game->plyr.move_speed = 0;
@@ -65,7 +66,7 @@ void	ft_init_ray_vars(t_game *game)
 
 void	ft_init_tex_vars(t_game *game)
 {
-	game->tex.spt = ft_calloc(5, sizeof(t_data));
+	game->tex.spt = ft_calloc(4, sizeof(t_data));
 	game->tex.num = 0;
 	game->tex.height = 0;
 	game->tex.width = 0;

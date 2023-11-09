@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loopMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:47 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 16:27:21 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/09 09:39:54 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int	ft_redrawinloop(t_game *game)
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->data.img, 0, 0);
+	game->plyr.move_speed = ;
+	game->plyr.rot_speed = ;
 	return (0);
 }
