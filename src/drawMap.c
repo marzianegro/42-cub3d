@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 11:22:43 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/09 20:30:10 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*pxl;
 
+	if (x >= SCREEN_WIDTH || x <= 0 || y >= SCREEN_HEIGHT || y <= 0)
+		return ;
 	pxl = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	*(unsigned int *)pxl = color;
 }
