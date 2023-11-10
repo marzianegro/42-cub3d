@@ -21,9 +21,11 @@ void	ft_check_ext(char **av)
 	if (len <= 4)
 		ft_error("invalid map file");
 	file_len = len;
-	while (file_len && av[file_len] != '/')
+	while (file_len && av[1][file_len] != '/')
 		file_len--;
-	if (file_len <= 4)
+	if (av[1][file_len] == '/')
+		file_len++;
+	if (len - file_len <= 4)
 		ft_error("invalid map file");
 	else if (!ft_strnstr(&av[1][len - 4], ".cub", 4))
 		ft_error("invalid map file extension");
@@ -40,8 +42,7 @@ void	ft_check_elems(t_game *game, t_map *map)
 		x = 0;
 		while (map->map[y][x])
 		{
-			while (map->map[y][x] == ' ' || map->map[y][x] == '\t'
-				|| map->map[y][x] == '\n')
+			while (map->map[y][x] == ' ' || map->map[y][x] == '\t') // removed \n
 				x++;
 			if (!ft_strchr("01NSWE", map->map[y][x]))
 				ft_exit(game, "unknown char");

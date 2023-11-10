@@ -185,9 +185,10 @@ void	ft_init_plyr_vars(t_game *game);
 void	ft_init_ray_vars(t_game *game);
 void	ft_init_tex_vars(t_game *game);
 /* initMap.c */
-void	ft_print_mtx(char **mtx);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
+char 	*get_next_line_del(int fd);
 void	ft_read_map(t_game *game, int fd, int *count_all, int *count_map);
+void	ft_check_chars(t_game *game, int fd, int count_all, int count_map);
 void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
 /* initMLX.c */
 int		ft_keys(int key, t_game *game);

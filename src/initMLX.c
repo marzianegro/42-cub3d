@@ -17,7 +17,7 @@ void	ft_mlx_init(t_game *game)
 	game->mlx_ptr = mlx_init();
 	game->win_ptr = mlx_new_window(game->mlx_ptr, SCREEN_WIDTH,
 			SCREEN_HEIGHT, "Welcome to cub3d!");
-	// game->data.img = NULL;
+	game->data.img = NULL;
 }
 
 int	ft_keys(int key, t_game *game)

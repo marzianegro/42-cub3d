@@ -23,10 +23,8 @@ int	ft_check_coor(char *str)
 void	ft_save_path(char *line, char **path)
 {
 	int	i;
-	int	j;
 
 	i = 2;
-	j = 0;
 	// free line
 	if (*path)
 		ft_error("more than one NO/SO/EA/WE texture");
@@ -57,13 +55,17 @@ void	ft_check_textures(t_game *game, t_map *map)
 	fd = open(map->north, O_RDONLY);
 	if (fd < 0)
 		ft_exit(game, "invalid NO texture");
+	close(fd);
 	fd = open(map->south, O_RDONLY);
 	if (fd < 0)
 		ft_exit(game, "invalid SO texture");
+	close(fd);
 	fd = open(map->east, O_RDONLY);
 	if (fd < 0)
 		ft_exit(game, "invalid EA texture");
+	close(fd);
 	fd = open(map->west, O_RDONLY);
 	if (fd < 0)
 		ft_exit(game, "invalid WE texture");
+	close(fd);
 }

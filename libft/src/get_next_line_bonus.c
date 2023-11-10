@@ -90,11 +90,29 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	return (str);
 }
 
+static void	ft_free_buf(char **buf)
+{
+	int	y;
+
+	y = 0;
+	if (buf)
+	{
+		while (y < 1024)
+		{
+			ft_free(&buf[y]);
+			y++;
+		}
+		ft_free(buf);
+	}
+}
+
 char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*buftomem[1024];
 
+	if (fd == -42)
+		ft_free_buf(buftomem);
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	ft_read_from_fd(fd, &buftomem[fd]);
@@ -105,3 +123,4 @@ char	*get_next_line(int fd)
 		return (NULL);
 	return (line);
 }
+

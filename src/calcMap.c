@@ -19,7 +19,6 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 {
 	int		i;
 	int		j;
-	int		len;
 	char	**rgb;
 
 	j = 0;
@@ -29,20 +28,17 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 		i = 1;
 	else
 		return (false);
-	len = ft_strlen(line);
-	if (line[len] == '\n')
-		line[len] = '\0';
 	rgb = ft_split(&line[1], ',');
 	while (rgb[j])
 	{
 		rgb[j] = ft_freetrim(rgb[j], ' ');
 		if (ft_isloopdigit(rgb[j]))
-			return (false);
+			ft_error("invalid C/F color"); // free all
 		tex->cf_rgb[i][j] = ft_atoi(rgb[j]);
 		if (tex->cf_rgb[i][j] < 0 || tex->cf_rgb[i][j] > 255)
 			ft_error("invalid C/F color"); // free all
 		if (j++ > 3)
-			return (false);
+			ft_error("invalid C/F color"); // free all
 	}
 	return (true);
 }
