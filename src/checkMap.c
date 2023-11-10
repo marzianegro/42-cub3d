@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/07 11:33:30 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/10 12:57:23 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	ft_check_map(t_game *game, t_map *map)
 	char	**mapcopy;
 
 	ft_check_textures(game, map);
-	mapcopy = ft_mtxdup(map);
 	ft_check_elems(game, map);
+	mapcopy = ft_mtxdup(map);
 	ft_floodfill(game, mapcopy, map->player[X], map->player[Y]);
 	ft_free_matrix(mapcopy);
 }

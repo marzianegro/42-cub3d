@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:47:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 10:01:12 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/10 12:57:07 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@
 void	ft_check_ext(char **av)
 {
 	int	len;
+	int	file_len;
 
 	len = ft_strlen(av[1]);
-	if (!ft_strnstr(&av[1][len - 4], ".cub", 4))
-		ft_error("invalid file map extension");
+	if (len <= 4)
+		ft_error("invalid map file");
+	file_len = len;
+	while (file_len && av[file_len] != '/')
+		file_len--;
+	if (file_len <= 4)
+		ft_error("invalid map file");
+	else if (!ft_strnstr(&av[1][len - 4], ".cub", 4))
+		ft_error("invalid map file extension");
 }
 
 void	ft_check_elems(t_game *game, t_map *map)

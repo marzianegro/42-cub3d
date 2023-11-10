@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 09:43:17 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/10 12:36:21 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,14 @@ void	ft_save_path(char *line, char **path)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 2;
 	j = 0;
-	while (line[i] && ft_strncmp(&(line[i]), "./", 2))
-	{
-		while (line[i] == ' ')
-			i++;
-		if (!ft_check_coor(&(line[i])))
-			i += 2;
-	}
-	if (ft_strncmp(&(line[i]), "./", 2))
-		ft_error("invalid NO/SO/EA/WE texture(s)");
-	*path = ft_calloc(ft_strlen(&(line[i])) + 1, sizeof(char));
-	if (!*path)
-		ft_error("allocation failed");
-	while (line[i] && line[i] != '\n')
-	{
-		(*path)[j] = line[i];
+	// free line
+	if (*path)
+		ft_error("more than one NO/SO/EA/WE texture");
+	while (line[i] == ' ')
 		i++;
-		j++;
-	}
+	*path = ft_strdup(&line[i]);
 }
 
 bool	ft_init_textures(t_map *map, char *line)

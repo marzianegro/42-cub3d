@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/09 20:51:38 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/10 12:55:06 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 {
 	int		i;
 	int		j;
-	char	**rgb[2];
+	int		len;
+	char	**rgb;
 
-	i = -1;
 	j = 0;
 	if (ft_strchr(line, 'F'))
 		i = 0;
@@ -29,14 +29,18 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 		i = 1;
 	else
 		return (false);
-	rgb[i] = ft_split(&line[1], ',');
-	while (rgb[i][j])
+	len = ft_strlen(line);
+	if (line[len] == '\n')
+		line[len] = '\0';
+	rgb = ft_split(&line[1], ',');
+	while (rgb[j])
 	{
-		rgb[i][j] = ft_freetrim(rgb[i][j], ' ');
-		if (ft_isloopdigit(rgb[i][j]))
-			if (rgb[i][2][ft_strlen(rgb[i][2]) - 1] != '\n')
-				return (false);
-		tex->cf_rgb[i][j] = ft_atoi(rgb[i][j]);
+		rgb[j] = ft_freetrim(rgb[j], ' ');
+		if (ft_isloopdigit(rgb[j]))
+			return (false);
+		tex->cf_rgb[i][j] = ft_atoi(rgb[j]);
+		if (tex->cf_rgb[i][j] < 0 || tex->cf_rgb[i][j] > 255)
+			ft_error("invalid C/F color"); // free all
 		if (j++ > 3)
 			return (false);
 	}
