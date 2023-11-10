@@ -115,7 +115,7 @@ typedef struct s_texture
 	int			wall_start;
 	int			wall_end;
 	double		wall_x;
-	int			pos;
+	double		pos;
 	double		x_coor;
 	double		y_coor;
 	// how much to increase the texture coordinate per screen pixel
