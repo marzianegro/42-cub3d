@@ -1,13 +1,10 @@
 NO ./spt/north_tree.xpm
 SO ./spt/south_tree.xpm
 WE ./spt/west_tree.xpm
-EA ../42_cub3D/pics/bluestone.xpm
+EA ./spt/east_tree.xpm
 
 F 255,255,100
 C 0,0,255
-
-
-
 
 1111111
 1000001
