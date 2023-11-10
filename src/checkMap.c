@@ -14,46 +14,25 @@
 
 void	ft_check_map(t_game *game, t_map *map)
 {
-	char	**mapcopy;
-
 	ft_check_textures(game, map);
 	ft_check_elems(game, map);
-	mapcopy = ft_mtxdup(map);
-	ft_floodfill(game, mapcopy, map->player[X], map->player[Y]);
-	ft_free_matrix(mapcopy);
+	ft_floodfill(game, &game->map, map->player[X], map->player[Y]);
 }
 
-char	**ft_mtxdup(t_map *map)
+void	ft_floodfill(t_game *game, t_map *map, int x, int y)
 {
-	char	**dup;
-	int		y;
-
-	y = 0;
-	dup = ft_calloc(map->row + 1, sizeof(char *));
-	if (!dup)
-		ft_error("allocation failed");
-	while (map->map[y] != NULL)
+	if (game->map.map[y][x] == '0' || game->map.map[y][x] == 'N' ||
+		game->map.map[y][x] == 'S' || game->map.map[y][x] == 'E' ||
+		game->map.map[y][x] == 'W')
 	{
-		dup[y] = ft_strdup(map->map[y]);
-		y++;
+		game->map.map[y][x] = '*';
+		ft_floodfill(game, map, x, y - 1);
+		ft_floodfill(game, map, x + 1, y);
+		ft_floodfill(game, map, x, y + 1);
+		ft_floodfill(game, map, x - 1, y);
 	}
-	return (dup);
-}
-
-void	ft_floodfill(t_game *game, char **mapcopy, int x, int y)
-{
-	if (mapcopy[y][x] == '0' || mapcopy[y][x] == 'N' ||
-		mapcopy[y][x] == 'S' || mapcopy[y][x] == 'E' ||
-		mapcopy[y][x] == 'W')
-	{
-		mapcopy[y][x] = '*';
-		ft_floodfill(game, mapcopy, x, y - 1);
-		ft_floodfill(game, mapcopy, x + 1, y);
-		ft_floodfill(game, mapcopy, x, y + 1);
-		ft_floodfill(game, mapcopy, x - 1, y);
-	}
-	else if (mapcopy[y][x] == '*' || mapcopy[y][x] == '1')
+	else if (game->map.map[y][x] == '*' || game->map.map[y][x] == '1')
 		return ;
-	else if (mapcopy[y][x] != '1')
+	else if (game->map.map[y][x] != '1')
 		ft_exit(game, "path non walk-through-able");
 }

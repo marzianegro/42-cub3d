@@ -144,8 +144,7 @@ void	ft_calc_wall(t_game *game);
 char	*ft_freetrim(char *s1, const char del);
 int		ft_isloopdigit(char *s);
 /* checkMap.c */
-char	**ft_mtxdup(t_map *map);
-void	ft_floodfill(t_game *game, char **mapcopy, int x, int y);
+void	ft_floodfill(t_game *game, t_map *map, int x, int y);
 void	ft_check_map(t_game *game, t_map *map);
 /* checkMapBis.c */
 void	ft_check_ext(char **av);
