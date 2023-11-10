@@ -43,5 +43,6 @@ int	ft_redrawinloop(t_game *game)
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->data.img, 0, 0);
+	// exit(0);
 	return (0);
 }
