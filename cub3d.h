@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/10 12:37:39 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:35:35 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,14 +144,12 @@ void	ft_calc_wall(t_game *game);
 char	*ft_freetrim(char *s1, const char del);
 int		ft_isloopdigit(char *s);
 /* checkMap.c */
-void	ft_floodfill(t_game *game, t_map *map, int x, int y);
-void	ft_check_map(t_game *game, t_map *map);
-/* checkMapBis.c */
 void	ft_check_ext(char **av);
 void	ft_check_elems(t_game *game, t_map *map);
 void	ft_check_elems_bis(t_game *game, t_map *map);
-/* checkMapTris.c */
-int		ft_check_coor(char *str);
+void	ft_floodfill(t_game *game, t_map *map, int x, int y);
+void	ft_check_map(t_game *game, t_map *map);
+/* checkTex.c */
 void	ft_save_path(char *line, char **path);
 bool	ft_init_textures(t_map *map, char *line);
 void	ft_check_textures(t_game *game, t_map *map);
@@ -184,11 +182,13 @@ void	ft_init_plyr_vars(t_game *game);
 void	ft_init_ray_vars(t_game *game);
 void	ft_init_tex_vars(t_game *game);
 /* initMap.c */
-void	ft_init_map(t_game *game, t_map *map, char *fd_map);
-char 	*get_next_line_del(int fd);
 void	ft_read_map(t_game *game, int fd, int *count_all, int *count_map);
-void	ft_check_chars(t_game *game, int fd, int count_all, int count_map);
+void	ft_check_comps(t_game *game, int fd, int count_all, int count_map);
 void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
+void	ft_init_map(t_game *game, t_map *map, char *fd_map);
+/* initMapUtils.c */
+char	*get_next_line_del(int fd);
+void	ft_check_comps_bis(char *line, int flag);
 /* initMLX.c */
 int		ft_keys(int key, t_game *game);
 void	ft_hooks(t_game *game);
@@ -197,7 +197,6 @@ void	ft_mlx_start(t_game *game);
 /* loopMap.c */
 void	ft_clear_img(t_game *game);
 int		ft_redrawinloop(t_game *game);
-/* main.c */
 /* movePlayer.c */
 void	ft_forward(t_game *game, t_map *map);
 void	ft_left(t_game *game, t_map *map);

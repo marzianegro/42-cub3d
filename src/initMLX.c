@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:47:54 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/10 13:01:20 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:48:43 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	ft_hooks(t_game *game)
 void	ft_mlx_start(t_game *game)
 {
 	ft_upload_sprites(game);
+	ft_calc_cf_color(game);
 	ft_init_plyr(&game->map, &game->plyr);
 	ft_hooks(game);
 	mlx_loop_hook(game->mlx_ptr, ft_redrawinloop, game);

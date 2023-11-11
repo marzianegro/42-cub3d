@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:47 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/10 13:01:19 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:47:56 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ int	ft_redrawinloop(t_game *game)
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->data.img, 0, 0);
-	// exit(0);
 	return (0);
 }

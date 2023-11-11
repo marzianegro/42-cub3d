@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkMapTris.c                                     :+:      :+:    :+:   */
+/*   checkTex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/10 12:36:21 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:40:57 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-int	ft_check_coor(char *str)
-{
-	if (!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3)
-		|| !ft_strncmp(str, "EA ", 3) || !ft_strncmp(str, "WE ", 3))
-		return (0);
-	return (1);
-}
 
 void	ft_save_path(char *line, char **path)
 {

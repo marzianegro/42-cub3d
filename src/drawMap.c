@@ -6,12 +6,13 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/10 13:01:18 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:47:50 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/* The checks here are for making sure we don't draw outisde the window */
 void	ft_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*pxl;
@@ -48,7 +49,6 @@ void	ft_draw_cf(t_game *game)
 	int	x;
 
 	y = 0;
-	ft_calc_cf_color(game);
 	while (y < SCREEN_HEIGHT)
 	{
 		x = 0;

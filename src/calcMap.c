@@ -6,11 +6,19 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/10 12:55:06 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:19:29 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+static void	ft_error_cf(char *str, t_game *game, char *line, char **rgb)
+{
+	printf("\033[1;91mError\033[0;39m: %s!\n", str);
+	ft_free(&line);
+	ft_free_matrix(rgb);
+	exit(EXIT_FAILURE);
+}
 
 /* All of this is done after the DDA has ended, because we have to calculate
 	the distance of the ray from the wall, so that we can then calculate how
@@ -33,13 +41,14 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 	{
 		rgb[j] = ft_freetrim(rgb[j], ' ');
 		if (ft_isloopdigit(rgb[j]))
-			ft_error("invalid C/F color"); // free all
+			ft_error_cf("invalid C/F color");
 		tex->cf_rgb[i][j] = ft_atoi(rgb[j]);
 		if (tex->cf_rgb[i][j] < 0 || tex->cf_rgb[i][j] > 255)
-			ft_error("invalid C/F color"); // free all
+			ft_error_cf("invalid C/F color");
 		if (j++ > 3)
-			ft_error("invalid C/F color"); // free all
+			ft_error_cf("invalid C/F color");
 	}
+	ft_free_matrix(rgb);
 	return (true);
 }
 
