@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/11 13:40:57 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 14:03:05 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ void	ft_save_path(char *line, char **path)
 	int	i;
 
 	i = 2;
-	// free line
 	if (*path)
-		ft_error("more than one NO/SO/EA/WE texture");
+		ft_error_line("more than one NO/SO/EA/WE texture", line);
 	while (line[i] == ' ')
 		i++;
 	*path = ft_strdup(&line[i]);

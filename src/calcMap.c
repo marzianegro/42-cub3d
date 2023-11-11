@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/11 13:19:29 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 14:03:43 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_error_cf(char *str, t_game *game, char *line, char **rgb)
 
 /* All of this is done after the DDA has ended, because we have to calculate
 	the distance of the ray from the wall, so that we can then calculate how
-	high we have to draw the wall */
+	high we have to draw the wall. */
 bool	ft_cf_deets(char *line, t_texture *tex)
 {
 	int		i;
@@ -52,13 +52,13 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 	return (true);
 }
 
-/* We don't use the Euclidean distance from the point representing the player,
+/*	We don't use the Euclidean distance from the point representing the player,
 	but the distance from the camera plane (or the distance from the point,
 	projected in the camera direction, to the player), to avoid the fish-eye
 	effect, which would make all the walls become rounded and make us sick
 	if we rotated. It’s also easier to calculate this perpendicular distance
 	rather than the real distance, because we don’t even need to know the
-	exact location where the wall was hit */
+	exact location where the wall was hit. */
 void	ft_perpwalldist(t_ray *ray)
 {
 	if (ray->side_wall == 0)

@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/11 13:35:35 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 14:05:39 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void	ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */
 void	ft_error(char *str);
+void	ft_error_line(char *str, char *line);
 void	ft_exit(t_game *game, char *str);
 void	ft_free_matrix(char **mtx);
 int		ft_end(t_game *game);
@@ -183,8 +184,8 @@ void	ft_init_ray_vars(t_game *game);
 void	ft_init_tex_vars(t_game *game);
 /* initMap.c */
 void	ft_read_map(t_game *game, int fd, int *count_all, int *count_map);
-void	ft_check_comps(t_game *game, int fd, int count_all, int count_map);
-void	ft_fill_map(t_map *map, char *fd_map, int count_a, int count_b);
+void	ft_check_comps(int fd, int count_all, int count_map);
+void	ft_fill_map(t_map *map, int fd, int count_all, int count_map);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
 /* initMapUtils.c */
 char	*get_next_line_del(int fd);

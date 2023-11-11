@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:29 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/10 13:00:07 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:59:29 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_upload_sprites(t_game *game)
 {
+	game->tex.spt = ft_calloc(4, sizeof(t_data));
 	game->tex.spt[0].img = mlx_xpm_file_to_image(game->mlx_ptr,
 			game->map.north, &game->tex.width, &game->tex.height);
 	game->tex.spt[0].addr = mlx_get_data_addr(game->tex.spt[0].img,

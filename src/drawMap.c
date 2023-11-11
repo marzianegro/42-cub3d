@@ -6,13 +6,13 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/11 13:47:50 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:53:51 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/* The checks here are for making sure we don't draw outisde the window */
+/* The checks here are for making sure we don't draw outisde the window. */
 void	ft_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*pxl;
@@ -65,7 +65,7 @@ void	ft_draw_cf(t_game *game)
 }
 
 /*	A loop in the y direction is requires to go through every pixel and
-	determine which texel (texture pixel) of the texture should be used */
+	determine which texel (texture pixel) of the texture should be used. */
 void	ft_draw_wall(t_game *game, int x)
 {
 	int	y;

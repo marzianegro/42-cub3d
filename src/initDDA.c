@@ -6,13 +6,13 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/11 13:46:33 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/11 13:54:44 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/* I'm not really sure what to put for plyr->dir_x and plyr->dir_y */
+/* I'm not really sure what to put for plyr->dir_x and plyr->dir_y. */
 void	ft_init_plyr(t_map *map, t_player *plyr)
 {
 	// Position vector of the player
@@ -31,7 +31,7 @@ void	ft_init_ray(t_player *plyr, t_ray *ray, int x)
 	/*	ray->camera_x is the x coordinate of the camera plane that the current x
 		coordinate of the screen represents, and it's calculated this way so
 		the right side of the screen gets coordinate 1, the centre 0, and
-		the left -1 */
+		the left -1. */
 	ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
 	// Sum of the player's direction vector and a part of the plane vector
 	ray->dir_x = plyr->dir_x + plyr->plane_x * ray->camera_x;
@@ -42,7 +42,7 @@ void	ft_init_ray(t_player *plyr, t_ray *ray, int x)
 }
 
 /*	ray->deltadist_x and ray->deltadist_y are the distance the ray has to
-	travel to go from one x or y side to the next */
+	travel to go from one x or y side to the next. */
 void	ft_deltadist(t_ray *ray)
 {
 	if (ray->dir_x == 0)
@@ -55,7 +55,7 @@ void	ft_deltadist(t_ray *ray)
 		ray->deltadist_y = fabs(1 / ray->dir_y);
 }
 /*	1e30 is an arbitrarily chosen high enough number and can be set to infinity,
-	if your programming language supports assigning that value */
+	if your programming language supports assigning that value. */
 
 /*	ray->sidedist_x and ray->sidedist_y are, initially, the distance the ray
 	has to travel from its starting position to the first x and y side; they
