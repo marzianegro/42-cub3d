@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:39:47 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/11 14:00:07 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 21:26:37 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	ft_clear_img(t_game *game)
 /*	The ray-casting loop is a while loop goes through every x, so the
 	calculation won't be done for every pixel of the screen but for every
 	vertical stripe, which isn’t much at all */
+/*	After the DDA is done, you have to calculate the distance of the ray from
+	the wall, so that you can calculate how high the wall has to be drawn */
 int	ft_redrawinloop(t_game *game)
 {
 	int	x;
@@ -36,8 +38,6 @@ int	ft_redrawinloop(t_game *game)
 	{
 		ft_init_dda(game, x);
 		ft_dda(&game->map, &game->plyr, &game->ray, &game->tex);
-		/* After the DDA is done, you have to calculate the distance of the ray
-			from the wall, so that you can calculate how high the wall has to be drawn */
 		ft_calc_wall(game);
 		ft_draw_wall(game, x);
 		x++;

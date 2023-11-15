@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:33 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 16:33:45 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/15 21:25:48 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void	ft_draw_wall(t_game *game, int x)
 			+ game->tex.wall_height / 2) * game->tex.step;
 	while (y < game->tex.wall_end)
 	{
-		// we're masking with (game->tex.height - 1) in case of overflow
 		game->tex.y_coor = (int)game->tex.pos & (game->tex.height - 1);
 		game->tex.pos += game->tex.step;
 		color = ft_calc_tex_color(&game->tex);
@@ -85,3 +84,4 @@ void	ft_draw_wall(t_game *game, int x)
 		y++;
 	}
 }
+/* We're masking with (game->tex.height - 1) in case of overflow. */

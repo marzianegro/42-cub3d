@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:50:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 10:28:27 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 21:27:11 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,3 @@ char	*get_next_line(int fd)
 		return (NULL);
 	return (line);
 }
-

@@ -6,7 +6,7 @@
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:16:29 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 21:24:30 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	ft_wall_deets(t_player *plyr, t_ray *ray, t_texture *tex)
 
 void	ft_calc_wall(t_game *game)
 {
-	// ray->perpwalldist is used to calculate the length of the ray
 	ft_perpwalldist(&game->ray);
 	ft_wall_deets(&game->plyr, &game->ray, &game->tex);
 }

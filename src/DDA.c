@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DDA.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 16:00:18 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 16:55:29 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/15 21:25:26 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	ft_dda(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex)
 		{
 			ray->sidedist_x += ray->deltadist_x;
 			ray->pos_x += plyr->step_x;
-			// the x side of the wall was hit
 			ray->side_wall = 0;
 			if (ray->dir_x < 0)
 				tex->num = 0;
@@ -41,7 +40,6 @@ void	ft_dda(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex)
 		{
 			ray->sidedist_y += ray->deltadist_y;
 			ray->pos_y += plyr->step_y;
-			// the y side of the wall was hit
 			ray->side_wall = 1;
 			if (ray->dir_y < 0)
 				tex->num = 2;

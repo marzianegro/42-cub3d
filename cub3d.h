@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 21:07:09 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 21:27:59 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@
 # define Y	0
 
 /* STRUCTURES */
-
 typedef struct s_data
 {
 	void	*img;
@@ -66,43 +65,31 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	// position of the player
 	double	pos_x;
 	double	pos_y;
-	// direction in which the player's going
 	double	dir_x;
 	double	dir_y;
-	// camera plane of the player
 	double	plane_x;
 	double	plane_y;
-	// what direction to step in?
-	int		step_x; // +1
-	int		step_y; // -1
+	int		step_x;
+	int		step_y;
 	double	move_speed;
 	double	rot_speed;
 }			t_player;
 
 typedef struct s_ray
 {
-	// x coordinate of the camera plane that the current x coordinate of the screen represents
 	double	camera_x;
-	// direction in which the ray's going
 	double	dir_x;
 	double	dir_y;
-	// current square of the map the ray is in
 	double	pos_x;
 	double	pos_y;
-	// lenght of the ray from the current position to the first x and y side
 	double	sidedist_x;
 	double	sidedist_y;
-	// lenght of the ray from one x or y side to the next x or y side
 	double	deltadist_x;
 	double	deltadist_y;
-	// pependicular distance used to calculate the length of the ray
 	double	perpwalldist;
-	// did the ray hit a wall?
 	int		hit_wall;
-	// did they ray hit the x side or y side of the wall?
 	int		side_wall;
 }			t_ray;
 
@@ -119,7 +106,6 @@ typedef struct s_texture
 	double		pos;
 	double		x_coor;
 	double		y_coor;
-	// how much to increase the texture coordinate per screen pixel
 	double		step;
 	int			cf_rgb[2][3];
 }			t_texture;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:38:21 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 21:25:14 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ void	ft_check_elems_bis(t_map *map)
 	int	y;
 	int	count;
 
-	y = 0;
+	y = -1;
 	count = 0;
-	while (map->map[y])
+	while (map->map[++y])
 	{
-		x = 0;
-		while (map->map[y][x])
+		x = -1;
+		while (map->map[y][++x])
 		{
 			if (ft_strchr("NSWE", map->map[y][x]))
 			{
@@ -73,9 +73,7 @@ void	ft_check_elems_bis(t_map *map)
 				map->player[Y] = y;
 				map->plyr_cardinal = map->map[y][x];
 			}
-			x++;
 		}
-		y++;
 	}
 	if (count < 1)
 		ft_error(NULL, "player missing", NULL);

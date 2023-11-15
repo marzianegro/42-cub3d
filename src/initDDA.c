@@ -3,25 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   initDDA.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 21:16:17 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 21:25:59 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/* I'm not really sure what to put for plyr->dir_x and plyr->dir_y. */
 void	ft_init_plyr(t_game *game, t_map *map, t_player *plyr)
 {
-	// Position vector of the player
 	plyr->pos_x = map->player[X] + 0.5001;
 	plyr->pos_y = map->player[Y] + 0.5001;
-	// Direction of the player
 	plyr->dir_x = 0.0;
 	plyr->dir_y = -1.0;
-	// Camera plane of the player
 	plyr->plane_x = 0.66;
 	plyr->plane_y = 0.0;
 	if (map->plyr_cardinal == 'N')
@@ -38,15 +34,9 @@ void	ft_init_plyr(t_game *game, t_map *map, t_player *plyr)
 
 void	ft_init_ray(t_player *plyr, t_ray *ray, int x)
 {
-	/*	ray->camera_x is the x coordinate of the camera plane that the current x
-		coordinate of the screen represents, and it's calculated this way so
-		the right side of the screen gets coordinate 1, the centre 0, and
-		the left -1. */
 	ray->camera_x = 2 * x / (double)SCREEN_WIDTH - 1;
-	// Sum of the player's direction vector and a part of the plane vector
 	ray->dir_x = plyr->dir_x + plyr->plane_x * ray->camera_x;
 	ray->dir_y = plyr->dir_y + plyr->plane_y * ray->camera_x;
-	// The ray starts at the player's position
 	ray->pos_x = (int)plyr->pos_x;
 	ray->pos_y = (int)plyr->pos_y;
 }
