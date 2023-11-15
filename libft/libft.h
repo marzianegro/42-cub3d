@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:21:29 by mnegro            #+#    #+#             */
-/*   Updated: 2023/08/19 12:44:53 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 10:38:13 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,5 @@ char	*get_next_line(int fd);
 void	*ft_calloc_gnl(size_t nmemb, size_t size);
 char	*ft_clean_buftomem(char *buftomem, int i);
 int		ft_find_newline(char *buftomem);
-char	*ft_free(char **buf);
-
+char	*ft_free_gnl(char **buf);
 #endif

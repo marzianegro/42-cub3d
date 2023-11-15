@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcMapUtils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:24:20 by btani             #+#    #+#             */
-/*   Updated: 2023/11/11 13:52:04 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 10:44:04 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_freetrim(char *s1, const char del)
 		if (trimmed_str)
 			ft_strlcpy(trimmed_str, &s1[i], j - i + 1);
 	}
-	ft_free(&s1);
+	ft_free((void **)&s1);
 	return (trimmed_str);
 }
 

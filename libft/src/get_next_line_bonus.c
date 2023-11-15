@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:50:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/09/02 19:13:18 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 10:28:27 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ char	*ft_copy_to_new(char **buftomem)
 		i++;
 	}
 	if ((*buftomem)[i] == '\0')
-		ft_free(buftomem);
+		ft_free_gnl(buftomem);
 	else
 		*buftomem = ft_clean_buftomem(*buftomem, i);
 	newline[i] = '\0';
 	if (i == 0)
-		ft_free(&newline);
+		ft_free_gnl(&newline);
 	return (newline);
 }
 
@@ -55,12 +55,12 @@ void	ft_read_from_fd(int fd, char **buftomem)
 		byteread = read(fd, buf, BUFFER_SIZE);
 		if (byteread == -1)
 		{
-			ft_free(buftomem);
-			ft_free(&buf);
+			ft_free_gnl(buftomem);
+			ft_free_gnl(&buf);
 			return ;
 		}
 		*buftomem = ft_strjoin_gnl(*buftomem, buf);
-		ft_free(&buf);
+		ft_free_gnl(&buf);
 	}
 }
 
@@ -86,7 +86,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		str[i + j] = s2[j];
 		j++;
 	}
-	ft_free(&s1);
+	ft_free_gnl(&s1);
 	return (str);
 }
 
@@ -99,10 +99,10 @@ static void	ft_free_buf(char **buf)
 	{
 		while (y < 1024)
 		{
-			ft_free(&buf[y]);
+			ft_free_gnl(&buf[y]);
 			y++;
 		}
-		ft_free(buf);
+		ft_free_gnl(buf);
 	}
 }
 

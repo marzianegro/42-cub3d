@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/11 14:05:39 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 10:54:07 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ void	ft_fill_map(t_map *map, int fd, int count_all, int count_map);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
 /* initMapUtils.c */
 char	*get_next_line_del(int fd);
-void	ft_check_comps_bis(char *line, int flag);
+int		ft_check_comps_bis(int fd, char **line, int flag);
 /* initMLX.c */
 int		ft_keys(int key, t_game *game);
 void	ft_hooks(t_game *game);
@@ -198,6 +198,8 @@ void	ft_mlx_start(t_game *game);
 /* loopMap.c */
 void	ft_clear_img(t_game *game);
 int		ft_redrawinloop(t_game *game);
+/* main.c */
+void	ft_free(void **item);
 /* movePlayer.c */
 void	ft_forward(t_game *game, t_map *map);
 void	ft_left(t_game *game, t_map *map);

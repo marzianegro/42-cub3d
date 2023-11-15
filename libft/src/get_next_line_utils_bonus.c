@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:51:34 by mnegro            #+#    #+#             */
-/*   Updated: 2023/09/02 19:13:16 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 10:28:26 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_clean_buftomem(char *buftomem, int i)
 		return (NULL);
 	while (buftomem && buftomem[i])
 		temp[j++] = buftomem[i++];
-	ft_free(&buftomem);
+	ft_free_gnl(&buftomem);
 	return (temp);
 }
 
@@ -52,7 +52,7 @@ int	ft_find_newline(char *buftomem)
 	return (1);
 }
 
-char	*ft_free(char **buf)
+char	*ft_free_gnl(char **buf)
 {
 	if (*buf)
 	{

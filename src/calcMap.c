@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   calcMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:00:26 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/11 14:03:43 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 10:44:05 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-static void	ft_error_cf(char *str, t_game *game, char *line, char **rgb)
+static void	ft_error_cf(char *str, char *line, char **rgb)
 {
 	printf("\033[1;91mError\033[0;39m: %s!\n", str);
-	ft_free(&line);
+	ft_free((void **)&line);
 	ft_free_matrix(rgb);
 	exit(EXIT_FAILURE);
 }
@@ -41,12 +41,12 @@ bool	ft_cf_deets(char *line, t_texture *tex)
 	{
 		rgb[j] = ft_freetrim(rgb[j], ' ');
 		if (ft_isloopdigit(rgb[j]))
-			ft_error_cf("invalid C/F color");
+			ft_error_cf("invalid C/F color", line, rgb);
 		tex->cf_rgb[i][j] = ft_atoi(rgb[j]);
 		if (tex->cf_rgb[i][j] < 0 || tex->cf_rgb[i][j] > 255)
-			ft_error_cf("invalid C/F color");
+			ft_error_cf("invalid C/F color", line, rgb);
 		if (j++ > 3)
-			ft_error_cf("invalid C/F color");
+			ft_error_cf("invalid C/F color", line, rgb);
 	}
 	ft_free_matrix(rgb);
 	return (true);

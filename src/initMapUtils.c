@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initMapUtils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 13:21:54 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/11 14:05:30 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 10:53:00 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,23 @@ char	*get_next_line_del(int fd)
 	return (line);
 }
 
-int	ft_check_comps_bis(char *line, int flag)
+int	ft_check_comps_bis(int fd, char **line, int flag)
 {
-	if (!ft_strncmp(line, "F ", 2) && (1 & flag >> 0))
-		ft_error_line("duplicate F", line);
-	else if (!ft_strncmp(line, "F ", 2))
+	if (!ft_strncmp(*line, "F ", 2) && (1 & flag >> 0))
+		ft_error_line("duplicate F", *line);
+	else if (!ft_strncmp(*line, "F ", 2))
 		flag |= (1 << 0);
-	else if (!ft_strncmp(line, "C ", 2) && (1 & flag >> 1))
-		ft_error_line("duplicate C", line);
-	else if (!ft_strncmp(line, "C ", 2))
+	else if (!ft_strncmp(*line, "C ", 2) && (1 & flag >> 1))
+		ft_error_line("duplicate C", *line);
+	else if (!ft_strncmp(*line, "C ", 2))
 		flag |= (1 << 1);
-	else if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
-		|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3)
-		|| line[0] == '\0')
+	else if (!ft_strncmp(*line, "NO ", 3) || !ft_strncmp(*line, "SO ", 3)
+		|| !ft_strncmp(*line, "WE ", 3) || !ft_strncmp(*line, "EA ", 3)
+		|| *line[0] == '\0')
 		;
 	else
-		ft_error_line("invalid char", line);
-	ft_free(&line);
-	line = get_next_line_del(fd);
+		ft_error_line("invalid char", *line);
+	ft_free((void **)line);
+	*line = get_next_line_del(fd);
 	return (flag);
 }
