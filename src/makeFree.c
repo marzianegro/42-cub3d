@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   makeFree.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 11:24:57 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:22:15 by marzianegro      ###   ########.fr       */
+/*   Created: 2023/11/15 20:14:50 by marzianegro       #+#    #+#             */
+/*   Updated: 2023/11/15 20:20:26 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	main(int ac, char **av)
+void	ft_free(void **item)
 {
-	t_game		game;
+	if (*item)
+	{
+		free(*item);
+		*item = NULL;
+	}
+}
 
-	if (ac != 2)
-		ft_error("invalid number of arguments");
-	ft_init_err(&game);
-	ft_check_ext(av);
-	ft_init_vars(&game);
-	ft_init_map(&game, &game.map, av[1]);
-	ft_check_map(&game, &game.map);
-	ft_mlx_init(&game);
-	ft_mlx_start(&game);
+void	ft_free_matrix(char **mtx)
+{
+	int	y;
+
+	y = 0;
+	if (mtx)
+	{
+		while (mtx[y])
+		{
+			ft_free((void **)&mtx[y]);
+			y++;
+		}
+		free(mtx);
+	}
 }

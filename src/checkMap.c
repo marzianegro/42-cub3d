@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:03:11 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 20:21:39 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ void	ft_check_ext(char **av)
 
 	len = ft_strlen(av[1]);
 	if (len <= 4)
-		ft_error("invalid map file");
+		ft_error(NULL, "invalid map file", NULL);
 	file_len = len;
 	while (file_len && av[1][file_len] != '/')
 		file_len--;
 	if (av[1][file_len] == '/')
 		file_len++;
 	if (len - file_len <= 4)
-		ft_error("invalid map file");
+		ft_error(NULL, "invalid map file", NULL);
 	else if (!ft_strnstr(&av[1][len - 4], ".cub", 4))
-		ft_error("invalid map file extension");
+		ft_error(NULL, "invalid map file extension", NULL);
 }
 
 void	ft_check_elems(t_game *game, t_map *map)
@@ -45,7 +45,7 @@ void	ft_check_elems(t_game *game, t_map *map)
 			while (map->map[y][x] == ' ' || map->map[y][x] == '\t')
 				x++;
 			if (!ft_strchr("01NSWE", map->map[y][x]))
-				ft_exit(game, "unknown char");
+				ft_error(NULL, "unknown char", NULL);
 			x++;
 		}
 		y++;
@@ -77,9 +77,9 @@ void	ft_check_elems_bis(t_game *game, t_map *map)
 		y++;
 	}
 	if (count < 1)
-		ft_exit(game, "player missing");
+		ft_error(NULL, "player missing", NULL);
 	else if (count > 1)
-		ft_exit(game, "there can only be one player");
+		ft_error(NULL, "there can only be one player", NULL);
 }
 
 void	ft_floodfill(t_game *game, t_map *map, int x, int y)
@@ -97,7 +97,7 @@ void	ft_floodfill(t_game *game, t_map *map, int x, int y)
 	else if (game->map.map[y][x] == '*' || game->map.map[y][x] == '1')
 		return ;
 	else if (game->map.map[y][x] != '1')
-		ft_exit(game, "path non walk-through-able");
+		ft_error(NULL, "path non walk-through-able", NULL);
 }
 
 void	ft_check_map(t_game *game, t_map *map)

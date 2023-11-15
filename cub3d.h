@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 19:58:40 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 20:20:45 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,10 +162,9 @@ int		ft_calc_tex_color(t_texture *tex);
 void	ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */
-void	ft_error(char *str);
-void	ft_error_line(char *str, char *line);
-void	ft_exit(t_game *game, char *str);
-void	ft_free_matrix(char **mtx);
+void	ft_error(t_game *ptr, char *str, char *line);
+void	ft_error_cf(t_game *ptr, char *str, char *line, char **rgb);
+void	ft_init_err(t_game *game);
 int		ft_end(t_game *game);
 /* handleSprites.c */
 void	ft_upload_sprites(t_game *game);
@@ -198,8 +197,9 @@ void	ft_mlx_start(t_game *game);
 /* loopMap.c */
 void	ft_clear_img(t_game *game);
 int		ft_redrawinloop(t_game *game);
-/* main.c */
+/* makeFree.c */
 void	ft_free(void **item);
+void	ft_free_matrix(char **mtx);
 /* movePlayer.c */
 void	ft_forward(t_game *game, t_map *map);
 void	ft_left(t_game *game, t_map *map);

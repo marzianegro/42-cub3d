@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:36:55 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:00:35 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 20:21:33 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_check_comps(int fd, int count_all, int count_map)
 	ft_free((void **)&line);
 	get_next_line(-42);
 	if (flag != 3)
-		ft_error("missing F or C");
+		ft_error(NULL, "missing F or C", str, NULL);
 }
 
 void	ft_fill_map(t_map *map, int fd, int count_all, int count_map)
@@ -74,7 +74,7 @@ void	ft_fill_map(t_map *map, int fd, int count_all, int count_map)
 	i = 0;
 	map->map = ft_calloc(count_map + 1, sizeof(char *));
 	if (!map->map)
-		ft_error("allocation failed");
+		ft_error(NULL, "allocation failed", NULL);
 	while (line)
 	{
 		map->map[i++] = ft_strdup(line);
@@ -93,18 +93,18 @@ void	ft_init_map(t_game *game, t_map *map, char *fd_map)
 	count_map = 0;
 	fd = open(fd_map, O_RDONLY);
 	if (fd < 0)
-		ft_error("impossible to open fd");
+		ft_error(NULL, "impossible to open fd", NULL);
 	ft_read_map(game, fd, &count_all, &count_map);
 	close(fd);
 	fd = open(fd_map, O_RDONLY);
 	if (fd < 0)
-		ft_error("impossible to open fd");
+		ft_error(NULL, "impossible to open fd", NULL);
 	ft_check_comps(fd, count_all, count_map);
 	close(fd);
 	map->row = count_map;
 	fd = open(fd_map, O_RDONLY);
 	if (fd < 0)
-		ft_error("impossible to open fd");
+		ft_error(NULL, "impossible to open fd", NULL);
 	ft_fill_map(map, fd, count_all, count_map);
 	close(fd);
 }

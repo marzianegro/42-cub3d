@@ -3,51 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   handleEnds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 16:55:28 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/15 20:22:08 by marzianegro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_error(char *str)
+void	ft_error(t_game *ptr, char *str, char *line)
 {
-	printf("\033[1;91mError\033[0;39m: %s!\n", str);
-	exit(EXIT_FAILURE);
-}
+	static t_game	*game;
 
-void	ft_error_line(char *str, char *line)
-{
-	printf("\033[1;91mError\033[0;39m: %s!\n", str);
-	if (line)
-		ft_free((void **)&line);
-	exit(EXIT_FAILURE);
-}
-
-void	ft_free_matrix(char **mtx)
-{
-	int	y;
-
-	y = 0;
-	if (mtx)
+	if (ptr)
+		game = ptr;
+	else
 	{
-		while (mtx[y])
-		{
-			ft_free((void **)&mtx[y]);
-			y++;
-		}
-		free(mtx);
+		printf("\033[1;91mError\033[0;39m: %s!\n", str);
+		ft_free((void **)&game->map.north);
+		ft_free((void **)&game->map.south);
+		ft_free((void **)&game->map.east);
+		ft_free((void **)&game->map.west);
+		if (game->map.map)
+			ft_free_matrix(game->map.map);
+		if (line)
+			ft_free((void **)&line);
+		exit(EXIT_FAILURE);
 	}
 }
 
-void	ft_exit(t_game *game, char *str)
+void	ft_error_cf(t_game *ptr, char *str, char *line, char **rgb)
 {
-	printf("\033[1;91mError\033[0;39m: %s!\n", str);
-	if (game->map.map)
-		ft_free_matrix(game->map.map);
-	exit(EXIT_FAILURE);
+	static t_game	*game;
+
+	if (ptr)
+		game = ptr;
+	else
+	{
+		printf("\033[1;91mError\033[0;39m: %s!\n", str);
+		ft_free((void **)&game->map.north);
+		ft_free((void **)&game->map.south);
+		ft_free((void **)&game->map.east);
+		ft_free((void **)&game->map.west);
+		ft_free((void **)&line);
+		ft_free_matrix(rgb);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	ft_init_err(t_game *game)
+{
+	ft_error(game, NULL, NULL);
+	ft_error_cf(game, NULL, NULL, NULL);
 }
 
 int	ft_end(t_game *game)
