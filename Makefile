@@ -6,7 +6,7 @@
 #    By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 11:21:10 by mnegro            #+#    #+#              #
-#    Updated: 2023/11/15 12:46:40 by mnegro           ###   ########.fr        #
+#    Updated: 2023/11/15 19:58:08 by mnegro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ libft:
 	${MAKE} -C libft
 
 test: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./cub3d map/simple.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./cub3d map/simple.cub
 
 re:	fclean all
 	@echo "Rule '${GREEN}re${DEF_COLOR}' for ${NAME} executed successfully!"

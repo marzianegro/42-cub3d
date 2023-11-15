@@ -6,13 +6,13 @@
 /*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:24:20 by btani             #+#    #+#             */
-/*   Updated: 2023/11/15 12:46:39 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 19:58:42 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char	*ft_freetrim(char *s1, const char del)
+char	*ft_freetrim(char *s1, char del)
 {
 	size_t	i;
 	size_t	j;
@@ -23,11 +23,11 @@ char	*ft_freetrim(char *s1, const char del)
 	{
 		i = 0;
 		j = ft_strlen(s1);
-		while (s1[i] && ft_strchr(&del, s1[i]))
+		while (s1[i] && del == s1[i])
 			i++;
-		while (s1[j - 1] && ft_strchr(&del, s1[j - 1]) && j > i)
+		while (s1[j - 1] && del == s1[j - 1] && j > i)
 			j--;
-		trimmed_str = (char *)malloc((j - i + 1) * sizeof(char));
+		trimmed_str = (char *)ft_calloc((j - i + 1), sizeof(char));
 		if (trimmed_str)
 			ft_strlcpy(trimmed_str, &s1[i], j - i + 1);
 	}

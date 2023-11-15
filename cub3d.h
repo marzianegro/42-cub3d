@@ -6,7 +6,7 @@
 /*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 12:35:42 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 19:58:40 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void	ft_perpwalldist(t_ray *ray);
 void	ft_wall_deets(t_player *plyr, t_ray *ray, t_texture *tex);
 void	ft_calc_wall(t_game *game);
 /* calcMapUtils.c */
-char	*ft_freetrim(char *s1, const char del);
+char	*ft_freetrim(char *s1, char del);
 int		ft_isloopdigit(char *s);
 /* checkMap.c */
 void	ft_check_ext(char **av);

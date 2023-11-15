@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initDDA.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 16:55:29 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/15 19:58:41 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 void	ft_init_plyr(t_map *map, t_player *plyr)
 {
 	// Position vector of the player
-	plyr->pos_x = map->player[X];
-	plyr->pos_y = map->player[Y];
+	plyr->pos_x = map->player[X] + 0.5001;
+	plyr->pos_y = map->player[Y] + 0.5001;
 	// Direction of the player
 	plyr->dir_x = -1;
 	plyr->dir_y = 0;

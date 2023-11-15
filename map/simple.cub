@@ -1,7 +1,7 @@
-NO /nfs/homes/btani/Desktop/42-cub3d/spt/north_tree.xpm
-SO /nfs/homes/btani/Desktop/42-cub3d/spt/south_tree.xpm
-WE /nfs/homes/btani/Desktop/42-cub3d/spt/west_tree.xpm
-EA /nfs/homes/btani/Desktop/42-cub3d/spt/east_tree.xpm
+NO spt/north_tree.xpm
+SO spt/south_tree.xpm
+WE spt/west_tree.xpm
+EA spt/east_tree.xpm
 
 F 255,255,100
 C 0,0,255
