@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handleEnds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 12:47:59 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 16:55:28 by btani            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_free_matrix(char **mtx)
 			ft_free((void **)&mtx[y]);
 			y++;
 		}
-		ft_free((void **)mtx);
+		free(mtx);
 	}
 }
 
@@ -59,8 +59,10 @@ int	ft_end(t_game *game)
 	ft_free((void **)&game->map.east);
 	ft_free((void **)&game->map.west);
 	ft_unload_sprites(game);
+	if (game->data.img)
+		mlx_destroy_image(game->mlx_ptr, game->data.img);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
-	free((void **)game->mlx_ptr);
+	free(game->mlx_ptr);
 	exit(0);
 }
