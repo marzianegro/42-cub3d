@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initVars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:58:29 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/11 14:00:16 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 12:15:45 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	ft_init_ray_vars(t_game *game)
 
 void	ft_init_tex_vars(t_game *game)
 {
-	game->tex.spt = NULL;
 	game->tex.num = 0;
 	game->tex.height = 0;
 	game->tex.width = 0;

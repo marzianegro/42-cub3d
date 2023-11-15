@@ -6,7 +6,7 @@
 /*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 10:45:27 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 12:47:59 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ft_free_matrix(char **mtx)
 void	ft_exit(t_game *game, char *str)
 {
 	printf("\033[1;91mError\033[0;39m: %s!\n", str);
-	ft_free((void **)game->tex.spt);
 	if (game->map.map)
 		ft_free_matrix(game->map.map);
 	exit(EXIT_FAILURE);
@@ -55,10 +54,13 @@ int	ft_end(t_game *game)
 {
 	if (game->map.map)
 		ft_free_matrix(game->map.map);
+	ft_free((void **)&game->map.north);
+	ft_free((void **)&game->map.south);
+	ft_free((void **)&game->map.east);
+	ft_free((void **)&game->map.west);
 	ft_unload_sprites(game);
-	ft_free((void **)game->tex.spt);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
-	ft_free((void **)game->mlx_ptr);
+	free((void **)game->mlx_ptr);
 	exit(0);
 }

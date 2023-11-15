@@ -6,7 +6,7 @@
 /*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 10:54:07 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 12:35:42 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef struct s_ray
 
 typedef struct s_texture
 {
-	t_data		*spt;
+	t_data		spt[4];
 	int			num;
 	int			height;
 	int			width;
