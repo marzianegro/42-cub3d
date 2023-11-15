@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:24:57 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:22:15 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 21:05:53 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	main(int ac, char **av)
 {
 	t_game		game;
 
-	if (ac != 2)
-		ft_error("invalid number of arguments");
 	ft_init_err(&game);
+	if (ac != 2)
+		ft_error(NULL, "invalid number of arguments", NULL);
 	ft_check_ext(av);
 	ft_init_vars(&game);
 	ft_init_map(&game, &game.map, av[1]);

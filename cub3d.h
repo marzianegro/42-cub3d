@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:20:45 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 21:07:09 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_map
 	char			**map;
 	int				row;
 	int				player[2];
+	char			plyr_cardinal;
 	unsigned long	ceiling;
 	unsigned long	floor;
 	char			*north;
@@ -145,14 +146,14 @@ char	*ft_freetrim(char *s1, char del);
 int		ft_isloopdigit(char *s);
 /* checkMap.c */
 void	ft_check_ext(char **av);
-void	ft_check_elems(t_game *game, t_map *map);
-void	ft_check_elems_bis(t_game *game, t_map *map);
+void	ft_check_elems(t_map *map);
+void	ft_check_elems_bis(t_map *map);
 void	ft_floodfill(t_game *game, t_map *map, int x, int y);
 void	ft_check_map(t_game *game, t_map *map);
 /* checkTex.c */
 void	ft_save_path(char *line, char **path);
 bool	ft_init_textures(t_map *map, char *line);
-void	ft_check_textures(t_game *game, t_map *map);
+void	ft_check_textures(t_map *map);
 /* DDA.c */
 void	ft_dda(t_map *map, t_player *plyr, t_ray *ray, t_texture *tex);
 /* drawMap.c */
@@ -170,7 +171,7 @@ int		ft_end(t_game *game);
 void	ft_upload_sprites(t_game *game);
 void	ft_unload_sprites(t_game *game);
 /* initDDA.c */
-void	ft_init_plyr(t_map *map, t_player *plyr);
+void	ft_init_plyr(t_game *game, t_map *map, t_player *plyr);
 void	ft_init_ray(t_player *plyr, t_ray *ray, int x);
 void	ft_deltadist(t_ray *ray);
 void	ft_step_sidedist(t_player *plyr, t_ray *ray);

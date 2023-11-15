@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handleEnds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:22:08 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 20:36:25 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_error(t_game *ptr, char *str, char *line)
 		game = ptr;
 	else
 	{
-		printf("\033[1;91mError\033[0;39m: %s!\n", str);
+		get_next_line(-42);
 		ft_free((void **)&game->map.north);
 		ft_free((void **)&game->map.south);
 		ft_free((void **)&game->map.east);
@@ -29,6 +29,7 @@ void	ft_error(t_game *ptr, char *str, char *line)
 			ft_free_matrix(game->map.map);
 		if (line)
 			ft_free((void **)&line);
+		printf("\033[1;91mError\033[0;39m: %s!\n", str);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -41,13 +42,14 @@ void	ft_error_cf(t_game *ptr, char *str, char *line, char **rgb)
 		game = ptr;
 	else
 	{
-		printf("\033[1;91mError\033[0;39m: %s!\n", str);
+		get_next_line(-42);
 		ft_free((void **)&game->map.north);
 		ft_free((void **)&game->map.south);
 		ft_free((void **)&game->map.east);
 		ft_free((void **)&game->map.west);
 		ft_free((void **)&line);
 		ft_free_matrix(rgb);
+		printf("\033[1;91mError\033[0;39m: %s!\n", str);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -60,6 +62,7 @@ void	ft_init_err(t_game *game)
 
 int	ft_end(t_game *game)
 {
+	get_next_line(-42);
 	if (game->map.map)
 		ft_free_matrix(game->map.map);
 	ft_free((void **)&game->map.north);

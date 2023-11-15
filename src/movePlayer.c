@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movePlayer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:02:18 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 16:54:35 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/15 21:16:16 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_backward(t_game *game, t_map *map)
 		game->plyr.pos_y -= game->plyr.dir_y * game->plyr.move_speed;
 }
 
-void	ft_left(t_game *game, t_map *map)
+void	ft_right(t_game *game, t_map *map)
 {
 	if (map->map[(int)game->plyr.pos_y][(int)(game->plyr.pos_x
 		- game->plyr.dir_y * game->plyr.move_speed)] == '*')
@@ -42,7 +42,7 @@ void	ft_left(t_game *game, t_map *map)
 		game->plyr.pos_y += game->plyr.dir_x * game->plyr.move_speed;
 }
 
-void	ft_right(t_game *game, t_map *map)
+void	ft_left(t_game *game, t_map *map)
 {
 	if (map->map[(int)game->plyr.pos_y][(int)(game->plyr.pos_x
 		+ game->plyr.dir_y * game->plyr.move_speed)] == '*')

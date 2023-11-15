@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initVars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:58:29 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/15 20:21:31 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 21:06:05 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_init_map_vars(t_game *game)
 	game->map.row = 0;
 	game->map.player[Y] = 0;
 	game->map.player[X] = 0;
+	game->map.plyr_cardinal = 0;
 	game->map.ceiling = 0;
 	game->map.floor = 0;
 	game->map.north = NULL;
@@ -45,7 +46,7 @@ void	ft_init_plyr_vars(t_game *game)
 	game->plyr.step_x = 0;
 	game->plyr.step_y = 0;
 	game->plyr.move_speed = 0.05;
-	game->plyr.rot_speed = 0.15;
+	game->plyr.rot_speed = 0;
 }
 
 void	ft_init_ray_vars(t_game *game)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:21:39 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 20:38:21 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_check_ext(char **av)
 		ft_error(NULL, "invalid map file extension", NULL);
 }
 
-void	ft_check_elems(t_game *game, t_map *map)
+void	ft_check_elems(t_map *map)
 {
 	int	x;
 	int	y;
@@ -50,10 +50,10 @@ void	ft_check_elems(t_game *game, t_map *map)
 		}
 		y++;
 	}
-	ft_check_elems_bis(game, map);
+	ft_check_elems_bis(map);
 }
 
-void	ft_check_elems_bis(t_game *game, t_map *map)
+void	ft_check_elems_bis(t_map *map)
 {
 	int	x;
 	int	y;
@@ -71,6 +71,7 @@ void	ft_check_elems_bis(t_game *game, t_map *map)
 				count++;
 				map->player[X] = x;
 				map->player[Y] = y;
+				map->plyr_cardinal = map->map[y][x];
 			}
 			x++;
 		}
@@ -102,7 +103,7 @@ void	ft_floodfill(t_game *game, t_map *map, int x, int y)
 
 void	ft_check_map(t_game *game, t_map *map)
 {
-	ft_check_textures(game, map);
-	ft_check_elems(game, map);
+	ft_check_textures(map);
+	ft_check_elems(map);
 	ft_floodfill(game, &game->map, map->player[X], map->player[Y]);
 }

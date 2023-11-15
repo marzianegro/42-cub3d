@@ -6,7 +6,7 @@
 /*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 17:57:32 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 12:28:25 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 20:36:24 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_save_path(char *line, char **path)
 
 	i = 2;
 	if (*path)
-		ft_error_line("more than one NO/SO/EA/WE texture", line);
+		ft_error(NULL, "more than one NO/SO/EA/WE texture", line);
 	while (line[i] == ' ')
 		i++;
 	*path = ft_strdup(&line[i]);
@@ -39,24 +39,27 @@ bool	ft_init_textures(t_map *map, char *line)
 	return (true);
 }
 
-void	ft_check_textures(t_game *game, t_map *map)
+void	ft_check_textures(t_map *map)
 {
 	int	fd;
 
+	if (!map->north || !map->south || !map->east
+		|| !map->west)
+		ft_error(NULL, "missing NO/SO/EA/WE texture", NULL);
 	fd = open(map->north, O_RDONLY);
 	if (fd < 0)
-		ft_exit(game, "invalid NO texture");
+		ft_error(NULL, "invalid NO texture", NULL);
 	close(fd);
 	fd = open(map->south, O_RDONLY);
 	if (fd < 0)
-		ft_exit(game, "invalid SO texture");
+		ft_error(NULL, "invalid SO texture", NULL);
 	close(fd);
 	fd = open(map->east, O_RDONLY);
 	if (fd < 0)
-		ft_exit(game, "invalid EA texture");
+		ft_error(NULL, "invalid EA texture", NULL);
 	close(fd);
 	fd = open(map->west, O_RDONLY);
 	if (fd < 0)
-		ft_exit(game, "invalid WE texture");
+		ft_error(NULL, "invalid WE texture", NULL);
 	close(fd);
 }

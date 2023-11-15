@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotPlane.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: btani <btani@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 19:20:24 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 16:51:52 by btani            ###   ########.fr       */
+/*   Updated: 2023/11/15 21:16:15 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 	When rotating around, the values of plyr->dir and plyr->plane change,
 	but they always remain perpendicular to each other and of the same
 	length. */
-void	ft_rot_left(t_game *game)
+void	ft_rot_right(t_game *game)
 {
 	double	olddir_x;
 	double	oldplane_x;
@@ -35,7 +35,7 @@ void	ft_rot_left(t_game *game)
 		+ game->plyr.plane_y * cos(game->plyr.rot_speed);
 }
 
-void	ft_rot_right(t_game *game)
+void	ft_rot_left(t_game *game)
 {
 	double	olddir_x;
 	double	oldplane_x;

@@ -6,7 +6,7 @@
 #    By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 11:21:10 by mnegro            #+#    #+#              #
-#    Updated: 2023/11/15 19:58:08 by mnegro           ###   ########.fr        #
+#    Updated: 2023/11/15 20:28:09 by mnegro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ MLXFLAGS = -lmlx -lXext -lX11 -lm
 FL_SRCS = calcMap.c calcMapUtils.c checkMap.c checkTex.c \
 			DDA.c drawMap.c handleEnds.c handleSprites.c \
 			initDDA.c initMap.c initMapUtils.c initMLX.c \
-			initVars.c loopMap.c main.c movePlayer.c rotPlane.c
+			initVars.c loopMap.c main.c makeFree.c \
+			movePlayer.c rotPlane.c
 DIRSRCS = src/
 SRCS = ${addprefix ${DIRSRCS},${FL_SRCS}}
 

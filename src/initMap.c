@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:36:55 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:21:33 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 20:28:09 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_read_map(t_game *game, int fd, int *count_all, int *count_map)
 
 	line = get_next_line_del(fd);
 	if (!line)
-		ft_error("nothing to be read");
+		ft_error(NULL, "nothing to be read", NULL);
 	while (line)
 	{
 		flag = 0;
@@ -50,13 +50,13 @@ void	ft_check_comps(int fd, int count_all, int count_map)
 	line = get_next_line_del(fd);
 	flag = 0;
 	if (!line)
-		ft_error("nothing to be read");
+		ft_error(NULL, "nothing to be read", NULL);
 	while (line && i++ < count_all - count_map)
 		flag = ft_check_comps_bis(fd, &line, flag);
 	ft_free((void **)&line);
 	get_next_line(-42);
 	if (flag != 3)
-		ft_error(NULL, "missing F or C", str, NULL);
+		ft_error(NULL, "missing F or C", NULL);
 }
 
 void	ft_fill_map(t_map *map, int fd, int count_all, int count_map)

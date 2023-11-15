@@ -6,24 +6,34 @@
 /*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:21:17 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 19:58:41 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/15 21:16:17 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 /* I'm not really sure what to put for plyr->dir_x and plyr->dir_y. */
-void	ft_init_plyr(t_map *map, t_player *plyr)
+void	ft_init_plyr(t_game *game, t_map *map, t_player *plyr)
 {
 	// Position vector of the player
 	plyr->pos_x = map->player[X] + 0.5001;
 	plyr->pos_y = map->player[Y] + 0.5001;
 	// Direction of the player
-	plyr->dir_x = -1;
-	plyr->dir_y = 0;
+	plyr->dir_x = 0.0;
+	plyr->dir_y = -1.0;
 	// Camera plane of the player
-	plyr->plane_x = 0;
-	plyr->plane_y = 0.66;
+	plyr->plane_x = 0.66;
+	plyr->plane_y = 0.0;
+	if (map->plyr_cardinal == 'N')
+		plyr->rot_speed = 1.5708 * 4;
+	else if (map->plyr_cardinal == 'E')
+		plyr->rot_speed = 1.5708 * 3;
+	else if (map->plyr_cardinal == 'S')
+		plyr->rot_speed = 1.5708 * 2;
+	else if (map->plyr_cardinal == 'W')
+		plyr->rot_speed = 1.5708;
+	ft_rot_right(game);
+	plyr->rot_speed = 0.15;
 }
 
 void	ft_init_ray(t_player *plyr, t_ray *ray, int x)

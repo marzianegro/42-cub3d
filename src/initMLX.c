@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initMLX.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:47:54 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:22:14 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/15 21:14:52 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_mlx_start(t_game *game)
 {
 	ft_upload_sprites(game);
 	ft_calc_cf_color(game);
-	ft_init_plyr(&game->map, &game->plyr);
+	ft_init_plyr(game, &game->map, &game->plyr);
 	ft_hooks(game);
 	mlx_loop_hook(game->mlx_ptr, ft_redrawinloop, game);
 	mlx_loop(game->mlx_ptr);
