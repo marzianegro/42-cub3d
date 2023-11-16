@@ -83,7 +83,9 @@ void	ft_check_elems_bis(t_map *map)
 
 void	ft_floodfill(t_game *game, t_map *map, int x, int y)
 {
-	if (game->map.map[y][x] == '0' || game->map.map[y][x] == 'N' ||
+	if (!game->map.map[y] || ft_strlen(game->map.map[y]) < (size_t)x)
+		ft_error(NULL, "path non walk-through-able", NULL);
+	else if (game->map.map[y][x] == '0' || game->map.map[y][x] == 'N' ||
 		game->map.map[y][x] == 'S' || game->map.map[y][x] == 'E' ||
 		game->map.map[y][x] == 'W')
 	{

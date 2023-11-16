@@ -24,20 +24,21 @@ void	ft_read_map(t_game *game, int fd, int *count_all, int *count_map)
 	{
 		flag = 0;
 		*count_all += 1;
-		while (!*line)
+		while (line && !*line)
 		{
 			*count_all += 1;
+			if (*count_map != 0 && line && line[0] == '\0')
+				*count_map += 1;
 			ft_free((void **)&line);
 			line = get_next_line_del(fd);
 		}
-		if (ft_init_textures(&game->map, line) || ft_cf_deets(line, &game->tex))
+		if (line && (ft_init_textures(&game->map, line) || ft_cf_deets(line, &game->tex)))
 			flag = 1;
-		if (flag == 0 && (ft_strchr(line, '0') || ft_strchr(line, '1')))
+		if (line && flag == 0 && (ft_strchr(line, '0') || ft_strchr(line, '1')))
 			*count_map += 1;
 		ft_free((void **)&line);
 		line = get_next_line_del(fd);
 	}
-	close(fd);
 }
 
 void	ft_check_comps(int fd, int count_all, int count_map)
@@ -51,7 +52,7 @@ void	ft_check_comps(int fd, int count_all, int count_map)
 	flag = 0;
 	if (!line)
 		ft_error(NULL, "nothing to be read", NULL);
-	while (line && i++ < count_all - count_map)
+	while (line && i++ < count_all - count_map - 1)
 		flag = ft_check_comps_bis(fd, &line, flag);
 	ft_free((void **)&line);
 	get_next_line(-42);
@@ -66,13 +67,13 @@ void	ft_fill_map(t_map *map, int fd, int count_all, int count_map)
 
 	i = 0;
 	line = get_next_line_del(fd);
-	while (line && i++ != count_all - count_map)
+	while (line && i++ != count_all - count_map - 1)
 	{
 		ft_free((void **)&line);
 		line = get_next_line_del(fd);
 	}
 	i = 0;
-	map->map = ft_calloc(count_map + 1, sizeof(char *));
+	map->map = ft_calloc(count_map + 5, sizeof(char *));
 	if (!map->map)
 		ft_error(NULL, "allocation failed", NULL);
 	while (line)

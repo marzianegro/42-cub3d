@@ -22,11 +22,11 @@ void	ft_init_plyr(t_game *game, t_map *map, t_player *plyr)
 	plyr->plane_y = 0.0;
 	if (map->plyr_cardinal == 'N')
 		plyr->rot_speed = 1.5708 * 4;
-	else if (map->plyr_cardinal == 'E')
+	else if (map->plyr_cardinal == 'W')
 		plyr->rot_speed = 1.5708 * 3;
 	else if (map->plyr_cardinal == 'S')
 		plyr->rot_speed = 1.5708 * 2;
-	else if (map->plyr_cardinal == 'W')
+	else if (map->plyr_cardinal == 'E')
 		plyr->rot_speed = 1.5708;
 	ft_rot_right(game);
 	plyr->rot_speed = 0.15;

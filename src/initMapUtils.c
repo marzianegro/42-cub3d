@@ -27,6 +27,9 @@ char	*get_next_line_del(int fd)
 
 int	ft_check_comps_bis(int fd, char **line, int flag)
 {
+	int i;
+
+	i = -1;
 	if (!ft_strncmp(*line, "F ", 2) && (1 & flag >> 0))
 		ft_error(NULL, "duplicate F", *line);
 	else if (!ft_strncmp(*line, "F ", 2))
@@ -37,10 +40,14 @@ int	ft_check_comps_bis(int fd, char **line, int flag)
 		flag |= (1 << 1);
 	else if (!ft_strncmp(*line, "NO ", 3) || !ft_strncmp(*line, "SO ", 3)
 		|| !ft_strncmp(*line, "WE ", 3) || !ft_strncmp(*line, "EA ", 3)
-		|| *line[0] == '\0')
+		|| (*line)[0] == '\0')
 		;
 	else
-		ft_error(NULL, "invalid char", *line);
+	{
+		while ((*line)[++i])
+			if ((*line)[i] != ' ' && (*line)[i] != '\t')
+				ft_error(NULL, "invalid char", *line);
+	}
 	ft_free((void **)line);
 	*line = get_next_line_del(fd);
 	return (flag);

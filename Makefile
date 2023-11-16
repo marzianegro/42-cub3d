@@ -17,7 +17,7 @@
 .SILENT:
 
 ### VARIABLES (DEFINITION) ###
-NAME = cub3d
+NAME = cub3D
 NAME_ARC = libftcub3d.a
 
 CC = cc
@@ -50,7 +50,7 @@ ${DIROBJS}%.o: ${DIRSRCS}%.c
 	@echo "${YELLOW}Compiling:${WHITE} $< ${DEF_COLOR}"
 	${CC} ${CFLAGS} -c $< -o $@
 
-${NAME}: libft ${OBJS}
+${NAME}: libft mlx ${OBJS}
 	cp libft/arc/libft.a ${ARC}
 	${CC} ${CFLAGS} ${OBJS} -I {MLX} -I {INCLUDE} -L ${MLX} ${MLXFLAGS} -o ${NAME} ${ARC}
 	@echo "Rule '${GREEN}all${DEF_COLOR}' for mandatory ${NAME} executed successfully!"
@@ -59,19 +59,24 @@ all:	${NAME}
 
 clean:
 	${MAKE} -C libft clean
+	${MAKE} -sC minilibx-linux clean
 	${RM} ${OBJS}
 	@echo "Rule '${GREEN}clean${DEF_COLOR}' for ${NAME} executed successfully!"
 
 fclean:
 	${MAKE} -C libft fclean
+	${MAKE} -sC minilibx-linux clean
 	${RM} ${OBJS} ${NAME} ${ARC}
 	@echo "Rule '${GREEN}fclean${DEF_COLOR}' for ${NAME} executed successfully!"
 
 libft:
 	${MAKE} -C libft
 
+mlx:
+	${MAKE} -sC minilibx-linux
+
 test: all
-	valgrind --leak-check=full --show-leak-kinds=all ./cub3d map/simple.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./${NAME} map/long.cub
 
 re:	fclean all
 	@echo "Rule '${GREEN}re${DEF_COLOR}' for ${NAME} executed successfully!"
