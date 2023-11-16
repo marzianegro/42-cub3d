@@ -1,7 +1,7 @@
-NO spt/north_tree.xpm
-SO spt/south_tree.xpm
-WE spt/west_tree.xpm
-EA spt/east_tree.xpm
+NO ./spt/north_tex.xpm
+SO ./spt/south_tex.xpm
+WE ./spt/west_tex.xpm
+EA ./spt/east_tex.xpm
 
 F 255,255,100
 C 0,0,255

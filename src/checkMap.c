@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkMap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:34:48 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 21:25:14 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/16 16:04:55 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ void	ft_check_elems(t_map *map)
 		{
 			while (map->map[y][x] == ' ' || map->map[y][x] == '\t')
 				x++;
-			if (!ft_strchr("01NSWE", map->map[y][x]))
+			if (map->map[y][x] && !ft_strchr("01NSWE", map->map[y][x]))
 				ft_error(NULL, "unknown char", NULL);
-			x++;
+			if (map->map[y][x])
+				x++;
 		}
 		y++;
 	}

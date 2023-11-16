@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 21:27:59 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/16 15:20:51 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ int		ft_calc_tex_color(t_texture *tex);
 void	ft_draw_cf(t_game *game);
 void	ft_draw_wall(t_game *game, int x);
 /* handleEnds.c */
+void	ft_exit(char *str);
 void	ft_error(t_game *ptr, char *str, char *line);
 void	ft_error_cf(t_game *ptr, char *str, char *line, char **rgb);
 void	ft_init_err(t_game *game);

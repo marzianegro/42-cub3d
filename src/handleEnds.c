@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   handleEnds.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnegro <mnegro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:38:31 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/15 20:36:25 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/16 15:58:42 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	ft_exit(char *str)
+{
+	printf("\033[1;91mError\033[0;39m: %s!\n", str);
+	exit(EXIT_FAILURE);
+}
 
 void	ft_error(t_game *ptr, char *str, char *line)
 {
@@ -21,10 +27,14 @@ void	ft_error(t_game *ptr, char *str, char *line)
 	else
 	{
 		get_next_line(-42);
-		ft_free((void **)&game->map.north);
-		ft_free((void **)&game->map.south);
-		ft_free((void **)&game->map.east);
-		ft_free((void **)&game->map.west);
+		if (game->map.north != NULL)
+			ft_free((void **)&game->map.north);
+		if (game->map.south != NULL)
+			ft_free((void **)&game->map.south);
+		if (game->map.east != NULL)
+			ft_free((void **)&game->map.east);
+		if (game->map.west != NULL)
+			ft_free((void **)&game->map.west);
 		if (game->map.map)
 			ft_free_matrix(game->map.map);
 		if (line)
