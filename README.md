@@ -6,8 +6,7 @@ This is a graphics project that involves creating a simple raycasting game engin
 ## Features
 - **Raycasting Engine**: Utilizes raycasting to render a 3D environment.
 - **Texture Mapping**: Implements texture mapping for walls and sprites.
-- **Basic Lighting**: Adds basic lighting effects for a more realistic atmosphere.
-- **HUD and Controls**: Includes a Heads-Up Display (HUD) and simple keyboard controls.
+- **Controls**: Includes simple keyboard controls.
 
 ## Getting Started
 ### Prerequisites
