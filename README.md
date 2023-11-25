@@ -39,7 +39,7 @@ This is a graphics project that involves creating a simple raycasting game engin
     ./cub3D map/long.ber
     ```
 
-2. Interact with the game using WASD keys to move the player and right and left arrow to move the field of vision.
+2. Interact with the game using WASD keys to move the player and left/right arrow to move the field of vision.
 
 ### Example
 
