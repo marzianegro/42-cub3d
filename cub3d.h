@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:21:50 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/16 15:20:51 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/17 16:26:03 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ void	ft_fill_map(t_map *map, int fd, int count_all, int count_map);
 void	ft_init_map(t_game *game, t_map *map, char *fd_map);
 /* initMapUtils.c */
 char	*get_next_line_del(int fd);
+void	ft_read_map_bis(int fd, char **line, int *count_all, int *count_map);
 int		ft_check_comps_bis(int fd, char **line, int flag);
 /* initMLX.c */
 int		ft_keys(int key, t_game *game);

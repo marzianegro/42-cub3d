@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initMapUtils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marzianegro <marzianegro@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 13:21:54 by marzianegro       #+#    #+#             */
-/*   Updated: 2023/11/15 21:26:06 by marzianegro      ###   ########.fr       */
+/*   Updated: 2023/11/17 15:26:05 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,18 @@ char	*get_next_line_del(int fd)
 	return (line);
 }
 
+void	ft_read_map_bis(int fd, char **line, int *count_all, int *count_map)
+{
+	*count_all += 1;
+	if (*count_map != 0 && *line && (*line)[0] == '\0')
+		*count_map += 1;
+	ft_free((void **)line);
+	*line = get_next_line_del(fd);
+}
+
 int	ft_check_comps_bis(int fd, char **line, int flag)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (!ft_strncmp(*line, "F ", 2) && (1 & flag >> 0))

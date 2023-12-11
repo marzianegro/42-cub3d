@@ -6,7 +6,7 @@
 #    By: mnegro <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/03 11:21:10 by mnegro            #+#    #+#              #
-#    Updated: 2023/11/16 15:45:46 by mnegro           ###   ########.fr        #
+#    Updated: 2023/11/17 15:56:42 by mnegro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ mlx:
 	${MAKE} -sC minilibx-linux
 
 test: all
-	valgrind --leak-check=full --show-leak-kinds=all ./${NAME} map/long.cub
+	valgrind --leak-check=full --show-leak-kinds=all ./${NAME} simple.cub
 
 re:	fclean all
 	@echo "Rule '${GREEN}re${DEF_COLOR}' for ${NAME} executed successfully!"

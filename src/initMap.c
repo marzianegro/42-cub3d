@@ -6,7 +6,7 @@
 /*   By: mnegro <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:36:55 by mnegro            #+#    #+#             */
-/*   Updated: 2023/11/16 15:59:15 by mnegro           ###   ########.fr       */
+/*   Updated: 2023/11/17 16:28:12 by mnegro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,9 @@ void	ft_read_map(t_game *game, int fd, int *count_all, int *count_map)
 		flag = 0;
 		*count_all += 1;
 		while (line && !*line)
-		{
-			*count_all += 1;
-			if (*count_map != 0 && line && line[0] == '\0')
-				*count_map += 1;
-			ft_free((void **)&line);
-			line = get_next_line_del(fd);
-		}
-		if (line && (ft_init_textures(&game->map, line) || ft_cf_deets(line, &game->tex)))
+			ft_read_map_bis(fd, &line, count_all, count_map);
+		if (line && (ft_init_textures(&game->map, line)
+				|| ft_cf_deets(line, &game->tex)))
 			flag = 1;
 		if (line && flag == 0 && (ft_strchr(line, '0') || ft_strchr(line, '1')))
 			*count_map += 1;
